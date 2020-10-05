@@ -13,15 +13,16 @@
 
 .container {
 	width: 100%;
-	max-width: 1000px;
+	max-width:1500px;
 	margin: 0 auto;
 }
 
 .header {
 	width: 100%;
-	background: #444;
+	background: #000f2a;
 }
 
+/*Header top menu*/
 .header-top {
 	color: #fff;
 	display: flex;
@@ -70,7 +71,75 @@
 	display: none;
 }
 
+.header__tel{
+	height: 30px;
+	display: flex;
+	align-items: center;
+	color: #fff;
+	font-size: 16px;
+}
 
+/*Header bot menu*/
+.header__bot{
+	display: flex;
+	justify-content: space-between;
+}
+
+.header__logo{	
+	align-items: center;
+}
+
+.header__search {
+	display: flex;
+	align-items: center;
+}
+
+.header__search_input{
+	height: 40px;
+	width: 700px;
+	border-radius: 8px 0px 0px 8px;
+	padding-left: 20px;
+	font-size: 15px;
+}
+
+input{
+	outline:none;
+	border:0px solid black;
+}
+
+.header__search_button{
+	height: 40px;
+	width: 100px;
+	cursor: pointer;
+	background-color: #304ffe;
+	color: #fff;
+	border-radius: 0px 8px 8px 0px;
+	font-size: 16px;
+}
+
+button{
+	border:0px solid black;
+	outline:none;
+	padding:0;
+}
+
+button:active{
+	background:#1132e9;
+}
+
+.header__bin{
+	display: flex;
+	align-items: center;
+}
+/*Main page*/
+
+.categories{
+	height: 400px;
+	display: grid;
+	justify-content: space-between;
+	color: crimson;
+}
+/*Mobile versionu*/
 @media (max-width: 1000px) {
 	.menu__list {
 		display: none;
