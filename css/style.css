@@ -13,7 +13,7 @@
 
 .container {
 	width: 100%;
-	max-width:1500px;
+	max-width:1100px;
 	margin: 0 auto;
 }
 
@@ -22,26 +22,14 @@
 	background: #000f2a;
 }
 
-/*Header top menu*/
-.header-top {
-	color: #fff;
-	display: flex;
-	justify-content: space-between;
-}
-
-.menu {
-	display: flex;
-}
-
 .menu__list {
+	height: inherit;
 	display: flex;
+	align-items: center;
 }
 
 .menu__item {
-	height: 30px;
 	margin-right: 10px;
-	display: flex;
-	align-items: center;
 }
 
 .menu__link {
@@ -64,42 +52,51 @@
 	margin-left: 0;
 }
 
-.menu-btn {
-	width: 30px;
-	height: 30px;
-	background: red;
-	display: none;
+/*Header top*/
+
+.header-top {
+    height: 40px
 }
 
-.header__tel{
-	height: 30px;
-	display: flex;
-	align-items: center;
-	color: #fff;
-	font-size: 16px;
+.header-top__right {
+	height: inherit;
+	float: right;
 }
 
-/*Header bot menu*/
-.header__bot{
-	display: flex;
-	justify-content: space-between;
+.header__logo{
+	height: inherit;
+    margin-left: -66px;
+    position: absolute;
+    left: 50%;
 }
 
-.header__logo{	
-	align-items: center;
+/*Header bottom*/
+
+.header-bot{
+	height: 60px
 }
 
-.header__search {
+.header-bot__left{
+	height: inherit;
+	display: block;
+	float: left;
+}
+
+.header-bot__right {
+	height: inherit;
+	float: right;
 	display: flex;
 	align-items: center;
 }
 
 .header__search_input{
-	height: 40px;
-	width: 700px;
-	border-radius: 8px 0px 0px 8px;
+	height: 30px;
+	width: 250px;
+	border-radius: 8px 8px 8px 8px;
 	padding-left: 20px;
 	font-size: 15px;
+	padding-left: 35px;
+	transition: width .35s;
 }
 
 input{
@@ -108,37 +105,34 @@ input{
 }
 
 .header__search_button{
-	height: 40px;
-	width: 100px;
-	cursor: pointer;
-	background-color: #304ffe;
-	color: #fff;
-	border-radius: 0px 8px 8px 0px;
-	font-size: 16px;
+	height: 20px;
+	padding-left: 10px;
+	position: absolute; 
 }
 
-button{
-	border:0px solid black;
-	outline:none;
-	padding:0;
-}
-
-button:active{
-	background:#1132e9;
-}
-
-.header__bin{
+/*Фильм*/
+.films-row__popular{
+	margin-top: 20px;
+	margin-bottom: 20px;
 	display: flex;
-	align-items: center;
+	justify-content: left;
 }
-/*Main page*/
 
-.categories{
-	height: 400px;
-	display: grid;
-	justify-content: space-between;
-	color: crimson;
+.films-row__name{
+	margin-top: 20px;
+	font-size: 25px;
+	font-weight: bold;
+	margin-left: 55px;
 }
+
+.films-row__poster{
+	height: 200px;
+}
+
+.films-row__film{
+	margin-left: 5px;
+}
+
 /*Mobile versionu*/
 @media (max-width: 1000px) {
 	.menu__list {
