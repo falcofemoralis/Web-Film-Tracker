@@ -1,0 +1,22 @@
+/*Фильм*/
+.films-row__popular{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: left;
+}
+
+.films-row__name{
+	margin-top: 20px;
+	font-size: 25px;
+	font-weight: bold;
+	margin-left: 55px;
+}
+
+.films-row__poster{
+	height: 200px;
+}
+
+.films-row__film{
+	margin-left: 5px;
+}

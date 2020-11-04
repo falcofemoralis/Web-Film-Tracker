@@ -28,7 +28,7 @@
 	align-items: center;
 }
 
-.menu__item {
+.menu__list li{
 	margin-right: 10px;
 }
 
@@ -84,19 +84,28 @@
 
 .header-bot__right {
 	height: inherit;
-	float: right;
 	display: flex;
 	align-items: center;
+	position: absolute;
+	margin-left: calc(1100px - 250px);
+	transition: margin-left .35s;
 }
 
 .header__search_input{
 	height: 30px;
 	width: 250px;
 	border-radius: 8px 8px 8px 8px;
-	padding-left: 20px;
 	font-size: 15px;
 	padding-left: 35px;
 	transition: width .35s;
+}
+
+.header-bot__right:focus-within {
+	margin-left: 0px;
+}
+
+.header__search_input:focus{
+	width: 1100px;
 }
 
 input{
@@ -110,27 +119,50 @@ input{
 	position: absolute; 
 }
 
-/*Фильм*/
-.films-row__popular{
-	margin-top: 20px;
-	margin-bottom: 20px;
-	display: flex;
-	justify-content: left;
+/* Dropdown menu */
+.dropdown-menu__btn {
+	border: none;
+	outline: none;
+	color: #fff;
+	font-size: 16px;
+	padding: 20px 16px;
+	background-color: inherit;
+  }
+
+.dropdown-menu:hover .dropdown-content {
+	display: block;
+  }
+  
+.dropdown-content{
+  display: none;
+  position: absolute;
+  padding: 25px;
+  background: rgba(255,255,255,0.90);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  transition: display 0.3s;
 }
 
-.films-row__name{
-	margin-top: 20px;
-	font-size: 25px;
-	font-weight: bold;
-	margin-left: 55px;
+.dropdown-content li{
+	float: left;
+	width: 163px;
+	margin-right: 20px;
+	background: inherit;
+	transition: background 0.3s ease-in-out;
 }
 
-.films-row__poster{
-	height: 200px;
+.dropdown-content li:hover{
+	background: rgba(202, 202, 202, 0.9);
 }
 
-.films-row__film{
-	margin-left: 5px;
+.dropdown-content a{
+	color: #2e859e;
+    display: block;
+	padding: 8px 20px;
+	transition: color 0.3s ease-in-out;
+}
+
+.dropdown-content a:hover{
+	color: #000f2a;
 }
 
 /*Mobile versionu*/
