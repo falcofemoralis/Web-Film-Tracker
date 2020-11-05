@@ -21,7 +21,10 @@
     <header class='header'>
         <div class="container" id="header_container">
             <div class="header-top">
-                <img class='header__logo' src="./images/site_logo.svg" alt="site_logo">
+                <a class='header__logo' href="#">
+                    <img src="./images/site_logo.svg" alt="site_logo">
+                </a>
+
                 <nav class="header-top__right">
                     <ul class="menu__list">
                         <li class='menu__item'>
@@ -89,17 +92,18 @@
             </div>
         </div>
     </header>
-    <article>
+    <article style="margin: 25px;">
         <div class="container">
             <?php
-            $query = "SELECT * FROM titles limit 5";
+            $query = "SELECT * FROM titles limit 8";
 
+            //Популярные фильмы
             $result = mysqli_query($connect, $query) or die("Ошибка " . mysqli_error($connect));
             if ($result) {
                 $rows = mysqli_num_rows($result); // количество полученных строк
 
-                echo "<p class='films-row__name'>Популярные фильмы</p>";
-                echo "<div class='films-row__popular'>";
+                echo "<p class='films-row__name'>Популярные фильмы</p>
+                      <div class='films-row__popular'>";
                 for ($i = 0; $i < $rows; ++$i) {
                     $row = mysqli_fetch_row($result);
                     echo "<div class='films-row__film'>
@@ -113,24 +117,42 @@
                 // очищаем результат
                 mysqli_free_result($result);
             }
+
+            //фильмы 2020 года
+            $query = "SELECT * FROM titles where premiered=2020 limit 15";
+
+            $result = mysqli_query($connect, $query) or die("Ошибка " . mysqli_error($connect));
+            if ($result) {
+                $rows = mysqli_num_rows($result); // количество полученных строк
+
+                echo "<p class='films-row__name'>Фильмы 2020 года</p>
+                        <table class='films-table'><tr>";
+
+                for ($i = 1; $i <= $rows; ++$i) {
+                    $row = mysqli_fetch_row($result);
+
+                    echo "<td><div>
+                        <img class='films-row__poster' src='./images/posters/$row[0].jpeg' alt='poster'>
+                        <h1>$row[1]</h1>
+                        2020, Приключения
+                        </div></td>";
+                    if (($i % 4) == 0) echo "<tr>";
+                }
+                echo "</table>";
+
+                // очищаем результат
+                mysqli_free_result($result);
+            }
             ?>
         </div>
-    </article>
-</body>
-<script>
-searcch.onblur = function() {
-    search.style.width = "250px";
-    var left_side = document.getElementById("header-bot__left");
-    setTimeout(() => {
-        left_side.style.display = "block";
-    }, 350);;
-};
 
-secarch.onfocus = function() {
-    search.style.width = "1100px";
-    var left_side = document.getElementById("header-bot__left");
-    left_side.style.display = "none";
-};
-</script>
+    </article>
+    <footer>
+        <div class="container">
+            <div class="b-footer">
+                <h3>FilmsTracker.ua — трекер информации про фильмы!</h3>
+            </div>
+    </footer>
+</body>
 
 </html>

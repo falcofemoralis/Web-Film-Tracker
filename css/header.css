@@ -70,6 +70,9 @@
     left: 50%;
 }
 
+.header__logo img{
+	height: inherit;
+}
 /*Header bottom*/
 
 .header-bot{
@@ -139,12 +142,11 @@ input{
   padding: 25px;
   background: rgba(255,255,255,0.90);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  transition: display 0.3s;
 }
 
 .dropdown-content li{
 	float: left;
-	width: 163px;
+	width: 153px;
 	margin-right: 20px;
 	background: inherit;
 	transition: background 0.3s ease-in-out;
@@ -167,10 +169,7 @@ input{
 
 /*Mobile versionu*/
 @media (max-width: 1000px) {
-	.menu__list {
-		display: none;
-	}
-	.menu-btn {
-		display: block;
+	.header-bot__left{
+		background-color: red;
 	}
 }

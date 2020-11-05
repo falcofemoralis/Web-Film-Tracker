@@ -1,13 +1,10 @@
 /*Фильм*/
 .films-row__popular{
-	margin-top: 20px;
-	margin-bottom: 20px;
 	display: flex;
 	justify-content: left;
 }
 
 .films-row__name{
-	margin-top: 20px;
 	font-size: 25px;
 	font-weight: bold;
 	margin-left: 55px;
@@ -20,3 +17,26 @@
 .films-row__film{
 	margin-left: 5px;
 }
+
+/*films columns*/
+
+.films-table{
+	width:70%; 
+    margin-left:15%; 
+    margin-right:15%;
+}
+
+/*footer*/
+footer{
+	height: 50px;
+	background-color: black;
+	display: flex;
+    align-items: center;
+}
+
+.b-footer h3{
+	float: left;
+	color: white;
+    font-size: 12px;
+}
+
