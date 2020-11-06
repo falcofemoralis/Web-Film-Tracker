@@ -1,0 +1,13 @@
+/*footer*/
+footer{
+	height: 50px;
+	background-color: black;
+	display: flex;
+    align-items: center;
+}
+
+.b-footer h3{
+	float: left;
+	color: white;
+    font-size: 12px;
+}
