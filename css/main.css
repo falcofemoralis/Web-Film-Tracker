@@ -17,27 +17,21 @@
 	margin: 0 auto;
 }
 
-/*Фильм*/
+/*films columns*/
 .films-row__popular{
 	display: flex;
 	justify-content: left;
-}
-
-.films-row__name{
-	font-size: 25px;
-	font-weight: bold;
-	margin-left: 55px;
-}
-
-.films-row__poster{
-	height: 200px;
 }
 
 .films-row__film{
 	margin-left: 5px;
 }
 
-/*films columns*/
+.films-row__header{
+	font-size: 25px;
+	font-weight: bold;
+	margin-left: 55px;
+}
 
 .films-table{
 	width:70%; 

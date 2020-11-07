@@ -2,21 +2,11 @@
 
 class Film
 {
-    private $film_id, $title, $rating, $votes, $runtime_minutes, $premiered, $plot, $isAdult;
+    private string $film_id, $title, $rating, $votes, $runtime_minutes, $premiered, $plot, $isAdult;
     private $genres;
 
-
-    function __construct(
-        $film_id,
-        $title,
-        $isAdult,
-        $premiered,
-        $runtime_minutes,
-        $genres,
-        $plot,
-        $rating,
-        $votes
-    ) {
+    function __construct($film_id, $title, $isAdult, $premiered, $runtime_minutes, $genres, $plot, $rating, $votes)
+    {
         $this->film_id = $film_id;
         $this->title = $title;
         $this->rating = $rating;
@@ -24,7 +14,7 @@ class Film
         $this->runtime_minutes = $runtime_minutes;
         $this->premiered = $premiered;
         $this->isAdult = $isAdult;
-        $this->genres[] = preg_split(',', $genres);
+        $this->genres = preg_split('/,/', $genres, -1);;
         $this->plot = $plot;
     }
 

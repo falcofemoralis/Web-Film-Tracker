@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="SQLite - imdb.db" uuid="a010b2b6-1219-4eeb-a205-9974d4c59943">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../../../../../Projects/AndroidStudio/Resources/com.vladyslav.offlinefilmtracker/imdb.db</jdbc-url>
+    </data-source>
+  </component>
+</project>

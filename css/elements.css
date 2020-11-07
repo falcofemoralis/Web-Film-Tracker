@@ -1,0 +1,10 @@
+/*Фильм*/
+.films__poster{
+    width: 160px;
+}
+
+.films__info{
+    width: inherit;
+    overflow-wrap: break-word;
+}
+
