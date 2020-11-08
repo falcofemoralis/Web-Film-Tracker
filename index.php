@@ -1,11 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <?php
 require_once 'scripts/php/Objects/Film.php';
 require_once 'scripts/php/Managers/DatabaseManager.php';
 require_once 'scripts/php/Managers/FilmsHelper.php';
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -14,52 +14,56 @@ require_once 'scripts/php/Managers/FilmsHelper.php';
     <link rel='stylesheet' href="./CSS//main.css">
     <link rel='stylesheet' href="./CSS//elements.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="scripts/js/films-slider.js"></script>
 </head>
 
 <body style="background-color: #efefef;">
 <?php
 include('include/header.php');
+
+$databaseManager = new DatabaseManager();
+$filmHelper = new FilmsHelper();
 ?>
 
 <article style="margin: 25px;">
     <div class="container">
-        <?php
-        $databaseManager = new DatabaseManager();
-        $filmHelper = new FilmsHelper();
+        <section>
+            <h2 class='films__header'>Популярные фильмы</h2>
+            <div class='films-slider'>
+                <button class='films-slider__button' onclick="plusSlides(-1)">&#10094;</button>
+                <div class="films-slider__container">
+                    <?php
+                    $size = 5;
+                    $pages = 3;
 
-        //Блок популярных фильмов
-        $popularFilms = $databaseManager->getPopularFilms();
+                    //Блок популярных фильмов
+                    $popularFilms = $databaseManager->getPopularFilms($size * $pages);
+                    for ($i = 1; $i <= count($popularFilms); ++$i) {
+                        if (($i - 1) % $size == 0) echo "<div class='films-slider__item'>";
+                        $film = $popularFilms[$i - 1];
+                        $filmHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
+                        if ($i % $size == 0) echo "</div>";
+                    }
+                    ?>
+                </div>
+                <button class='films-slider__button' onclick="plusSlides(1)">&#10095;</button>
+            </div>
+        </section>
 
-        echo "<p class='films-row__header'>Популярные фильмы</p>
-                  <div class='films-row__popular'>";
-
-        for ($i = 0; $i < count($popularFilms); ++$i) {
-            echo "<div class='films-row__film'>";
-            $filmHelper->createFilm($popularFilms[$i]->getFilmId(), $popularFilms[$i]->getTitle(), $popularFilms[$i]->getPremiered(), $popularFilms[$i]->getGenres());
-            echo "</div>";
-        }
-        echo "</div>";
-
-
-        //Список 2020 года
-        $films2020 = $databaseManager->getFilmsByYear(2020);
-
-        echo "<p class='films-row__header'>Фильмы 2020 года</p>
-                        <table class='films-table'><tr>";
-
-        for ($i = 1; $i <= count($films2020); ++$i) {
-            echo "<td>";
-            $film = $films2020[$i-1];
-            $filmHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
-            echo "</td>";
-            if (($i % 4) == 0) echo "<tr>";
-        }
-        echo "</table>";
-
-        ?>
+        <section><h2 class='films__header'>Фильмы 2020 года</h2>
+            <div class='films-table'>
+                <?php
+                //Список 2020 года
+                $films2020 = $databaseManager->getFilmsByYear(2020, 16);
+                for ($i = 0; $i < count($films2020); ++$i) {
+                    $film = $films2020[$i];
+                    $filmHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
+                }
+                ?>
+        </section>
     </div>
-
 </article>
+
 <?php
 include('include/footer.php');
 ?>

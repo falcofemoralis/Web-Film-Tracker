@@ -12,10 +12,10 @@ class FilmsHelper
 
     function createFilm($filmId, $title, $year, $genres)
     {
-        echo "
-        <img class='films__poster' src='./images/posters/$filmId.jpeg' alt='poster'>
-        <div class='films__info'>
-         <h1>$title</h1>
+        echo "<div class='film'> 
+        <img src='./images/posters/$filmId.jpeg' alt='poster'>
+        <div class='film__info'>
+        <h1>$title</h1>
          $year, ";
 
         for ($i = 0; $i < count($genres) - 1; $i++) {
@@ -25,6 +25,6 @@ class FilmsHelper
             if ($i != count($genres) - 2) echo ", ";
         }
 
-        echo "</div>";
+        echo "</div></div>";
     }
 }

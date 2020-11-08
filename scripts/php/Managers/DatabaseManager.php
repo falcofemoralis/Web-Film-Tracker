@@ -37,7 +37,7 @@ class DatabaseManager
         if ($this->genresArray == null)
             $this->loadGenres();
 
-        return $this->genresArray[$genreId];
+        return $this->genresArray[$genreId - 1];
     }
 
     private function loadGenres()
@@ -46,25 +46,26 @@ class DatabaseManager
 
         $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
         if ($result) {
+
             for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
                 $row = mysqli_fetch_row($result);
-                $this->genresArray[$i] = $row[0];
+                $this->genresArray[$row[1] - 1] = $row[0];
             }
         }
     }
 
     //Популярные фильмы
-    public function getPopularFilms()
+    public function getPopularFilms($limit)
     {
         $query = $this->FILM_SELECT_QUERY . " WHERE films_Translated.lang_id = 3 AND ratings.rating > 6.6 AND ratings.votes > 40000 AND films.premiered = 2020 
-                        ORDER BY ratings.votes DESC LIMIT 10";
+                        ORDER BY ratings.votes DESC LIMIT $limit";
         return $this->getFilmsFromQuery($query);
     }
 
     //фильмы 2020 года
-    public function getFilmsByYear($year)
+    public function getFilmsByYear($year, $limit)
     {
-        $query = $this->FILM_SELECT_QUERY . " WHERE films_Translated.lang_id = 3 AND premiered=$year limit 15";
+        $query = $this->FILM_SELECT_QUERY . " WHERE films_Translated.lang_id = 3 AND premiered=$year limit $limit";
         return $this->getFilmsFromQuery($query);
     }
 

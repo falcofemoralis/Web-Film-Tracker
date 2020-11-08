@@ -1,36 +1,36 @@
 .header {
-	width: 100%;
-	background: #000f2a;
+    width: 100%;
+    background: #000f2a;
 }
 
 .menu__list {
-	height: inherit;
-	display: flex;
-	align-items: center;
+    height: inherit;
+    display: flex;
+    align-items: center;
 }
 
-.menu__list li{
-	margin-right: 10px;
+.menu__list li {
+    margin-right: 10px;
 }
 
 .menu__link {
-	color: #fff;
-	font-size: 16px;
+    color: #fff;
+    font-size: 16px;
 }
 
 .menu__link::after {
-	content: '';
-	display: block;
-	height: 1px;
-	background: #fff;
-	width: 0;
-	margin-left: 50%;
-	transition: width .2s ease, margin-left .2s;
+    content: '';
+    display: block;
+    height: 1px;
+    background: #fff;
+    width: 0;
+    margin-left: 50%;
+    transition: width .2s ease, margin-left .2s;
 }
 
 .menu__link:hover::after {
-	width: 100%;
-	margin-left: 0;
+    width: 100%;
+    margin-left: 0;
 }
 
 /*Header top*/
@@ -40,117 +40,119 @@
 }
 
 .header-top__right {
-	height: inherit;
-	float: right;
+    height: inherit;
+    float: right;
 }
 
-.header__logo{
-	height: inherit;
+.header__logo {
+    height: inherit;
     margin-left: -66px;
     position: absolute;
     left: 50%;
 }
 
-.header__logo img{
-	height: inherit;
+.header__logo img {
+    height: inherit;
 }
+
 /*Header bottom*/
 
-.header-bot{
-	height: 60px
+.header-bot {
+    height: 60px
 }
 
-.header-bot__left{
-	height: inherit;
-	display: block;
-	float: left;
+.header-bot__left {
+    height: inherit;
+    display: block;
+    float: left;
 }
 
 .header-bot__right {
-	height: inherit;
-	display: flex;
-	align-items: center;
-	position: absolute;
-	margin-left: calc(1100px - 250px);
-	transition: margin-left .35s;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    margin-left: calc(1100px - 250px);
+    transition: margin-left .35s;
 }
 
-.header__search_input{
-	height: 30px;
-	width: 250px;
-	border-radius: 8px 8px 8px 8px;
-	font-size: 15px;
-	padding-left: 35px;
-	transition: width .35s;
+.header__search_input {
+    height: 30px;
+    width: 250px;
+    border-radius: 8px 8px 8px 8px;
+    font-size: 15px;
+    padding-left: 35px;
+    transition: width .35s;
 }
 
 .header-bot__right:focus-within {
-	margin-left: 0px;
+    margin-left: 0px;
 }
 
-.header__search_input:focus{
-	width: 1100px;
+.header__search_input:focus {
+    width: 1100px;
 }
 
-input{
-	outline:none;
-	border:0px solid black;
+input {
+    outline: none;
+    border: 0px solid black;
 }
 
-.header__search_button{
-	height: 20px;
-	padding-left: 10px;
-	position: absolute; 
+.header__search_button {
+    height: 20px;
+    padding-left: 10px;
+    position: absolute;
 }
 
 /* Dropdown menu */
 .dropdown-menu__btn {
-	border: none;
-	outline: none;
-	color: #fff;
-	font-size: 16px;
-	padding: 20px 16px;
-	background-color: inherit;
-  }
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 20px 16px;
+    background-color: inherit;
+}
 
 .dropdown-menu:hover .dropdown-content {
-	display: block;
-  }
-  
-.dropdown-content{
-  display: none;
-  position: absolute;
-  padding: 25px;
-  background: rgba(255,255,255,0.90);
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown-content li{
-	float: left;
-	width: 153px;
-	margin-right: 20px;
-	background: inherit;
-	transition: background 0.3s ease-in-out;
-}
-
-.dropdown-content li:hover{
-	background: rgba(202, 202, 202, 0.9);
-}
-
-.dropdown-content a{
-	color: #2e859e;
     display: block;
-	padding: 8px 20px;
-	transition: color 0.3s ease-in-out;
 }
 
-.dropdown-content a:hover{
-	color: #000f2a;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.90);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 100;
 }
 
-/*Mobile versionu*/
+.dropdown-content li {
+    float: left;
+    width: 153px;
+    margin-right: 20px;
+    background: inherit;
+    transition: background 0.3s ease-in-out;
+}
+
+.dropdown-content li:hover {
+    background: rgba(202, 202, 202, 0.9);
+}
+
+.dropdown-content a {
+    color: #2e859e;
+    display: block;
+    padding: 8px 20px;
+    transition: color 0.3s ease-in-out;
+}
+
+.dropdown-content a:hover {
+    color: #000f2a;
+}
+
+/*Mobile version*/
 @media (max-width: 1000px) {
-	.header-bot__left{
-		background-color: red;
-	}
+    .header-bot__left {
+        background-color: red;
+    }
 }
