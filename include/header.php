@@ -12,7 +12,7 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
 <header class='header'>
     <div class="container" id="header_container">
         <div class="header-top">
-            <a class='header__logo' href="#">
+            <a class='header__logo' href="/kursach-site/">
                 <img src="./images/site_logo.svg" alt="site_logo">
             </a>
 

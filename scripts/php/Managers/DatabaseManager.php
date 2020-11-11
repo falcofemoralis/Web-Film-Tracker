@@ -1,6 +1,7 @@
 <?php
-require_once 'scripts/php/Managers/FilmsHelper.php';
+require_once 'scripts/php/Managers/ObjectHelper.php';
 require_once 'scripts/php/Objects/Film.php';
+require_once 'scripts/php/Objects/Actor.php';
 
 class DatabaseManager
 {
@@ -69,6 +70,13 @@ class DatabaseManager
         return $this->getFilmsFromQuery($query);
     }
 
+    public function getFilmByFilmId($id)
+    {
+        $query = $this->FILM_SELECT_QUERY . " WHERE films_Translated.lang_id = 3 AND films.title_id = '$id'";
+        $film = $this->getFilmsFromQuery($query);
+        return $film[0];
+    }
+
     private function getFilmsFromQuery($query)
     {
         $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
@@ -82,4 +90,24 @@ class DatabaseManager
         return $films;
     }
 
+    public function getActorsByFilmId($filmId)
+    {
+        $query = "SELECT people.person_id, people.name, people.born, people.died, crew.characters, crew.category " .
+            "FROM crew INNER JOIN people ON people.person_id = crew.person_id " .
+            "WHERE crew.title_id = '$filmId'";
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+
+        $actors = null;
+        for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
+            $row = mysqli_fetch_row($result);
+            if ($row[3] == null) $died = 0;
+            else $died = $row[3];
+
+            if ($row[2] == null) $born = 0;
+            else $born = $row[2];
+
+            $actors[$i] = new Actor($row[0], $row[1], $born, $died, $row[4], $row[5]);
+        }
+        return $actors;
+    }
 }

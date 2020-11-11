@@ -1,0 +1,43 @@
+/*films slider*/
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider__container {
+    height: 290px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.slider__item {
+    position: relative;
+    display: flex;
+    right: 0;
+    transition: right .45s ease-in-out;
+}
+
+/* Next & previous buttons */
+.slider__button {
+    width: 50px;
+    height: 100px;
+    margin-bottom: 100px;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 20px;
+    color: white;
+    transition: background-color .3s ease-in-out;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.slider__button:focus {
+    outline-color: rgba(0, 0, 0, 0);
+}
+
+.slider__button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}

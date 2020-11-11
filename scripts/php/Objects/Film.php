@@ -3,7 +3,7 @@
 class Film
 {
     private string $film_id, $title, $rating, $votes, $runtime_minutes, $premiered, $plot, $isAdult;
-    private $genres;
+    private array $genres;
 
     function __construct($film_id, $title, $isAdult, $premiered, $runtime_minutes, $genres, $plot, $rating, $votes)
     {
@@ -18,23 +18,77 @@ class Film
         $this->plot = $plot;
     }
 
-    function getFilmId()
+    /**
+     * @return string
+     */
+    public function getFilmId(): string
     {
         return $this->film_id;
     }
 
-    function getTitle()
+    /**
+     * @return string
+     */
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    function getPremiered()
+    /**
+     * @return string
+     */
+    public function getRating(): string
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVotes(): string
+    {
+        return $this->votes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRuntimeMinutes(): string
+    {
+        return $this->runtime_minutes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPremiered(): string
     {
         return $this->premiered;
     }
 
-    function getGenres()
+    /**
+     * @return string
+     */
+    public function getPlot(): string
+    {
+        return $this->plot;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsAdult(): string
+    {
+        return $this->isAdult;
+    }
+
+    /**
+     * @return array|false|string[]
+     */
+    public function getGenres()
     {
         return $this->genres;
     }
+
+
 }

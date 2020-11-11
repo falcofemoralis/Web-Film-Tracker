@@ -20,15 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/js/films-slider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/film.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/slider.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/category.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/main.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/php/Objects/Actor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/elements.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/elements.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/js/films-slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/slider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/FilmsHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/FilmsHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/FilmsHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/php/Objects/Film.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Objects/Film.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +48,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -64,6 +71,9 @@
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="PhpXdebugProxy" ide_key="PHPSTORM" port="9000" />
   <component name="ProjectId" id="1jkZEaAuHvoGBnOb7Vqbx1BaSL8" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -80,15 +90,16 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Developer\open_server_5_3_7_full\OpenServer\domains\localhost\kursach-site\include" />
       <recent name="E:\Developer\open_server_5_3_7_full\OpenServer\domains\localhost\kursach-site" />
       <recent name="E:\Developer\open_server_5_3_7_full\OpenServer\domains\localhost\kursach-site\scripts\php\Managers" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.continuous-carousel.js">
+  <component name="RunManager" selected="PHP Script.main.php">
     <configuration name="continuous-carousel.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="continuous-carousel.js" working-dir="$PROJECT_DIR$/../../../../../../Downloads/continuous-carousel-main/continuous-carousel-main/dist">
       <method v="2" />
     </configuration>
-    <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/index.php">
+    <configuration name="main.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/include/main.php">
       <CommandLine>
         <PhpTestInterpreterSettings>
           <option name="interpreterName" value="PHP" />
@@ -98,8 +109,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHP Script.main.php" />
         <item itemvalue="Node.js.continuous-carousel.js" />
-        <item itemvalue="PHP Script.index.php" />
       </list>
     </recent_temporary>
   </component>
@@ -126,7 +137,12 @@
       <workItem from="1604748450746" duration="16644000" />
       <workItem from="1604779930749" duration="1817000" />
       <workItem from="1604782144272" duration="9872000" />
-      <workItem from="1604828499246" duration="6396000" />
+      <workItem from="1604828499246" duration="8647000" />
+      <workItem from="1604865634900" duration="374000" />
+      <workItem from="1604944785007" duration="2040000" />
+      <workItem from="1604951098315" duration="499000" />
+      <workItem from="1605007252581" duration="3000" />
+      <workItem from="1605077307813" duration="25025000" />
     </task>
     <servers />
   </component>
@@ -162,6 +178,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="630" y="158" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604679278879" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1605089465399">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605089465399" />
+    <state x="637" y="96" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605090004511">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="637" y="96" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605090004511" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604786739311">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -170,38 +194,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="129" width="440" height="680" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604787717940" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1604782120768">
+    <state width="1877" height="2" key="GridCell.Tab.0.bottom" timestamp="1604946825365">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604782120768" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1604782120768">
+    <state width="1877" height="2" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604946825365" />
+    <state width="1877" height="2" key="GridCell.Tab.0.center" timestamp="1604946825365">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604782120768" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1604782120768">
+    <state width="1877" height="2" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604946825365" />
+    <state width="1877" height="2" key="GridCell.Tab.0.left" timestamp="1604946825365">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604782120768" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1604782120768">
+    <state width="1877" height="2" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604946825365" />
+    <state width="1877" height="2" key="GridCell.Tab.0.right" timestamp="1604946825365">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604782120768" />
-    <state width="1877" height="2" key="GridCell.Tab.1.bottom" timestamp="1604679735221">
+    <state width="1877" height="2" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604946825365" />
+    <state width="1877" height="2" key="GridCell.Tab.1.bottom" timestamp="1604946825365">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="2" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604679735221" />
-    <state width="1877" height="2" key="GridCell.Tab.1.center" timestamp="1604679735221">
+    <state width="1877" height="2" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604946825365" />
+    <state width="1877" height="2" key="GridCell.Tab.1.center" timestamp="1604946825365">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="2" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604679735221" />
-    <state width="1877" height="2" key="GridCell.Tab.1.left" timestamp="1604679735221">
+    <state width="1877" height="2" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604946825365" />
+    <state width="1877" height="2" key="GridCell.Tab.1.left" timestamp="1604946825365">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="2" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604679735221" />
-    <state width="1877" height="2" key="GridCell.Tab.1.right" timestamp="1604679735221">
+    <state width="1877" height="2" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604946825365" />
+    <state width="1877" height="2" key="GridCell.Tab.1.right" timestamp="1604946825365">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="2" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604679735221" />
+    <state width="1877" height="2" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604946825365" />
     <state width="1877" height="6" key="GridCell.Tab.2.bottom" timestamp="1604674353090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -218,6 +242,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="6" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604674353090" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1605088178691">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605088178691" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1604677739164">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -234,17 +262,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604677757929" />
-    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1604830816286">
+    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1605091645272">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="119" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604830816286" />
+    <state x="667" y="119" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605091645272" />
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog" timestamp="1604757553781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604757553781" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1604830356531">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1605103298516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604830356531" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605103298516" />
   </component>
 </project>

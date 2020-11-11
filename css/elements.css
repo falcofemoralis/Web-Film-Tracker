@@ -2,6 +2,9 @@
 .film {
     width: 156px;
     margin: 6px;
+    border: none;
+    outline: none;
+    color: inherit;
 }
 
 .film img {
@@ -21,4 +24,24 @@
     margin: 0 auto;
     justify-content: center;
 }
+
+/*Actor layout*/
+.actor {
+    width: 146px;
+    margin: 6px;
+    border: none;
+    outline: none;
+    color: inherit;
+}
+
+.actor img {
+    width: inherit;
+}
+
+.actor__info {
+    width: inherit;
+    overflow-wrap: break-word;
+}
+
+
 
