@@ -17,6 +17,9 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
             </a>
 
             <nav class="header-top__right">
+                <a class="mobile-menu__userControl mobile-menu__btn">
+                    <img src="./images/userMenu.svg" alt="site_logo">
+                </a>
                 <ul class="menu__list">
                     <li class='menu__item'>
                         <a href="#" class='menu__link'>Закладки</a>
@@ -30,6 +33,7 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
 
         <div class='header-bot'>
             <nav class="header-bot__left" id="header-bot__left">
+                <button class="mobile-menu__list mobile-menu__btn">Жанры</button>
                 <ul class="menu__list">
                     <div class="dropdown-menu">
                         <button class="dropdown-menu__btn menu__link">Все жанры</button>
@@ -71,6 +75,7 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
                     </li>
                 </ul>
             </nav>
+            <button class="mobile-menu__search mobile-menu__btn">Поиск</button>
             <div class='header-bot__right'>
                 <img class='header__search_button' src="./images/ic_search.svg" alt="ic_search">
                 <input class='header__search_input' name="search" type="text" id="search"

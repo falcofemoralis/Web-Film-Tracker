@@ -10,11 +10,14 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Сайт поиска информации про фильмы">
+    <meta name="author" content="Владислав Иващенко Романович">
     <title>Трекер фильмов</title>
     <link rel='stylesheet' href="./CSS//main.css">
     <link rel='stylesheet' href="./CSS//elements.css">
     <link rel='stylesheet' href="./CSS//slider.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" href="./images/favicon.ico">
     <script src="./scripts/js/slider.js"></script>
 </head>
 
@@ -55,7 +58,7 @@ $objectHelper = new ObjectHelper();
             <div class='films-table'>
                 <?php
                 //Список 2020 года
-                $films2020 = $databaseManager->getFilmsByYear(2020, 16);
+                $films2020 = $databaseManager->getFilmsByYear(2020, 15);
                 for ($i = 0; $i < count($films2020); ++$i) {
                     $film = $films2020[$i];
                     $objectHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
