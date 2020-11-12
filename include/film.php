@@ -42,123 +42,171 @@ include('include/header.php');
             $runtime_minutes = $film->getRuntimeMinutes();
             $isAdult = $film->getIsAdult();
 
-            if ($isAdult == 1) $isAdult = "18+";
-            else $isAdult = "0+";
-
             $allActors = $databaseManager->getActorsByFilmId($filmId);
-            $actorsInx = null;
-            $directorsInx = null;
-            $producersInx = null;
-            $writersInx = null;
+            $actors = array();
+            $directors = array();
+            $producers = array();
+            $writers = array();
 
-            $j = 0;
-            $d = 0;
-            $p = 0;
-            $w = 0;
             for ($i = 0; $i < count($allActors); ++$i) {
-                $category = $allActors[$i]->getCategory();
+                $actor = $allActors[$i];
+                $category = $actor->getCategory();
 
                 switch ($category) {
                     case "director":
-                        $directorsInx[$d] = $i;
-                        $d++;
+                        $directors[] = $actor;
                         break;
                     case "producer":
-                        $producersInx[$p] = $i;
-                        $p++;
+                        $producers[] = $actor;
                         break;
                     case "writer":
-                        $writersInx[$w] = $i;
-                        $w++;
+                        $writers[] = $actor;
                         break;
                     default:
-                        $actorsInx[$j] = $i;
-                        $j ++;
+                        $actors[] = $actor;
                 }
             }
+            ?>
 
-            echo "
-        <h1 class='film__title'>$title</h1>
-        <div class='film-main'>
-            <img class='film-main__poster' src='./images/posters/$filmId.jpeg' alt='poster'>
-            <div class='film-main__info'>
-                 <ul>
-                     <li><B>Рейтинг:</B></li>
-                     <li><b>Дата&nbspвыхода:</b></li>
-                     <li><b>Время:</b></li> 
-                     <li><b>Возраст:</b></li>
-                     <li><b>Жанр:</b></li>
-                     <li><b>Режиссер:</b></li>
-                     <li><b>Продюсер:</b></li>
-                     <li><b>Сценарист:</b></li>
-                 </ul>
-                  <ul>
-                     <li><a class='film-main__info-rating' href='https://www.imdb.com/title/$filmId/'>IMDb<a>: <b>$rating</b> ($votes)</li>
-                     <li>$year</li>
-                     <li>$runtime_minutes мин.</li>
-                     <li>$isAdult</li><li>";
+            <h1 class='film__title'><? echo "$title" ?></h1>
+            <div class='film-main'>
+                <img class='film-main__poster' src='./images/posters/<? echo "$filmId" ?>.jpeg' alt='poster'>
+                <div class='film-main__info'>
+                    <table>
+                        <tr>
+                            <td>
+                                <B>Рейтинг:</B>
+                            </td>
+                            <td>
+                                <? echo "<a class='film-main__info-rating' href='https://www.imdb.com/title/$filmId/'>IMDb<a>:&nbsp<b>$rating</b> ($votes)" ?>
+                            </td>
+                        </tr>
 
-            $genres = $film->getGenres();
-            for ($i = 0; $i < count($genres) - 1; $i++) {
-                $genre = $databaseManager->getGenreById($genres[$i]);
-                echo "$genre";
+                        <tr>
+                            <td>
+                                <b>Дата&nbspвыхода:</b>
+                            </td>
+                            <td>
+                                <? echo "$year год" ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Время:</b>
+                            </td>
+                            <td>
+                                <? echo "$runtime_minutes мин." ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <?
+                            if ($isAdult !== "") {
+                                echo "
+                             <td>
+                                 <b>Возраст:</b>
+                             </td>
+                             <td>
+                                 $isAdult
+                             </td>";
+                            }
+                            ?>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Жанр:</b>
+                            </td>
+                            <td>
+                                <? $genres = $film->getGenres();
+                                for ($i = 0; $i < count($genres) - 1; $i++) {
+                                    $genre = $databaseManager->getGenreById($genres[$i]);
+                                    echo "$genre";
 
-                if ($i != count($genres) - 2) echo ", ";
-            }
-
-            echo "</li><li>";
-
-            for ($i = 0; $i < count($directorsInx); $i++) {
-                $actor = $allActors[$directorsInx[$i]];
-                $name = $actor->getName();
-                echo "$name";
-                if ($i != count($directorsInx) - 1) echo ", ";
-            }
-
-            echo "</li><li>";
-            for ($i = 0; $i < count($producersInx); $i++) {
-                $actor = $allActors[$producersInx[$i]];
-                $name = $actor->getName();
-                echo "$name";
-                if ($i != count($producersInx) - 1) echo ", ";
-            }
-
-            echo "</li><li>";
-            for ($i = 0; $i < count($writersInx); $i++) {
-                $actor = $allActors[$writersInx[$i]];
-                $name = $actor->getName();
-                echo "$name";
-                if ($i != count($writersInx) - 1) echo ", ";
-            }
-            echo "        </li>
-                 </ul>
+                                    if ($i != count($genres) - 2) echo ", ";
+                                } ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <?
+                            $size = count($directors);
+                            if ($size > 0) {
+                                echo "  
+                            <td>
+                                <b>Режиссер:</b>
+                            </td>
+                            <td>";
+                                for ($i = 0; $i < $size; $i++) {
+                                    $name = $directors[$i]->getName();
+                                    echo "$name";
+                                    if ($i != $size - 1) echo ", ";
+                                }
+                                echo "</td>";
+                            }
+                            ?>
+                        </tr>
+                        <tr>
+                            <?
+                            $size = count($producers);
+                            if ($size > 0) {
+                                echo "  
+                            <td>
+                                <b>Продюсер:</b>
+                            </td>
+                            <td>";
+                                for ($i = 0; $i < $size; $i++) {
+                                    $name = $producers[$i]->getName();
+                                    echo "$name";
+                                    if ($i != $size - 1) echo ", ";
+                                }
+                                echo "</td>";
+                            }
+                            ?>
+                        </tr>
+                        <tr>
+                            <?
+                            $size = count($writers);
+                            if ($size > 0) {
+                                echo "  
+                            <td>
+                                <b>Сценарист:</b>
+                            </td>
+                            <td>";
+                                for ($i = 0; $i < $size; $i++) {
+                                    $name = $writers[$i]->getName();
+                                    echo "$name";
+                                    if ($i != $size - 1) echo ", ";
+                                }
+                                echo "</td>";
+                            }
+                            ?>
+                        </tr>
+                    </table>
+                </div>
             </div>
-        </div>
-        <div class='film__plot'>
-            <h2 class='section__title'>Cюжет фильма</h2>
-            $plot
-        </div>"; ?>
+            <div class='film__plot'>
+                <h2 class='section__title'>Cюжет фильма</h2>
+                <? echo "$plot" ?>
+            </div>
         </section>
 
         <section>
             <h2 class="section__title">Актеры в фильме</h2>
-            <div class='slider'>
+            <div class='slider' style="justify-content:  flex-start;">
                 <button class='slider__button' onclick="plusSlides(-1)">&#10094;</button>
                 <div class="slider__container">
                     <?php
                     $size = 5;
                     $pages = 1;
 
-                    $all = count($actorsInx);
+                    $all = count($actors);
                     if ($all < $size) $size = $all;
                     else $pages = $all / $size;
 
-                    for ($i = 1; $i <= count($actorsInx); ++$i) {
+                    for ($i = 1; $i <= count($actors); ++$i) {
                         if (($i - 1) % $size == 0) echo "<div class='slider__item'>";
-                        $actor = $allActors[$actorsInx[$i - 1]];
+                        $actor = $actors[$i - 1];
 
                         $objectHelper->createActor($actor->getPersonId(), $actor->getName(), $actor->getCharacters(), $actor->getCategory());
-                        if ($i % $size == 0 || $i == count($actorsInx)) echo "</div>";
+                        if ($i % $size == 0 || $i == count($actors)) echo "</div>";
                     }
                     ?>
                 </div>

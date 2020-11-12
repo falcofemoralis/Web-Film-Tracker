@@ -20,21 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/css/film.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/slider.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/category.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/main.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/php/Objects/Actor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/elements.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/elements.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/js/films-slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/slider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/FilmsHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/film.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/film.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/php/Objects/Film.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Objects/Film.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +38,7 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML4 File" />
       </list>
     </option>
   </component>
@@ -79,7 +68,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="DefaultHtmlFileTemplate" value="HTML4 File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../Downloads/exap" />
@@ -142,7 +131,10 @@
       <workItem from="1604944785007" duration="2040000" />
       <workItem from="1604951098315" duration="499000" />
       <workItem from="1605007252581" duration="3000" />
-      <workItem from="1605077307813" duration="25025000" />
+      <workItem from="1605077307813" duration="25090000" />
+      <workItem from="1605115112769" duration="3299000" />
+      <workItem from="1605121410484" duration="1006000" />
+      <workItem from="1605178583437" duration="4982000" />
     </task>
     <servers />
   </component>
@@ -194,22 +186,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="129" width="440" height="680" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604787717940" />
-    <state width="1877" height="2" key="GridCell.Tab.0.bottom" timestamp="1604946825365">
+    <state width="1877" height="2" key="GridCell.Tab.0.bottom" timestamp="1605104068074">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="2" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604946825365" />
-    <state width="1877" height="2" key="GridCell.Tab.0.center" timestamp="1604946825365">
+    <state width="1877" height="2" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605104068074" />
+    <state width="1877" height="2" key="GridCell.Tab.0.center" timestamp="1605104068074">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="2" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604946825365" />
-    <state width="1877" height="2" key="GridCell.Tab.0.left" timestamp="1604946825365">
+    <state width="1877" height="2" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605104068074" />
+    <state width="1877" height="2" key="GridCell.Tab.0.left" timestamp="1605104068074">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="2" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604946825365" />
-    <state width="1877" height="2" key="GridCell.Tab.0.right" timestamp="1604946825365">
+    <state width="1877" height="2" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605104068074" />
+    <state width="1877" height="2" key="GridCell.Tab.0.right" timestamp="1605104068074">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="2" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604946825365" />
+    <state width="1877" height="2" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605104068074" />
     <state width="1877" height="2" key="GridCell.Tab.1.bottom" timestamp="1604946825365">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

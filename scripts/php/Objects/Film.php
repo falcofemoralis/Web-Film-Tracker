@@ -13,7 +13,10 @@ class Film
         $this->votes = $votes;
         $this->runtime_minutes = $runtime_minutes;
         $this->premiered = $premiered;
-        $this->isAdult = $isAdult;
+
+        if ($isAdult == 1)  $this->isAdult = "18+";
+        else  $this->isAdult = "";
+
         $this->genres = preg_split('/,/', $genres, -1);;
         $this->plot = $plot;
     }

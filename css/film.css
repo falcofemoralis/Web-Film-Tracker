@@ -43,12 +43,14 @@
     text-decoration: underline;
 }
 
-.film-main__info ul {
-    margin-left: 25px;
+.film-main__info table {
+    border-collapse: collapse;
 }
 
-.film-main__info li {
-    margin-bottom: 10px;
+.film-main__info td {
+    padding-left: 25px;
+    padding-bottom: 7px;
+    vertical-align: top;
 }
 
 .film__plot {
