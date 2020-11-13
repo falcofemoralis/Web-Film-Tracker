@@ -22,3 +22,16 @@
     font-weight: bold;
     margin-left: 55px;
 }
+
+.page{
+    padding: 25px;
+}
+
+/* Mobile version */
+
+@media (max-width: 925px) {
+    .page{
+        padding: 5px;
+    }
+}
+

@@ -22,6 +22,7 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
 </head>
 
 <body style="background-color: #efefef;">
+
 <?php
 include('include/header.php');
 
@@ -29,7 +30,7 @@ $databaseManager = new DatabaseManager();
 $objectHelper = new ObjectHelper();
 ?>
 
-<article style="padding: 25px;">
+<article class="page">
     <div class="container">
         <section>
             <h2 class='films__header'>Популярные фильмы</h2>
@@ -37,16 +38,11 @@ $objectHelper = new ObjectHelper();
                 <button class='slider__button' onclick="plusSlides(-1)">&#10094;</button>
                 <div class="slider__container">
                     <?php
-                    $size = 5;
-                    $pages = 3;
-
                     //Блок популярных фильмов
-                    $popularFilms = $databaseManager->getPopularFilms($size * $pages);
+                    $popularFilms = $databaseManager->getPopularFilms(12);
                     for ($i = 1; $i <= count($popularFilms); ++$i) {
-                        if (($i - 1) % $size == 0) echo "<div class='slider__item'>";
                         $film = $popularFilms[$i - 1];
                         $objectHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
-                        if ($i % $size == 0) echo "</div>";
                     }
                     ?>
                 </div>
@@ -67,7 +63,7 @@ $objectHelper = new ObjectHelper();
         </section>
     </div>
 </article>
-<script>sliderInit()</script>
+<script>sliderInit("film")</script>
 <?php
 include('include/footer.php');
 ?>

@@ -20,7 +20,7 @@
 .films-table {
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
+
     margin: 0 auto;
     justify-content: center;
 }
@@ -41,6 +41,18 @@
 .actor__info {
     width: inherit;
     overflow-wrap: break-word;
+}
+
+/* Mobile version */
+
+@media (max-width: 925px) {
+    .film {
+        width: 100px;
+    }
+
+    .actor{
+        width: 90px;
+    }
 }
 
 

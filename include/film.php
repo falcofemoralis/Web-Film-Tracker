@@ -16,8 +16,8 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
     <title>Трекер фильмов</title>
     <link rel="icon" href="./images/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel='stylesheet' href="./CSS//elements.css">
     <link rel='stylesheet' href="./CSS//film.css">
+    <link rel='stylesheet' href="./CSS//elements.css">
     <link rel='stylesheet' href="./CSS//slider.css">
     <script src="./scripts/js/slider.js"></script>
 </head>
@@ -28,7 +28,7 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
 include('include/header.php');
 ?>
 
-<article style="padding: 25px;">
+<article class="page">
     <div class="container">
         <section class="film-container">
             <?php
@@ -205,11 +205,8 @@ include('include/header.php');
                     else $pages = $all / $size;
 
                     for ($i = 1; $i <= count($actors); ++$i) {
-                        if (($i - 1) % $size == 0) echo "<div class='slider__item'>";
                         $actor = $actors[$i - 1];
-
                         $objectHelper->createActor($actor->getPersonId(), $actor->getName(), $actor->getCharacters(), $actor->getCategory());
-                        if ($i % $size == 0 || $i == count($actors)) echo "</div>";
                     }
                     ?>
                 </div>
@@ -218,7 +215,7 @@ include('include/header.php');
         </section>
     </div>
 </article>
-<script>sliderInit()</script>
+<script>sliderInit("actor")</script>
 <?php
 include('include/footer.php');
 ?>

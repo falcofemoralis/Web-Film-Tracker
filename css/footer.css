@@ -11,3 +11,11 @@ footer {
     color: white;
     font-size: 12px;
 }
+
+/* Mobile version */
+
+@media (max-width: 925px) {
+    .b-footer h3{
+        padding-left: 20px;
+    }
+}
