@@ -8,9 +8,9 @@ function createPagesControls($pages, $cur_page, $link)
     if ($prev > 0)
         echo "<a href='$link&page=$prev'>&laquo;</a>";
 
-    //если это последняя страница, создаем (pages-10 ... pages)
+    //если это последняя страница и страниц > 10, создаем (pages-10 ... pages)
     $delta = $pages - $cur_page;
-    if ($cur_page == $pages || $delta < 6) {
+    if (($cur_page == $pages || $delta < 6) && $pages > 10) {
         echo "<a href='$link&page=1'>1</a>
                   <span>...</span>";
 

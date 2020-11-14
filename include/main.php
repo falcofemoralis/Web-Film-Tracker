@@ -11,7 +11,7 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Сайт поиска информации про фильмы">
-    <meta name="author" content="Владислав Иващенко Романович">
+    <meta name="author" content="Иващенко Владислав Романович">
     <title>Трекер фильмов</title>
     <link rel='stylesheet' href="./CSS//main.css">
     <link rel='stylesheet' href="./CSS//elements.css">

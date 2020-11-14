@@ -44,7 +44,7 @@ function setGenres()
 
         $genre_id = $genres[$i][1];
         $genre_name = $genres[$i][0];
-        echo "<li><a href='category?type=$genre_id&page=1'>$genre_name</a></li>";
+        echo "<li><a href='list?type=$genre_id&page=1'>$genre_name</a></li>";
     }
 }
 
@@ -91,25 +91,27 @@ function setGenres()
                         </div>
                     </div>
                     <li>
-                        <a href="category?type=action&page=1" class='menu__link'>Боевики</a>
+                        <a href="list?type=action&page=1" class='menu__link'>Боевики</a>
                     </li>
                     <li>
-                        <a href="category?type=comedy&page=1" class='menu__link'>Комедии</a>
+                        <a href="list?type=comedy&page=1" class='menu__link'>Комедии</a>
                     </li>
                     <li>
-                        <a href="category?type=drama&page=1" class='menu__link'>Драма</a>
+                        <a href="list?type=drama&page=1" class='menu__link'>Драма</a>
                     </li>
                     <li>
-                        <a href="category?type=scifi&page=1" class='menu__link'>Фантастика</a>
+                        <a href="list?type=scifi&page=1" class='menu__link'>Фантастика</a>
                     </li>
                     <li>
-                        <a href="category?type=thriller&page=1" class='menu__link'>Триллеры</a>
+                        <a href="list?type=thriller&page=1" class='menu__link'>Триллеры</a>
                     </li>
                 </ul>
                 <div class='header-bot__search'>
                     <img class='header__search_button' src="./images/ic_search.svg" alt="ic_search">
-                    <input class='header__search_input' name="search" type="text" id="search"
-                           placeholder="Я ищу фильм...">
+                    <form action="list">
+                        <input class='header__search_input' type="search" placeholder="Я ищу фильм..." name="search">
+                        <button type="submit" style="display: none"></button>
+                    </form>
                 </div>
 
                 <!-- Mobile button -->

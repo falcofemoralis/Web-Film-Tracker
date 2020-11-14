@@ -189,4 +189,37 @@ class DatabaseManager
 
         return $filmsIDs;
     }
+
+    public function getFilmsAmountInSearch($param)
+    {
+        $query = "SELECT COUNT(*)
+                FROM films
+                INNER JOIN films_translated on films_translated.title_id=films.title_id
+                WHERE films_translated.lang_id=3 AND films_translated.title like '%$param%'
+            ";
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+        $row = mysqli_fetch_row($result);
+        return $row[0];
+    }
+
+    public function getFilmsIdsBySearch($param)
+    {
+        $query = "SELECT films.title_id
+            FROM films
+            INNER JOIN ratings ON films.title_id=ratings.title_id
+             INNER JOIN films_translated on films_translated.title_id=films.title_id
+            WHERE films_translated.lang_id=3 AND films_translated.title like '%$param%'
+            ORDER BY ratings.votes DESC, ratings.rating DESC";
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+
+        $filmsIDs = null;
+        for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
+            $row = mysqli_fetch_row($result);
+            $filmsIDs[] = $row[0];
+        }
+
+        return $filmsIDs;
+    }
 }
