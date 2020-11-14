@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    list-style: none;
+    text-decoration: none;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Страницы */
+
+.pagination {
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+/* Mobile version */
+
+@media (max-width: 925px) {
+    .pagination a{
+        padding: 8px 4px;
+    }
+}
+
+@media (max-width: 320px) {
+    .pagination a{
+        padding: 8px 1px;
+    }
+}

@@ -33,7 +33,7 @@ $objectHelper = new ObjectHelper();
 <article class="page">
     <div class="container">
         <section>
-            <h2 class='films__header'>Популярные фильмы</h2>
+            <h2 class='text__header'>Популярные фильмы</h2>
             <div class='slider'>
                 <button class='slider__button' onclick="plusSlides(-1)">&#10094;</button>
                 <div class="slider__container">
@@ -50,7 +50,7 @@ $objectHelper = new ObjectHelper();
             </div>
         </section>
 
-        <section><h2 class='films__header'>Фильмы 2020 года</h2>
+        <section><h2 class='text__header'>Фильмы 2020 года</h2>
             <div class='films-table'>
                 <?php
                 //Список 2020 года

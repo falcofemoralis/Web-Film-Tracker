@@ -10,6 +10,9 @@ switch ($arg) {
     case "films":
         include('include/film.php');
         break;
+    case "category":
+        include('include/category.php');
+        break;
     default:
         include('include/main.php');
 }

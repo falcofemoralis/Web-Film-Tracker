@@ -36,7 +36,7 @@ include('include/header.php');
             $objectHelper = new ObjectHelper();
 
             $filmId = $_GET["id"];
-            $film = $databaseManager->getFilmByFilmId($filmId);
+            $film = $databaseManager->getFilmByFilmId($filmId, false);
             $title = $film->getTitle();
             $rating = $film->getRating();
             $votes = $film->getVotes();

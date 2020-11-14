@@ -40,9 +40,11 @@ function setGenres()
     $databaseManager = new DatabaseManager();
     $genres = $databaseManager->getGenres();
 
-    for ($i = 0; $i < mysqli_num_rows($genres); ++$i) {
-        $row = mysqli_fetch_row($genres);
-        echo "<li><a href='#'>$row[0]</a></li>";
+    for ($i = 0; $i < count($genres); ++$i) {
+
+        $genre_id = $genres[$i][1];
+        $genre_name = $genres[$i][0];
+        echo "<li><a href='category?type=$genre_id&page=1'>$genre_name</a></li>";
     }
 }
 
@@ -89,19 +91,19 @@ function setGenres()
                         </div>
                     </div>
                     <li>
-                        <a href="#" class='menu__link'>Боевики</a>
+                        <a href="category?type=action&page=1" class='menu__link'>Боевики</a>
                     </li>
                     <li>
-                        <a href="#" class='menu__link'>Комедии</a>
+                        <a href="category?type=comedy&page=1" class='menu__link'>Комедии</a>
                     </li>
                     <li>
-                        <a href="#" class='menu__link'>Драма</a>
+                        <a href="category?type=drama&page=1" class='menu__link'>Драма</a>
                     </li>
                     <li>
-                        <a href="#" class='menu__link'>Фантастика</a>
+                        <a href="category?type=scifi&page=1" class='menu__link'>Фантастика</a>
                     </li>
                     <li>
-                        <a href="#" class='menu__link'>Триллеры</a>
+                        <a href="category?type=thriller&page=1" class='menu__link'>Триллеры</a>
                     </li>
                 </ul>
                 <div class='header-bot__search'>
