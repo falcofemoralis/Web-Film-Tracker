@@ -20,7 +20,6 @@ class DatabaseManager
         $this->connection = $connection;
     }
 
-
     public function getGenres()
     {
         if ($this->genresArray == null) {
@@ -75,7 +74,7 @@ class DatabaseManager
             WHERE films_Translated.lang_id = 3 AND ratings.rating > 6.6 AND ratings.votes > 40000 AND films.premiered = 2020 
             ORDER BY ratings.votes DESC LIMIT $limit";
 
-        return $this->getShortFilmFromQuery($query);
+        return $this->getShortFilmsFromQuery($query);
     }
 
     //фильмы 2020 года
@@ -86,7 +85,7 @@ class DatabaseManager
             INNER JOIN ratings ON films.title_id=ratings.title_id
             WHERE films_Translated.lang_id = 3 AND premiered=$year limit $limit";
 
-        return $this->getShortFilmFromQuery($query);
+        return $this->getShortFilmsFromQuery($query);
     }
 
     public function getFilmByFilmId($id, $isShort)
@@ -97,13 +96,13 @@ class DatabaseManager
         if ($isShort) {
             $query = "SELECT films.title_id, films_translated.title, films.premiered, films.genres
              FROM films INNER JOIN films_Translated ON films.title_id=films_Translated.title_id " . $queryParam;
-            $film = $this->getShortFilmFromQuery($query);
+            $film = $this->getShortFilmsFromQuery($query);
         } else {
             $query = "SELECT films.title_id, films_translated.title, films.is_adult, films.premiered,
             films.runtime_minutes, films.genres, films_translated.plot, ratings.rating, ratings.votes
             FROM films INNER JOIN films_Translated ON films.title_id=films_Translated.title_id 
             INNER JOIN ratings ON films.title_id=ratings.title_id " . $queryParam;
-            $film = $this->getLongFilmFromQuery($query);
+            $film = $this->getLongFilmsFromQuery($query);
         }
 
 
@@ -111,7 +110,7 @@ class DatabaseManager
     }
 
     //получение короткой информации про фильм
-    private function getShortFilmFromQuery($query)
+    private function getShortFilmsFromQuery($query)
     {
         $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
 
@@ -125,7 +124,7 @@ class DatabaseManager
     }
 
     //получение полной информации про фильм
-    private function getLongFilmFromQuery($query)
+    private function getLongFilmsFromQuery($query)
     {
         $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
 
@@ -140,7 +139,7 @@ class DatabaseManager
 
     public function getActorsByFilmId($filmId)
     {
-        $query = "SELECT people.person_id, people.name, people.born, people.died, crew.characters, crew.category 
+        $query = "SELECT people.person_id, people.name, crew.characters, crew.category 
             FROM crew INNER JOIN people ON people.person_id = crew.person_id 
             WHERE crew.title_id = '$filmId'";
         $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
@@ -148,13 +147,7 @@ class DatabaseManager
         $actors = null;
         for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
             $row = mysqli_fetch_row($result);
-            if ($row[3] == null) $died = 0;
-            else $died = $row[3];
-
-            if ($row[2] == null) $born = 0;
-            else $born = $row[2];
-
-            $actors[$i] = new Actor($row[0], $row[1], $born, $died, $row[4], $row[5]);
+            $actors[$i] = new Actor($row[0], $row[1], 0, 0, $row[2], $row[3]);
         }
         return $actors;
     }
@@ -179,15 +172,7 @@ class DatabaseManager
             WHERE (films.genres like '%,$genreId,%' OR films.genres like '$genreId,%') 
             ORDER BY ratings.votes DESC, ratings.rating DESC";
 
-        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
-
-        $filmsIDs = null;
-        for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
-            $row = mysqli_fetch_row($result);
-            $filmsIDs[] = $row[0];
-        }
-
-        return $filmsIDs;
+        return $this->getFilmsFromQuery($query);
     }
 
     public function getFilmsAmountInSearch($param)
@@ -212,6 +197,22 @@ class DatabaseManager
             WHERE films_translated.lang_id=3 AND films_translated.title like '%$param%'
             ORDER BY ratings.votes DESC, ratings.rating DESC";
 
+        return $this->getFilmsFromQuery($query);
+    }
+
+    public function getActorById($actorId)
+    {
+        $query = "SELECT *
+            FROM people
+            WHERE people.person_id = '$actorId'";
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+
+        $row = mysqli_fetch_row($result);
+        return new Actor($row[0], $row[1], $row[2], $row[3], "", "");
+    }
+
+    private function getFilmsFromQuery($query)
+    {
         $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
 
         $filmsIDs = null;
@@ -221,5 +222,45 @@ class DatabaseManager
         }
 
         return $filmsIDs;
+    }
+
+    public function getFilmsByPersonId($personId)
+    {
+        $query = "SELECT DISTINCT crew.title_id
+            FROM crew
+            INNER JOIN ratings on ratings.title_id = crew.title_id 
+            WHERE crew.person_id = '$personId'
+            ORDER BY ratings.rating DESC";
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+
+        $films = null;
+        for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
+            $row = mysqli_fetch_row($result);
+            $query = "SELECT films.title_id, films_translated.title, films.premiered, films.genres
+            FROM films INNER JOIN films_Translated ON films.title_id=films_Translated.title_id 
+            INNER JOIN ratings ON films.title_id=ratings.title_id
+            WHERE films_Translated.lang_id = 3 and films.title_id = '$row[0]'";
+            $films[] = $this->getShortFilmsFromQuery($query)[0];
+        }
+
+        return $films;
+    }
+
+    public function getRoleByPersonAndTitleId($personId, $filmId)
+    {
+        $query = "SELECT crew.category 
+            FROM crew 
+            WHERE crew.person_id = '$personId' and crew.title_id = '$filmId'";
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+
+        $roles = null;
+        for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
+            $row = mysqli_fetch_row($result);
+            $roles[] = $row[0];
+        }
+
+        return $roles;
     }
 }

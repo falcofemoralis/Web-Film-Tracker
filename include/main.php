@@ -51,15 +51,18 @@ $objectHelper = new ObjectHelper();
         </section>
 
         <section><h2 class='text__header'>Фильмы 2020 года</h2>
-            <div class='films-table'>
+            <div style="text-align: center;">
                 <?php
                 //Список 2020 года
                 $films2020 = $databaseManager->getFilmsByYear(2020, 15);
                 for ($i = 0; $i < count($films2020); ++$i) {
+                    echo "<div class='content__inline'>";
                     $film = $films2020[$i];
                     $objectHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
+                    echo "</div>";
                 }
                 ?>
+            </div>
         </section>
     </div>
 </article>

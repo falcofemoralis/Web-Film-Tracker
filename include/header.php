@@ -108,7 +108,7 @@ function setGenres()
                 </ul>
                 <div class='header-bot__search'>
                     <img class='header__search_button' src="./images/ic_search.svg" alt="ic_search">
-                    <form action="list">
+                    <form action="list" style="width: 100%">
                         <input class='header__search_input' type="search" placeholder="Я ищу фильм..." name="search">
                         <button type="submit" style="display: none"></button>
                     </form>

@@ -26,51 +26,48 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
 
 <?php
 include('include/header.php');
+
+$databaseManager = new DatabaseManager();
+$objectHelper = new ObjectHelper();
+
+$filmId = $_GET["id"];
+$film = $databaseManager->getFilmByFilmId($filmId, false);
+$title = $film->getTitle();
+$rating = $film->getRating();
+$votes = $film->getVotes();
+$plot = $film->getPlot();
+$year = $film->getPremiered();
+$runtime_minutes = $film->getRuntimeMinutes();
+$isAdult = $film->getIsAdult();
+
+$allActors = $databaseManager->getActorsByFilmId($filmId);
+$sortedActors = array(array());
+$sortedActorsHeaders = array("Актер", " Режиссер", "Продюсер", "Сценарист");
+
+for ($i = 0; $i < count($allActors); ++$i) {
+    $actor = $allActors[$i];
+    $category = $actor->getCategory();
+
+    switch ($category) {
+        case "director":
+            $sortedActors[1][] = $actor;
+            break;
+        case "producer":
+            $sortedActors[2][] = $actor;
+            break;
+        case "writer":
+            $sortedActors[3][] = $actor;
+            break;
+        default:
+            $sortedActors[0][] = $actor;
+    }
+}
+
 ?>
 
 <article class="page">
     <div class="container">
         <section class="film-container">
-            <?php
-            $databaseManager = new DatabaseManager();
-            $objectHelper = new ObjectHelper();
-
-            $filmId = $_GET["id"];
-            $film = $databaseManager->getFilmByFilmId($filmId, false);
-            $title = $film->getTitle();
-            $rating = $film->getRating();
-            $votes = $film->getVotes();
-            $plot = $film->getPlot();
-            $year = $film->getPremiered();
-            $runtime_minutes = $film->getRuntimeMinutes();
-            $isAdult = $film->getIsAdult();
-
-            $allActors = $databaseManager->getActorsByFilmId($filmId);
-            $actors = array();
-            $directors = array();
-            $producers = array();
-            $writers = array();
-
-            for ($i = 0; $i < count($allActors); ++$i) {
-                $actor = $allActors[$i];
-                $category = $actor->getCategory();
-
-                switch ($category) {
-                    case "director":
-                        $directors[] = $actor;
-                        break;
-                    case "producer":
-                        $producers[] = $actor;
-                        break;
-                    case "writer":
-                        $writers[] = $actor;
-                        break;
-                    default:
-                        $actors[] = $actor;
-                }
-            }
-            ?>
-
             <h1 class='film__title'><? echo "$title" ?></h1>
             <div class='film-main'>
                 <img class='film-main__poster' src='./images/posters/<? echo "$filmId" ?>.jpeg' alt='poster'>
@@ -128,60 +125,24 @@ include('include/header.php');
                                 } ?>
                             </td>
                         </tr>
-                        <tr>
-                            <?
-                            $size = count($directors);
-                            if ($size > 0) {
-                                echo "  
-                            <td>
-                                <b>Режиссер:</b>
-                            </td>
-                            <td>";
-                                for ($i = 0; $i < $size; $i++) {
-                                    $name = $directors[$i]->getName();
+
+                        <?
+                        for ($i = 0; $i < 4; $i++) {
+                            if ($sortedActors[$i] != null) {
+                                $title = $sortedActorsHeaders[$i];
+                                echo "<tr><td><b>$title</b></td><td>";
+
+                                $size = count($sortedActors[$i]);
+                                for ($j = 0; $j < $size; $j++) {
+                                    $name = $sortedActors[$i][$j]->getName();
                                     echo "$name";
                                     if ($i != $size - 1) echo ", ";
                                 }
-                                echo "</td>";
+
+                                echo "</td></tr>";
                             }
-                            ?>
-                        </tr>
-                        <tr>
-                            <?
-                            $size = count($producers);
-                            if ($size > 0) {
-                                echo "  
-                            <td>
-                                <b>Продюсер:</b>
-                            </td>
-                            <td>";
-                                for ($i = 0; $i < $size; $i++) {
-                                    $name = $producers[$i]->getName();
-                                    echo "$name";
-                                    if ($i != $size - 1) echo ", ";
-                                }
-                                echo "</td>";
-                            }
-                            ?>
-                        </tr>
-                        <tr>
-                            <?
-                            $size = count($writers);
-                            if ($size > 0) {
-                                echo "  
-                            <td>
-                                <b>Сценарист:</b>
-                            </td>
-                            <td>";
-                                for ($i = 0; $i < $size; $i++) {
-                                    $name = $writers[$i]->getName();
-                                    echo "$name";
-                                    if ($i != $size - 1) echo ", ";
-                                }
-                                echo "</td>";
-                            }
-                            ?>
-                        </tr>
+                        }
+                        ?>
                     </table>
                 </div>
             </div>
@@ -200,14 +161,18 @@ include('include/header.php');
                     $size = 5;
                     $pages = 1;
 
-                    $all = count($actors);
-                    if ($all < $size) $size = $all;
-                    else $pages = $all / $size;
 
-                    for ($i = 1; $i <= count($actors); ++$i) {
-                        $actor = $actors[$i - 1];
-                        $objectHelper->createActor($actor->getPersonId(), $actor->getName(), $actor->getCharacters(), $actor->getCategory());
+                    if ($sortedActors[0] != null) {
+                        $all = count($sortedActors[0]);
+                        if ($all < $size) $size = $all;
+                        else $pages = $all / $size;
+
+                        for ($i = 1; $i <= count($sortedActors[0]); ++$i) {
+                            $actor = $sortedActors[0][$i - 1];
+                            $objectHelper->createActor($actor->getPersonId(), $actor->getName(), $actor->getCharacters(), $actor->getCategory());
+                        }
                     }
+
                     ?>
                 </div>
                 <button class='slider__button' onclick="plusSlides(1)">&#10095;</button>

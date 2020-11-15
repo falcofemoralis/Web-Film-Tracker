@@ -25,11 +25,9 @@
 }
 
 /*Table of films*/
-.films-table {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    justify-content: center;
+.content__inline{
+    display: inline-block;
+    vertical-align: top;
 }
 
 /*Actor layout*/

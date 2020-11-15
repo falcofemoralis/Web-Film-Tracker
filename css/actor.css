@@ -17,55 +17,49 @@
     margin: 0 auto;
 }
 
-.film-container {
+.actor-container {
     max-width: 625px;
 }
 
-.film__title {
+.actor_name {
     font-size: 25px;
     margin-bottom: 35px;
 }
 
-.film-main {
+.actor-main {
     display: flex;
 }
 
-.film-main__poster {
+.actor-main__photo {
     width: auto;
     max-width: 45%;
 }
 
-.film-main__info {
+.actor-main__info {
     display: flex;
 }
 
-.film-main__info table {
+.actor-main__info table {
     border-collapse: collapse;
 }
 
-.film-main__info td {
+.actor-main__info td {
     padding-left: 25px;
     padding-bottom: 7px;
     vertical-align: top;
 }
 
-.film-main__info-rating {
-    color: inherit;
-    text-decoration: underline;
+.page {
+    padding: 25px;
 }
 
-.film__plot {
+.section{
     margin-top: 25px;
-    margin-bottom: 25px;
 }
 
 .section__title {
     font-size: 24px;
     padding-bottom: 15px;
-}
-
-.page {
-    padding: 25px;
 }
 
 /* Mobile version */
@@ -80,16 +74,15 @@
         padding-bottom: 7px;
         vertical-align: top;
     }
-
 }
 
 @media (max-width: 430px) {
-    .film-main__info tr {
+    .actor-main__info tr {
         display: flex;
         flex-direction: column;
     }
 
-    .film-main__poster {
+    .actor-main__photo {
         max-height: 200px;
     }
 }

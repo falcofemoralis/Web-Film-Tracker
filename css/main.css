@@ -17,14 +17,20 @@
     margin: 0 auto;
 }
 
-.page{
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page {
     padding: 25px;
 }
 
 /* Mobile version */
 
 @media (max-width: 925px) {
-    .page{
+    .page {
         padding: 5px;
     }
 }

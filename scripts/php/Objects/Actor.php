@@ -10,10 +10,13 @@ class Actor
     {
         $this->person_id = $person_id;
         $this->name = $name;
+
+        if ($died == null) $died = 0;
+        if ($born == null) $born = 0;
         $this->born = $born;
         $this->died = $died;
 
-        $characters = str_replace("N", "", $characters);
+        if ($characters == "N") $characters = "";
         $characters = str_replace('"', "", $characters);
         $characters = str_replace('[', "", $characters);
         $characters = str_replace(']', "", $characters);

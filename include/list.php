@@ -14,7 +14,7 @@ require_once 'scripts/php/Managers/PagesHelper.php';
     <meta name="description" content="Сайт поиска информации про фильмы">
     <meta name="author" content="Иващенко Владислав Романович">
     <title>Трекер фильмов</title>
-    <link rel='stylesheet' href="./CSS//category.css">
+    <link rel='stylesheet' href="./CSS//list.css">
     <link rel='stylesheet' href="./CSS//elements.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" href="./images/favicon.ico">
@@ -24,14 +24,14 @@ require_once 'scripts/php/Managers/PagesHelper.php';
 <?php
 include('include/header.php');
 
-$isGenre = false;
+$filmsPerPage = 35; //кол-во отображаемых фильмов на странице
+$isGenre = false; //является ли параметр жанром
 $databaseManager = new DatabaseManager();
 $objectHelper = new ObjectHelper();
 
 $genreName = $_GET["type"]; //имя жанра
 $searchParam = $_GET["search"]; //аргумент поиска
 $cur_page = $_GET["page"]; //текущая страницы
-
 
 if ($genreName != null) $isGenre = true;
 
@@ -45,14 +45,7 @@ if ($isGenre) {
     $filmsIDs = $databaseManager->getFilmsIdsBySearch($searchParam); //id шники фильмов
 }
 
-$filmsPerPage = 35; //кол-во отображаемых фильмов на странице
 $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
-
-$databaseManager = new DatabaseManager();
-$objectHelper = new ObjectHelper();
-
-$filmsPerPage = 35; //кол-во отображаемых фильмов на странице
-$pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц*/
 ?>
 
 <article>
@@ -60,26 +53,32 @@ $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
         <section>
             <?
             if ($isGenre) echo "<h2 class='text__header'>Фильмы жанра $genre[1]</h2>";
-            else echo "<h2 class='text__header'>Результаты поиска «$searchParam"."»</h2>";
+            else echo "<h2 class='text__header'>Результаты поиска «$searchParam" . "»</h2>";
             ?>
-
             <div class='films-table'>
                 <?php
                 for ($i = $filmsPerPage * ($cur_page - 1); $i < $filmsPerPage * $cur_page; $i++) {
                     $film = $databaseManager->getFilmByFilmId($filmsIDs[$i], true);
 
                     if ($film != null) {
+                        echo "<div class='content__inline'>";
                         $name = $film->getTitle();
                         $objectHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
+                        echo "</div>";
                     }
                 }
                 ?>
         </section>
 
         <?
-        if ($isGenre) $link = "list?type=" . $genreName;
-        else $link = "list?search=" . $searchParam;
-        createPagesControls($pages, $cur_page, $link);
+        if ($filmsAmount == 0) {
+            echo "По вашему запросу ничего не найдено.";
+        } else {
+            if ($isGenre) $link = "list?type=" . $genreName;
+            else $link = "list?search=" . $searchParam;
+            createPagesControls($pages, $cur_page, $link);
+        }
+
         ?>
     </div>
 </article>

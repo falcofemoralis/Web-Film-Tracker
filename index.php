@@ -13,6 +13,9 @@ switch ($arg) {
     case "list":
         include('include/list.php');
         break;
+    case "actors":
+        include('include/actor.php');
+        break;
     default:
         include('include/main.php');
 }
