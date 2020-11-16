@@ -114,7 +114,7 @@ for ($i = 0; $i < count($films); $i++) {
                 if ($sortedFilms[$i] != null) {
                     $title = $sortedFilmsHeaders[$i];
                     echo "<h2 class='section__title'>$title</h2>
-                          <div class='films-table'>";
+                           <div>";
 
                     for ($j = 0; $j < count($sortedFilms[$i]); $j++) {
                         echo "<div class='content__inline'>";

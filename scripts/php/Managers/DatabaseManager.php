@@ -71,7 +71,7 @@ class DatabaseManager
         $query = "SELECT films.title_id, films_translated.title, films.premiered, films.genres
             FROM films INNER JOIN films_Translated ON films.title_id=films_Translated.title_id 
             INNER JOIN ratings ON films.title_id=ratings.title_id
-            WHERE films_Translated.lang_id = 3 AND ratings.rating > 6.6 AND ratings.votes > 40000 AND films.premiered = 2020 
+            WHERE films_Translated.lang_id = 3 AND ratings.rating > 6.5 AND ratings.votes > 40000 AND films.premiered = 2020 
             ORDER BY ratings.votes DESC LIMIT $limit";
 
         return $this->getShortFilmsFromQuery($query);

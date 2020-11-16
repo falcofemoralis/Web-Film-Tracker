@@ -16,11 +16,11 @@ class ObjectHelper
         if (!file_exists($poster)) $poster = "./images/posters/noimage_poster.jpeg";
 
         echo "
-        <a class='film' href='films?id=$filmId'>
+        <div class='film'>
+            <a href='films?id=$filmId'>
             <img src='$poster' alt='poster'>
-            <div class='film__info'>
-                <h1>$title</h1>
-                 $year, ";
+            <h1>$title</h1>
+            <div>$year, ";
 
         for ($i = 0; $i < count($genres) - 1; $i++) {
             $genre = $this->databaseManager->getGenreById($genres[$i]);
@@ -28,7 +28,7 @@ class ObjectHelper
 
             if ($i != count($genres) - 2) echo ", ";
         }
-        echo "</div></a>";
+       echo "</div></a></div>";
     }
 
     function createActor($actorId, $name, $characters, $category)

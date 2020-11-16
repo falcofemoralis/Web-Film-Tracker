@@ -17,7 +17,7 @@
     margin: 0 auto;
 }
 
-.center {
+.parent {
     display: flex;
     justify-content: center;
     align-items: center;

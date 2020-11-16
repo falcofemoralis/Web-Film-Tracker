@@ -24,7 +24,7 @@ require_once 'scripts/php/Managers/PagesHelper.php';
 <?php
 include('include/header.php');
 
-$filmsPerPage = 35; //кол-во отображаемых фильмов на странице
+$filmsPerPage = 30; //кол-во отображаемых фильмов на странице
 $isGenre = false; //является ли параметр жанром
 $databaseManager = new DatabaseManager();
 $objectHelper = new ObjectHelper();
@@ -55,19 +55,20 @@ $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
             if ($isGenre) echo "<h2 class='text__header'>Фильмы жанра $genre[1]</h2>";
             else echo "<h2 class='text__header'>Результаты поиска «$searchParam" . "»</h2>";
             ?>
-            <div class='films-table'>
-                <?php
-                for ($i = $filmsPerPage * ($cur_page - 1); $i < $filmsPerPage * $cur_page; $i++) {
-                    $film = $databaseManager->getFilmByFilmId($filmsIDs[$i], true);
+            <div class="films-table">
+                <div class="films-container">
+                    <?php
+                    for ($i = $filmsPerPage * ($cur_page - 1); $i < $filmsPerPage * $cur_page; $i++) {
+                        $film = $databaseManager->getFilmByFilmId($filmsIDs[$i], true);
 
-                    if ($film != null) {
-                        echo "<div class='content__inline'>";
-                        $name = $film->getTitle();
-                        $objectHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
-                        echo "</div>";
+                        if ($film != null) {
+                            $name = $film->getTitle();
+                            $objectHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
+                        }
                     }
-                }
-                ?>
+                    ?>
+                </div>
+            </div>
         </section>
 
         <?
