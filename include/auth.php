@@ -23,13 +23,9 @@ include('include/header.php');
 
 <article class="page">
     <div class="container">
-
-        <form class="validation-content" action="register" method="post">
+        <form class="validation-content" action="auth" method="post">
             <div class="validation-input">
-                <div class="validation-title">Регистрация</div>
-                <label>E-mail<br>
-                    <input name="email" type="email">
-                </label>
+                <div class="validation-title">Авторизация</div>
                 <label>Имя пользователя<br>
                     <input name="username" type="text">
                 </label>
@@ -42,7 +38,7 @@ include('include/header.php');
                 if (!empty($error)) echo "<label style='color: orangered; font-weight: bold'>Ошибка: $error<br></label>";
                 ?>
 
-                <button class="validation-btn" type="submit">Зарегистрироваться</button>
+                <button class="validation-btn" type="submit">Войти</button>
             </div>
         </form>
     </div>

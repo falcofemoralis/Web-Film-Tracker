@@ -22,14 +22,13 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
 </head>
 
 <body style="background-color: #efefef;">
-
 <?php
 include('include/header.php');
 
 $databaseManager = new DatabaseManager();
 $objectHelper = new ObjectHelper();
-?>
 
+?>
 <article class="page">
     <div class="container">
         <div>

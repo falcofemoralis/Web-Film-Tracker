@@ -17,12 +17,12 @@
     margin: 0 auto;
 }
 
-.registration-content {
+.validation-content {
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     width: 65%;
 }
 
-.registration-input input {
+.validation-input input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -31,7 +31,7 @@
     box-sizing: border-box;
 }
 
-.registration-title {
+.validation-title {
     display: flex;
     justify-content: center;
     color: black;
@@ -40,7 +40,7 @@
     padding-bottom: 14px;
 }
 
-.registration-btn_reg {
+.validation-btn {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -51,6 +51,6 @@
     transition: background-color .3s;
 }
 
-.registration-btn_reg:hover {
+.validation-btn:hover {
     background-color: #069906;
 }

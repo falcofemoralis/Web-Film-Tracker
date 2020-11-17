@@ -277,13 +277,26 @@ class DatabaseManager
                 VALUES('$username', '$password', '$email')";
 
             $result = mysqli_query($this->connection, $insertQuery) or die("Ошибка " . mysqli_error($this->connection));
-            if (!$result) {
-                $message = "Failed to insert data information!";
-            }
+            if (!$result) $error = "Запрос не выполнен. Повторите позже.";
         } else {
-            $message = "That username already exists! Please try another one!";
+            $error = "Такой пользователь уже существует!";
         }
 
-        return $message;
+        return $error;
+    }
+
+    public function authUser($username, $password)
+    {
+        $getQuery = "SELECT * 
+                FROM users
+                WHERE username='$username' AND password='$password'";
+
+        $result = mysqli_query($this->connection, $getQuery) or die("Ошибка " . mysqli_error($this->connection));
+
+        if (mysqli_num_rows($result) == 0) {
+            $error = "Пользователь не найден!";
+        }
+
+        return $error;
     }
 }

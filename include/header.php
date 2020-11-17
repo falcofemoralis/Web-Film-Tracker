@@ -59,7 +59,7 @@ function setGenres()
                           </li> ";
                     } else {
                         echo "<li class='menu__item'>
-                          <a href='#' class='menu__link'>Логин</a>
+                          <a href='auth' class='menu__link'>Логин</a>
                                </li>
                           <li class='menu__item'>
                               <a href='register' class='menu__link'>Регистрация</a>

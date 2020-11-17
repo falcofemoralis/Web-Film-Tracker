@@ -67,7 +67,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
 
 <article class="page">
     <div class="container">
-        <section class="film-container">
+        <div class="film-container">
             <h1 class='film__title'><? echo "$title" ?></h1>
             <div class='film-main'>
                 <img class='film-main__poster' src='./images/posters/<? echo "$filmId" ?>.jpeg' alt='poster'>
@@ -150,9 +150,9 @@ for ($i = 0; $i < count($allActors); ++$i) {
                 <h2 class='section__title'>Cюжет фильма</h2>
                 <? echo "$plot" ?>
             </div>
-        </section>
+        </div>
 
-        <section>
+        <div>
             <h2 class="section__title">Актеры в фильме</h2>
             <div class='slider' style="justify-content:  flex-start;">
                 <button class='slider__button' onclick="plusSlides(-1)">&#10094;</button>
@@ -177,7 +177,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
                 </div>
                 <button class='slider__button' onclick="plusSlides(1)">&#10095;</button>
             </div>
-        </section>
+        </div>
     </div>
 </article>
 <script>sliderInit("actor")</script>

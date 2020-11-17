@@ -50,7 +50,7 @@ $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
 
 <article>
     <div class="container">
-        <section>
+        <div>
             <?
             if ($isGenre) echo "<h2 class='text__header'>Фильмы жанра $genre[1]</h2>";
             else echo "<h2 class='text__header'>Результаты поиска «$searchParam" . "»</h2>";
@@ -69,8 +69,7 @@ $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
                     ?>
                 </div>
             </div>
-        </section>
-
+        </div>
         <?
         if ($filmsAmount == 0) {
             echo "По вашему запросу ничего не найдено.";
@@ -79,7 +78,6 @@ $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
             else $link = "list?search=" . $searchParam;
             createPagesControls($pages, $cur_page, $link);
         }
-
         ?>
     </div>
 </article>
