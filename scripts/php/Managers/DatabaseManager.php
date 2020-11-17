@@ -1,5 +1,4 @@
 <?php
-require_once 'scripts/php/Managers/ObjectHelper.php';
 require_once 'scripts/php/Objects/Film.php';
 require_once 'scripts/php/Objects/Actor.php';
 
@@ -262,5 +261,29 @@ class DatabaseManager
         }
 
         return $roles;
+    }
+
+    public function registerUser($username, $password, $email)
+    {
+        $getQuery = "SELECT * 
+                FROM users
+                WHERE username='$username'";
+
+        $result = mysqli_query($this->connection, $getQuery) or die("Ошибка " . mysqli_error($this->connection));
+
+        if (mysqli_num_rows($result) == 0) {
+            $insertQuery = "INSERT INTO users
+              (username, password, email)
+                VALUES('$username', '$password', '$email')";
+
+            $result = mysqli_query($this->connection, $insertQuery) or die("Ошибка " . mysqli_error($this->connection));
+            if (!$result) {
+                $message = "Failed to insert data information!";
+            }
+        } else {
+            $message = "That username already exists! Please try another one!";
+        }
+
+        return $message;
     }
 }

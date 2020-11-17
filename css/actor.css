@@ -53,13 +53,18 @@
     padding: 25px;
 }
 
-.section{
+.section {
     margin-top: 25px;
 }
 
 .section__title {
     font-size: 24px;
     padding-bottom: 15px;
+}
+
+.films-table__actor {
+    display: flex;
+    justify-content: flex-start;
 }
 
 /* Mobile version */
@@ -73,6 +78,12 @@
         padding-left: 15px;
         padding-bottom: 7px;
         vertical-align: top;
+    }
+}
+
+@media (max-width: 650px) {
+    .films-table__actor {
+        justify-content: center;
     }
 }
 

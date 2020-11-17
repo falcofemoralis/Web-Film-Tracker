@@ -114,16 +114,15 @@ for ($i = 0; $i < count($films); $i++) {
                 if ($sortedFilms[$i] != null) {
                     $title = $sortedFilmsHeaders[$i];
                     echo "<h2 class='section__title'>$title</h2>
-                           <div>";
+                            <div class='films-table__actor'>
+                               <div class='films-container'>";
 
                     for ($j = 0; $j < count($sortedFilms[$i]); $j++) {
-                        echo "<div class='content__inline'>";
                         $film = $sortedFilms[$i][$j];
                         $objectHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
-                        echo "</div>";
                     }
 
-                    echo "</div>";
+                    echo "</div></div>";
                 }
             }
             ?>

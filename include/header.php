@@ -6,6 +6,7 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
 
 <head>
     <link rel='stylesheet' href="./CSS//header.css">
+
     <script>
         let isOpened = 0
 
@@ -18,15 +19,6 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
             } else {
                 menu[0].style.display = "block";
                 isOpened = 1;
-            }
-        }
-
-        // Закрытие если нажато было из вне
-        window.onclick = function (event) {
-            if (!event.target.matches('.button-image')) {
-                let menu = document.getElementsByClassName("mobile-dropdown__menu");
-                menu[0].style.display = "none";
-                isOpened = 0;
             }
         }
     </script>
@@ -57,12 +49,24 @@ function setGenres()
             </a>
             <nav class="header-top__right">
                 <ul class="menu__list">
-                    <li class='menu__item'>
-                        <a href="#" class='menu__link'>Закладки</a>
-                    </li>
-                    <li class='menu__item'>
-                        <a href="#" class='menu__link'>Пользователь</a>
-                    </li>
+                    <?php
+                    if (isset($_COOKIE['username'])) {
+                        echo "<li class='menu__item'>
+                          <a href='#' class='menu__link'>Закладки</a>
+                               </li>
+                          <li class='menu__item'>
+                              <a href='#' class='menu__link'>Пользователь</a>
+                          </li> ";
+                    } else {
+                        echo "<li class='menu__item'>
+                          <a href='#' class='menu__link'>Логин</a>
+                               </li>
+                          <li class='menu__item'>
+                              <a href='register' class='menu__link'>Регистрация</a>
+                          </li> ";
+                    }
+                    ?>
+
                 </ul>
             </nav>
         </div>
@@ -130,5 +134,4 @@ function setGenres()
     </div>
 </header>
 </body>
-
 </html>
