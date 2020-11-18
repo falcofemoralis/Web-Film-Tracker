@@ -8,6 +8,9 @@ array_shift($requestUri); //т.к 1 элемент пустой, поэтому 
 //array_shift отдает 0 значений и сдигет вправо
 array_shift($requestUri); //выдаст название сайта
 
+$databaseManager = new DatabaseManager();
+
+
 $arg = array_shift($requestUri);
 switch ($arg) {
     case "films":
@@ -40,16 +43,14 @@ switch ($arg) {
             $isSave = false;
             if (!empty($_POST['isSave'])) $isSave = true;
 
-            $databaseManager = new DatabaseManager();
             $error = $databaseManager->registerUser($username, $password, $email);
 
             //если была ошибка, то показываем регистрацию и ошибку
             if (!empty($error)) {
                 include('include/registration.php');
             } else { //иначе сохранаяем пользователя в куки и показываем стартовую страницу
-                $time = 0;
-                if ($isSave) $time = 60;
-                setcookie("username", $username, time() + $time); //time() + 3600 * 24 * 365) "/"
+                if ($isSave)  setcookie("username", $username, 120); //time() + 3600 * 24 * 365) "/"
+                else  setcookie("username", $username);
                 header('location: /');
             }
         }
@@ -74,18 +75,25 @@ switch ($arg) {
             $isSave = false;
             if (!empty($_POST['isSave'])) $isSave = true;
 
-            $databaseManager = new DatabaseManager();
             $error = $databaseManager->authUser($username, $password);
 
             if (!empty($error)) {
                 include('include/auth.php');
             } else {
-                $time = 0;
-                if ($isSave) $time = 60;
-                setcookie("username", $username, time() + $time); //time() + 3600 * 24 * 365) "/"
+                if ($isSave)  setcookie("username", $username, 120); //time() + 3600 * 24 * 365) "/"
+                else  setcookie("username", $username);
                 header('location: /');
             }
         }
+        break;
+    case "addComment":
+
+        $comment = $_POST['comment'];
+        $filmId = $_POST['filmId'];
+
+        $databaseManager->addComment($comment, $filmId, $_COOKIE['username'], time());
+        $url = "location: films?id=" . $filmId;
+        header($url);
         break;
     default:
         include('include/main.php');

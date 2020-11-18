@@ -6,6 +6,8 @@ require_once 'scripts/php/Objects/Actor.php';
 require_once 'scripts/php/Objects/Film.php';
 require_once 'scripts/php/Managers/DatabaseManager.php';
 require_once 'scripts/php/Managers/ObjectHelper.php';
+require_once 'scripts/php/Objects/Comment.php';
+
 ?>
 
 <head>
@@ -178,8 +180,39 @@ for ($i = 0; $i < count($allActors); ++$i) {
             </div>
         </div>
 
+        <?php
+        if (isset($_COOKIE['username'])) {
+            echo "<form action='addComment' method='post'>
+                    <textarea class='comment-input' name='comment' placeholder='Написать комментарий'></textarea>
+                    <button class='add-btn'>Добавить</button>
+                    <input name='filmId' value='$filmId' style='display: none'/> 
+                </form>";
+        } else {
+            echo "<div class='comment-input' style='color: orangered; font-weight: bold; height: auto;'>Зарегестрируйтесь или войдите, чтобы оставить комментарий!</div><br>";
+        }
+        ?>
         <div>
-            <textarea class="comments" name="comments" placeholder="Написать комментарий"></textarea>
+            <?php
+
+            $comments = $databaseManager->getComments($filmId);
+
+            for ($i = 0; $i < count($comments); ++$i) {
+                $username = $databaseManager->getUsernameByUserId($comments[$i]->getUserId());
+                $time = $comments[$i]->getTime();
+                $text = $comments[$i]->getComment();
+
+                echo "<div class='comment'>
+                <img src='./images/avatar.jpeg' alt='avatar'/>
+                <div class='comment-inside'>
+                   <div style='padding-bottom: 10px'> <b>$username</b>, оставлен $time</div>
+                       $text
+                    </div>
+                </div>";
+            }
+
+            ?>
+
+
         </div>
     </div>
 </article>

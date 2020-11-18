@@ -299,4 +299,57 @@ class DatabaseManager
 
         return $error;
     }
+
+    private function getUserId($username)
+    {
+        $getQuery = "SELECT users.userId
+                FROM users
+                WHERE users.username='$username'";
+
+        $result = mysqli_query($this->connection, $getQuery) or die("Ошибка " . mysqli_error($this->connection));
+
+        $row = mysqli_fetch_row($result);
+        return $row[0];
+    }
+
+    public function addComment($comment, $filmId, $user, $time)
+    {
+        $userId = $this->getUserId($user);
+        $insertQuery = "INSERT INTO films_comments
+              (titleId, userId, time, comment)
+                VALUES('$filmId', '$userId', FROM_UNIXTIME($time), '$comment')";
+
+        $result = mysqli_query($this->connection, $insertQuery) or die("Ошибка " . mysqli_error($this->connection));
+        if (!$result) $error = "Ошибка добавления";
+        return $error;
+
+    }
+
+    public function getComments($filmId)
+    {
+        $query = "SELECT films_comments.titleId, films_comments.userId, films_comments.time, films_comments.comment 
+            FROM films_comments 
+            WHERE films_comments.titleId='$filmId'
+            ORDER BY films_comments.time DESC";
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+
+        $comments = array();
+        for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
+            $row = mysqli_fetch_row($result);
+            $comments[] = new Comment($row[0], $row[2], $row[3], $row[1]);
+        }
+
+        return $comments;
+    }
+    public function getUsernameByUserId($userId){
+        $getQuery = "SELECT users.username
+                FROM users
+                WHERE users.userId='$userId'";
+
+        $result = mysqli_query($this->connection, $getQuery) or die("Ошибка " . mysqli_error($this->connection));
+
+        $row = mysqli_fetch_row($result);
+        return $row[0];
+    }
 }
