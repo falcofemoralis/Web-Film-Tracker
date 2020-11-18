@@ -28,14 +28,14 @@ include('include/header.php');
             <div class="validation-input">
                 <div class="validation-title">Регистрация</div>
                 <label>E-mail<br>
-                    <input name="email" type="email">
+                    <input name="email" type="email" required>
                 </label>
                 <label>Имя пользователя<br>
-                    <input name="username" type="text">
+                    <input name="username" type="text" required>
                 </label>
 
                 <label>Пароль<br>
-                    <input name="password" type="password">
+                    <input name="password" type="password" required>
                 </label>
 
                 <label>Запомнить меня?

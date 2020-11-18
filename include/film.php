@@ -7,7 +7,7 @@ require_once 'scripts/php/Objects/Film.php';
 require_once 'scripts/php/Managers/DatabaseManager.php';
 require_once 'scripts/php/Managers/ObjectHelper.php';
 require_once 'scripts/php/Objects/Comment.php';
-
+require_once 'scripts/php/Objects/User.php';
 ?>
 
 <head>
@@ -22,6 +22,20 @@ require_once 'scripts/php/Objects/Comment.php';
     <link rel='stylesheet' href="./CSS//elements.css">
     <link rel='stylesheet' href="./CSS//slider.css">
     <script src="./scripts/js/slider.js"></script>
+    <script>
+        function checkText() {
+            let btn = document.getElementById("add");
+            let comment = document.getElementById("comment");
+            let error = document.getElementById("error");
+
+            if (comment.value != "") {
+                btn.disabled = false;
+            } else {
+                btn.disabled = true;
+                error.style.display = "block";
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -76,47 +90,29 @@ for ($i = 0; $i < count($allActors); ++$i) {
                 <div class='film-main__info'>
                     <table>
                         <tr>
-                            <td>
-                                <B>Рейтинг:</B>
-                            </td>
-                            <td>
-                                <? echo "<a class='film-main__info-rating' href='https://www.imdb.com/title/$filmId/'>IMDb<a>:&nbsp<b>$rating</b> ($votes)" ?>
-                            </td>
+                            <td><B>Рейтинг:</B></td>
+                            <td><? echo "<a class='film-main__info-rating' href='https://www.imdb.com/title/$filmId/'>IMDb<a>:&nbsp<b>$rating</b> ($votes)" ?></td>
                         </tr>
 
                         <tr>
-                            <td>
-                                <b>Дата&nbspвыхода:</b>
-                            </td>
-                            <td>
-                                <? echo "$year год" ?>
-                            </td>
+                            <td><b>Дата&nbspвыхода:</b></td>
+                            <td><? echo "$year год" ?></td>
                         </tr>
                         <tr>
-                            <td>
-                                <b>Время:</b>
-                            </td>
-                            <td>
-                                <? echo "$runtime_minutes мин." ?>
-                            </td>
+                            <td><b>Время:</b></td>
+                            <td><? echo "$runtime_minutes мин." ?></td>
                         </tr>
                         <tr>
                             <?
                             if ($isAdult !== "") {
                                 echo "
-                             <td>
-                                 <b>Возраст:</b>
-                             </td>
-                             <td>
-                                 $isAdult
-                             </td>";
+                             <td><b>Возраст:</b></td>
+                             <td>$isAdult</td>";
                             }
                             ?>
                         </tr>
                         <tr>
-                            <td>
-                                <b>Жанр:</b>
-                            </td>
+                            <td><b>Жанр:</b></td>
                             <td>
                                 <? $genres = $film->getGenres();
                                 for ($i = 0; $i < count($genres) - 1; $i++) {
@@ -183,8 +179,9 @@ for ($i = 0; $i < count($allActors); ++$i) {
         <?php
         if (isset($_COOKIE['username'])) {
             echo "<form action='addComment' method='post'>
-                    <textarea class='comment-input' name='comment' placeholder='Написать комментарий'></textarea>
-                    <button class='add-btn'>Добавить</button>
+                    <textarea id='comment' class='comment-input' name='comment' onchange='checkText()' placeholder='Написать комментарий'></textarea>
+                    <div id='error' class='error-hint'>Введите текст!</div>
+                    <button disabled='true' id='add' class='add-btn'>Добавить</button>
                     <input name='filmId' value='$filmId' style='display: none'/> 
                 </form>";
         } else {
@@ -197,7 +194,8 @@ for ($i = 0; $i < count($allActors); ++$i) {
             $comments = $databaseManager->getComments($filmId);
 
             for ($i = 0; $i < count($comments); ++$i) {
-                $username = $databaseManager->getUsernameByUserId($comments[$i]->getUserId());
+                $user = $databaseManager->getUserByUserId($comments[$i]->getUserId());
+                $username = $user->getUsername();
                 $time = $comments[$i]->getTime();
                 $text = $comments[$i]->getComment();
 

@@ -20,12 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/php/Objects/Comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/bookmarks.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/user.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/bookmarks.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/user.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/php/Objects/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/film.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/film.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/auth.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/registration.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" afterDir="false" />
     </list>
@@ -42,8 +47,8 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="HTML4 File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -162,7 +167,8 @@
       <workItem from="1605684640914" duration="504000" />
       <workItem from="1605685191128" duration="901000" />
       <workItem from="1605694455509" duration="6818000" />
-      <workItem from="1605702013995" duration="10272000" />
+      <workItem from="1605702013995" duration="12578000" />
+      <workItem from="1605720025277" duration="2069000" />
     </task>
     <servers />
   </component>
@@ -198,10 +204,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="630" y="158" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604679278879" />
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1605709871792">
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1605714609964">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605709871792" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605714609964" />
     <state x="637" y="96" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605090004511">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -262,10 +268,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="6" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604674353090" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1605709775523">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1605714484666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605709775523" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605714484666" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1605298568196">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -290,13 +296,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604757553781" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1605703356265">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1605721582032">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605703356265" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605708128333">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605721582032" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605714890534">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605708128333" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605714890534" />
   </component>
 </project>

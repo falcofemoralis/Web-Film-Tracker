@@ -64,10 +64,10 @@ function setGenres()
                     <?php
                     if (isset($_COOKIE['username'])) {
                         echo "<li class='menu__item'>
-                          <a href='#' class='menu__link'>Закладки</a>
+                          <a href='bookmarks' class='menu__link'>Закладки</a>
                                </li>
                           <li class='menu__item'>
-                              <a href='#' class='menu__link'>Пользователь</a>
+                              <a href='user' class='menu__link'>Пользователь</a>
                           </li> ";
                     } else {
                         echo "<li class='menu__item'>
@@ -139,10 +139,10 @@ function setGenres()
                             <?php
                             if (isset($_COOKIE['username'])) {
                                 echo "<li class='menu__item'>
-                                  <a href='#' class='menu__link'>Закладки</a>
+                                  <a href='bookmarks' class='menu__link'>Закладки</a>
                                        </li>
                                   <li class='menu__item'>
-                                      <a href='#' class='menu__link'>Пользователь</a>
+                                      <a href='user' class='menu__link'>Пользователь</a>
                                   </li> ";
                             } else {
                                 echo "<li class='menu__item'>

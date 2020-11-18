@@ -29,11 +29,7 @@ switch ($arg) {
             break;
         }
 
-        //если какое-то из полей пустое, сообщаем, что нужно ввести все поля
-        if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
-            $error = "Введите все поля!";
-            include('include/registration.php');
-        } else { //иначе получаем  данные
+        if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
             $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
             $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
             $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
@@ -49,7 +45,7 @@ switch ($arg) {
             if (!empty($error)) {
                 include('include/registration.php');
             } else { //иначе сохранаяем пользователя в куки и показываем стартовую страницу
-                if ($isSave)  setcookie("username", $username, 120); //time() + 3600 * 24 * 365) "/"
+                if ($isSave) setcookie("username", $username, time() + 120); //time() + 3600 * 24 * 365) "/"
                 else  setcookie("username", $username);
                 header('location: /');
             }
@@ -63,10 +59,7 @@ switch ($arg) {
         }
 
         //если какое-то из полей пустое, сообщаем, что нужно ввести все поля
-        if (empty($_POST['username']) || empty($_POST['password'])) {
-            $error = "Введите все поля!";
-            include('include/auth.php');
-        } else {
+        if (!empty($_POST['username']) && !empty($_POST['password'])) {
             $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
             $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
             $password = md5($password . "asdfhgewq123");
@@ -80,20 +73,29 @@ switch ($arg) {
             if (!empty($error)) {
                 include('include/auth.php');
             } else {
-                if ($isSave)  setcookie("username", $username, 120); //time() + 3600 * 24 * 365) "/"
+                if ($isSave) setcookie("username", $username, time() + 120); //time() + 3600 * 24 * 365) "/"
                 else  setcookie("username", $username);
                 header('location: /');
             }
         }
         break;
     case "addComment":
-
         $comment = $_POST['comment'];
         $filmId = $_POST['filmId'];
 
         $databaseManager->addComment($comment, $filmId, $_COOKIE['username'], time());
         $url = "location: films?id=" . $filmId;
         header($url);
+        break;
+    case "user":
+        include('include/user.php');
+        break;
+    case "bookmarks":
+        include('include/bookmarks.php');
+        break;
+    case "exit":
+        setcookie("username", "", time() - 3600 * 24 * 365);
+        header('location: /');
         break;
     default:
         include('include/main.php');

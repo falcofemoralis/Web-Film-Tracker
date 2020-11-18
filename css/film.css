@@ -107,6 +107,14 @@
     background-color: dodgerblue;
 }
 
+.error-hint {
+    display: none;
+    color: orangered;
+    font-weight: bold;
+    height: auto;
+    margin-bottom: 15px;
+}
+
 /* Mobile version */
 
 @media (max-width: 925px) {

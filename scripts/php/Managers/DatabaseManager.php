@@ -1,6 +1,8 @@
 <?php
 require_once 'scripts/php/Objects/Film.php';
 require_once 'scripts/php/Objects/Actor.php';
+require_once 'scripts/php/Objects/User.php';
+require_once 'scripts/php/Objects/Comment.php';
 
 class DatabaseManager
 {
@@ -300,7 +302,7 @@ class DatabaseManager
         return $error;
     }
 
-    private function getUserId($username)
+    public function getUserId($username)
     {
         $getQuery = "SELECT users.userId
                 FROM users
@@ -342,14 +344,16 @@ class DatabaseManager
 
         return $comments;
     }
-    public function getUsernameByUserId($userId){
-        $getQuery = "SELECT users.username
+
+    public function getUserByUserId($userId)
+    {
+        $getQuery = "SELECT users.username, users.email
                 FROM users
                 WHERE users.userId='$userId'";
 
         $result = mysqli_query($this->connection, $getQuery) or die("Ошибка " . mysqli_error($this->connection));
 
         $row = mysqli_fetch_row($result);
-        return $row[0];
+        return new User($userId, $row[0], $row[1]);
     }
 }
