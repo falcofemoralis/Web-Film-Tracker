@@ -21,7 +21,7 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
     <script src="./scripts/js/slider.js"></script>
 </head>
 
-<body style="background-color: #efefef;">
+<body>
 <?php
 include('include/header.php');
 

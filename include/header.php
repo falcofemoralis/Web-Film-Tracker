@@ -8,23 +8,35 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
     <link rel='stylesheet' href="./CSS//header.css">
 
     <script>
-        let isOpened = 0
+        let isOpened = 0;
+        let last = "";
 
-        function toggle() {
-            let menu = document.getElementsByClassName("mobile-dropdown__menu");
+        function toggle(id) {
+            console.log(last);
+            console.log(id);
 
+            if (last != id) {
+                let lastMenu = document.getElementsByClassName(last);
+                if (lastMenu.length > 0) {
+                    lastMenu[0].style.display = "none";
+                    isOpened = 0;
+                }
+            }
+
+            let menu = document.getElementsByClassName(id);
             if (isOpened) {
                 menu[0].style.display = "none";
                 isOpened = 0;
             } else {
                 menu[0].style.display = "block";
                 isOpened = 1;
+                last = id;
             }
         }
     </script>
 </head>
 
-<body style="background-color: #efefef;">
+<body>
 <?php
 
 function setGenres()
@@ -66,7 +78,6 @@ function setGenres()
                           </li> ";
                     }
                     ?>
-
                 </ul>
             </nav>
         </div>
@@ -75,11 +86,11 @@ function setGenres()
             <nav class="header-bot__left">
                 <!-- Mobile button -->
                 <div class="mobile-controls">
-                    <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle()">
+                    <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle('genres')">
                         <img class="button-image" src="./images/ic_menu.svg" alt="site_logo">
                     </button>
                     <div>
-                        <ul class="mobile-dropdown__menu">
+                        <ul class="mobile-dropdown__menu genres">
                             <?php setGenres(); ?>
                         </ul>
                     </div>
@@ -120,12 +131,28 @@ function setGenres()
 
                 <!-- Mobile button -->
                 <div class="mobile-controls">
-                    <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle()">
+                    <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle('auth')">
                         <img class="button-image" src="./images/ic_userPanel.svg" alt="site_logo">
                     </button>
                     <div>
-                        <ul class="mobile-dropdown__menu">
-                            <?php setGenres(); ?>
+                        <ul class="mobile-dropdown__menu auth">
+                            <?php
+                            if (isset($_COOKIE['username'])) {
+                                echo "<li class='menu__item'>
+                                  <a href='#' class='menu__link'>Закладки</a>
+                                       </li>
+                                  <li class='menu__item'>
+                                      <a href='#' class='menu__link'>Пользователь</a>
+                                  </li> ";
+                            } else {
+                                echo "<li class='menu__item'>
+                                  <a href='auth' class='menu__link'>Логин</a>
+                                       </li>
+                                  <li class='menu__item'>
+                                      <a href='register' class='menu__link'>Регистрация</a>
+                                  </li> ";
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>

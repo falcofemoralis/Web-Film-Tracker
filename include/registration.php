@@ -12,6 +12,7 @@
     <meta name="author" content="Иващенко Владислав Романович">
     <title>Трекер фильмов</title>
     <link rel='stylesheet' href="./CSS//validation.css">
+    <link rel='stylesheet' href="./CSS//elements.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" href="./images/favicon.ico">
 </head>
@@ -21,9 +22,8 @@
 include('include/header.php');
 ?>
 
-<article class="page">
+<article>
     <div class="container">
-
         <form class="validation-content" action="register" method="post">
             <div class="validation-input">
                 <div class="validation-title">Регистрация</div>
@@ -37,6 +37,11 @@ include('include/header.php');
                 <label>Пароль<br>
                     <input name="password" type="password">
                 </label>
+
+                <label>Запомнить меня?
+                    <input name="isSave" type="checkbox" style="width: 5%">
+                </label>
+                <br>
 
                 <?
                 if (!empty($error)) echo "<label style='color: orangered; font-weight: bold'>Ошибка: $error<br></label>";

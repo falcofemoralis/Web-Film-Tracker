@@ -176,14 +176,21 @@ input {
 
 .mobile-dropdown__menu li {
     display: flex;
-    float: left;
     width: 50%;
     background: inherit;
-    padding-bottom: 25px;
+    padding: 10px;
 }
 
 .mobile-dropdown__menu a {
     color: #2e859e;
+}
+
+.genres li{
+    float: left;
+}
+
+.auth{
+    left: 0;
 }
 
 /* Mobile version */

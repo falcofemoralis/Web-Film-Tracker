@@ -36,6 +36,10 @@ switch ($arg) {
             $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
             $password = md5($password . "asdfhgewq123"); //шифрование пароля с солью
 
+            //запоминать ли юзера
+            $isSave = false;
+            if (!empty($_POST['isSave'])) $isSave = true;
+
             $databaseManager = new DatabaseManager();
             $error = $databaseManager->registerUser($username, $password, $email);
 
@@ -43,7 +47,9 @@ switch ($arg) {
             if (!empty($error)) {
                 include('include/registration.php');
             } else { //иначе сохранаяем пользователя в куки и показываем стартовую страницу
-                setcookie("username", $username, time() + 3600); //time() + 60 * 60 * 24)
+                $time = 0;
+                if ($isSave) $time = 60;
+                setcookie("username", $username, time() + $time); //time() + 3600 * 24 * 365) "/"
                 header('location: /');
             }
         }
@@ -64,13 +70,19 @@ switch ($arg) {
             $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
             $password = md5($password . "asdfhgewq123");
 
+            //запоминать ли юзера
+            $isSave = false;
+            if (!empty($_POST['isSave'])) $isSave = true;
+
             $databaseManager = new DatabaseManager();
             $error = $databaseManager->authUser($username, $password);
 
             if (!empty($error)) {
                 include('include/auth.php');
             } else {
-                setcookie("username", $username); //time() + 3600 * 24 * 365) "/"
+                $time = 0;
+                if ($isSave) $time = 60;
+                setcookie("username", $username, time() + $time); //time() + 3600 * 24 * 365) "/"
                 header('location: /');
             }
         }

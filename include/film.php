@@ -161,7 +161,6 @@ for ($i = 0; $i < count($allActors); ++$i) {
                     $size = 5;
                     $pages = 1;
 
-
                     if ($sortedActors[0] != null) {
                         $all = count($sortedActors[0]);
                         if ($all < $size) $size = $all;
@@ -177,6 +176,10 @@ for ($i = 0; $i < count($allActors); ++$i) {
                 </div>
                 <button class='slider__button' onclick="plusSlides(1)">&#10095;</button>
             </div>
+        </div>
+
+        <div>
+            <textarea class="comments" name="comments" placeholder="Написать комментарий"></textarea>
         </div>
     </div>
 </article>
