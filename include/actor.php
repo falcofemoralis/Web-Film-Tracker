@@ -14,12 +14,12 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
     <meta name="description" content="Сайт поиска информации про фильмы">
     <meta name="author" content="Иващенко Владислав Романович">
     <title>Трекер фильмов</title>
-    <link rel="icon" href="./images/favicon.ico">
+    <link rel="icon" href="/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel='stylesheet' href="./CSS//actor.css">
-    <link rel='stylesheet' href="./CSS//elements.css">
-    <link rel='stylesheet' href="./CSS//slider.css">
-    <script src="./scripts/js/slider.js"></script>
+    <link rel='stylesheet' href="/CSS/actor.css">
+    <link rel='stylesheet' href="/CSS/elements.css">
+    <link rel='stylesheet' href="/CSS/slider.css">
+    <script src="/scripts/js/slider.js"></script>
 </head>
 
 <body>
@@ -67,7 +67,7 @@ for ($i = 0; $i < count($films); $i++) {
         <section class="actor-container">
             <h1 class='actor_name'><? echo "$name" ?></h1>
             <div class='actor-main'>
-                <img class='actor-main__photo' src='./images/photos/<? echo "$personId" ?>.jpeg' alt='photo'>
+                <img class='actor-main__photo' src='/images/photos/<? echo "$personId" ?>.jpeg' alt='photo'>
                 <div class='actor-main__info'>
                     <table>
                         <tr>

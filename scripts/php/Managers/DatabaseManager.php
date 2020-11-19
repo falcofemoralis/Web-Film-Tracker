@@ -16,7 +16,7 @@ class DatabaseManager
         $password = 'root'; // пароль
 
         $connection = mysqli_connect($host, $user, $password, $database)
-        or die("Ошибка " . mysqli_error($connection));
+        or die("Ошибка подключения к базе" . mysqli_error($connection));
 
         $this->connection = $connection;
     }
@@ -70,9 +70,9 @@ class DatabaseManager
     public function getPopularFilms($limit)
     {
         $query = "SELECT films.title_id, films_translated.title, films.premiered, films.genres
-            FROM films INNER JOIN films_Translated ON films.title_id=films_Translated.title_id 
+            FROM films INNER JOIN films_translated ON films.title_id=films_translated.title_id 
             INNER JOIN ratings ON films.title_id=ratings.title_id
-            WHERE films_Translated.lang_id = 3 AND ratings.rating > 6.5 AND ratings.votes > 40000 AND films.premiered = 2020 
+            WHERE films_translated.lang_id = 3 AND ratings.rating > 6.5 AND ratings.votes > 40000 AND films.premiered = 2020 
             ORDER BY ratings.votes DESC LIMIT $limit";
 
         return $this->getShortFilmsFromQuery($query);
@@ -82,26 +82,26 @@ class DatabaseManager
     public function getFilmsByYear($year, $limit)
     {
         $query = "SELECT films.title_id, films_translated.title, films.premiered, films.genres
-            FROM films INNER JOIN films_Translated ON films.title_id=films_Translated.title_id 
+            FROM films INNER JOIN films_translated ON films.title_id=films_translated.title_id 
             INNER JOIN ratings ON films.title_id=ratings.title_id
-            WHERE films_Translated.lang_id = 3 AND premiered=$year limit $limit";
+            WHERE films_translated.lang_id = 3 AND premiered=$year limit $limit";
 
         return $this->getShortFilmsFromQuery($query);
     }
 
     public function getFilmByFilmId($id, $isShort)
     {
-        $queryParam = "WHERE films_Translated.lang_id = 3 AND films.title_id = '$id'";
+        $queryParam = "WHERE films_translated.lang_id = 3 AND films.title_id = '$id'";
 
         $film = null;
         if ($isShort) {
             $query = "SELECT films.title_id, films_translated.title, films.premiered, films.genres
-             FROM films INNER JOIN films_Translated ON films.title_id=films_Translated.title_id " . $queryParam;
+             FROM films INNER JOIN films_translated ON films.title_id=films_translated.title_id " . $queryParam;
             $film = $this->getShortFilmsFromQuery($query);
         } else {
             $query = "SELECT films.title_id, films_translated.title, films.is_adult, films.premiered,
             films.runtime_minutes, films.genres, films_translated.plot, ratings.rating, ratings.votes
-            FROM films INNER JOIN films_Translated ON films.title_id=films_Translated.title_id 
+            FROM films INNER JOIN films_translated ON films.title_id=films_translated.title_id 
             INNER JOIN ratings ON films.title_id=ratings.title_id " . $queryParam;
             $film = $this->getLongFilmsFromQuery($query);
         }
@@ -239,9 +239,9 @@ class DatabaseManager
         for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
             $row = mysqli_fetch_row($result);
             $query = "SELECT films.title_id, films_translated.title, films.premiered, films.genres
-            FROM films INNER JOIN films_Translated ON films.title_id=films_Translated.title_id 
+            FROM films INNER JOIN films_translated ON films.title_id=films_translated.title_id 
             INNER JOIN ratings ON films.title_id=ratings.title_id
-            WHERE films_Translated.lang_id = 3 and films.title_id = '$row[0]'";
+            WHERE films_translated.lang_id = 3 and films.title_id = '$row[0]'";
             $films[] = $this->getShortFilmsFromQuery($query)[0];
         }
 

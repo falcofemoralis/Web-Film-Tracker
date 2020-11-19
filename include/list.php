@@ -14,10 +14,10 @@ require_once 'scripts/php/Managers/PagesHelper.php';
     <meta name="description" content="Сайт поиска информации про фильмы">
     <meta name="author" content="Иващенко Владислав Романович">
     <title>Трекер фильмов</title>
-    <link rel='stylesheet' href="./CSS//list.css">
-    <link rel='stylesheet' href="./CSS//elements.css">
+    <link rel='stylesheet' href="/CSS/list.css">
+    <link rel='stylesheet' href="/CSS/elements.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" href="./images/favicon.ico">
+    <link rel="icon" href="/images/favicon.ico">
 </head>
 
 <body>

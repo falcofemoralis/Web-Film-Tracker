@@ -13,7 +13,7 @@ class ObjectHelper
     function createFilm($filmId, $title, $year, $genres)
     {
         $poster = "./images/posters/$filmId.jpeg";
-        if (!file_exists($poster)) $poster = "./images/posters/noimage_poster.jpeg";
+        if (!file_exists($poster)) $poster = "/images/posters/noimage_poster.jpeg";
 
         echo "
         <div class='film'>
@@ -28,13 +28,13 @@ class ObjectHelper
 
             if ($i != count($genres) - 2) echo ", ";
         }
-       echo "</div></a></div>";
+        echo "</div></a></div>";
     }
 
     function createActor($actorId, $name, $characters, $category)
     {
         $photo = "./images/photos/$actorId.jpeg";
-        if (file_exists($photo) == false) $photo = "./images/photos/noimage_photo.jpeg";
+        if (file_exists($photo) == false) $photo = "/images/photos/noimage_photo.jpeg";
 
         echo "
         <a class='actor' href='actors?id=$actorId'>

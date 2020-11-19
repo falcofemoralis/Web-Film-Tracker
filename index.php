@@ -5,11 +5,7 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
 $requestUri = explode('/', stristr($_SERVER['REQUEST_URI'] . '?', '?', true));
 array_shift($requestUri); //т.к 1 элемент пустой, поэтому сдигаем
 
-//array_shift отдает 0 значений и сдигет вправо
-array_shift($requestUri); //выдаст название сайта
-
 $databaseManager = new DatabaseManager();
-
 
 $arg = array_shift($requestUri);
 switch ($arg) {
@@ -45,7 +41,7 @@ switch ($arg) {
             if (!empty($error)) {
                 include('include/registration.php');
             } else { //иначе сохранаяем пользователя в куки и показываем стартовую страницу
-                if ($isSave) setcookie("username", $username, time() + 120); //time() + 3600 * 24 * 365) "/"
+                if ($isSave) setcookie("username", $username, time() + 3600 * 24 * 365);
                 else  setcookie("username", $username);
                 header('location: /');
             }
@@ -73,7 +69,7 @@ switch ($arg) {
             if (!empty($error)) {
                 include('include/auth.php');
             } else {
-                if ($isSave) setcookie("username", $username, time() + 120); //time() + 3600 * 24 * 365) "/"
+                if ($isSave) setcookie("username", $username, time() + time() + 3600 * 24 * 365);
                 else  setcookie("username", $username);
                 header('location: /');
             }
@@ -82,6 +78,7 @@ switch ($arg) {
     case "addComment":
         $comment = $_POST['comment'];
         $filmId = $_POST['filmId'];
+        $comment = htmlspecialchars($comment);
 
         $databaseManager->addComment($comment, $filmId, $_COOKIE['username'], time());
         $url = "location: films?id=" . $filmId;

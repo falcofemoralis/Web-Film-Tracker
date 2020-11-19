@@ -5,7 +5,7 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
 <html lang="en">
 
 <head>
-    <link rel='stylesheet' href="./CSS//header.css">
+    <link rel='stylesheet' href="/CSS/header.css">
 
     <script>
         let isOpened = 0;
@@ -56,8 +56,8 @@ function setGenres()
 <header class='header'>
     <div class="container" id="header_container">
         <div class="header-top">
-            <a class='header__logo' href="/kursach-site/">
-                <img src="./images/site_logo.svg" alt="site_logo">
+            <a class='header__logo' href="/">
+                <img src="/images/site_logo.svg" alt="site_logo">
             </a>
             <nav class="header-top__right">
                 <ul class="menu__list">
@@ -87,7 +87,7 @@ function setGenres()
                 <!-- Mobile button -->
                 <div class="mobile-controls">
                     <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle('genres')">
-                        <img class="button-image" src="./images/ic_menu.svg" alt="site_logo">
+                        <img class="button-image" src="/images/ic_menu.svg" alt="site_logo">
                     </button>
                     <div>
                         <ul class="mobile-dropdown__menu genres">
@@ -122,7 +122,7 @@ function setGenres()
                     </li>
                 </ul>
                 <div class='header-bot__search'>
-                    <img class='header__search_button' src="./images/ic_search.svg" alt="ic_search">
+                    <img class='header__search_button' src="/images/ic_search.svg" alt="ic_search">
                     <form action="list" style="width: 100%">
                         <input class='header__search_input' type="search" placeholder="Я ищу фильм..." name="search">
                         <button type="submit" style="display: none"></button>
@@ -132,7 +132,7 @@ function setGenres()
                 <!-- Mobile button -->
                 <div class="mobile-controls">
                     <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle('auth')">
-                        <img class="button-image" src="./images/ic_userPanel.svg" alt="site_logo">
+                        <img class="button-image" src="/images/ic_userPanel.svg" alt="site_logo">
                     </button>
                     <div>
                         <ul class="mobile-dropdown__menu auth">

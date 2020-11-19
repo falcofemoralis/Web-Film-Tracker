@@ -16,26 +16,12 @@ require_once 'scripts/php/Objects/User.php';
     <meta name="description" content="Сайт поиска информации про фильмы">
     <meta name="author" content="Иващенко Владислав Романович">
     <title>Трекер фильмов</title>
-    <link rel="icon" href="./images/favicon.ico">
+    <link rel="icon" href="/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel='stylesheet' href="./CSS//film.css">
-    <link rel='stylesheet' href="./CSS//elements.css">
-    <link rel='stylesheet' href="./CSS//slider.css">
-    <script src="./scripts/js/slider.js"></script>
-    <script>
-        function checkText() {
-            let btn = document.getElementById("add");
-            let comment = document.getElementById("comment");
-            let error = document.getElementById("error");
-
-            if (comment.value != "") {
-                btn.disabled = false;
-            } else {
-                btn.disabled = true;
-                error.style.display = "block";
-            }
-        }
-    </script>
+    <link rel='stylesheet' href="/CSS/film.css">
+    <link rel='stylesheet' href="/CSS/elements.css">
+    <link rel='stylesheet' href="/CSS/slider.css">
+    <script src="/scripts/js/slider.js"></script>
 </head>
 
 <body>
@@ -86,7 +72,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
         <div class="film-container">
             <h1 class='film__title'><? echo "$title" ?></h1>
             <div class='film-main'>
-                <img class='film-main__poster' src='./images/posters/<? echo "$filmId" ?>.jpeg' alt='poster'>
+                <img class='film-main__poster' src='/images/posters/<? echo "$filmId" ?>.jpeg' alt='poster'>
                 <div class='film-main__info'>
                     <table>
                         <tr>
@@ -200,7 +186,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
                 $text = $comments[$i]->getComment();
 
                 echo "<div class='comment'>
-                <img src='./images/avatar.jpeg' alt='avatar'/>
+                <img src='/images/avatar.jpeg' alt='avatar'/>
                 <div class='comment-inside'>
                    <div style='padding-bottom: 10px'> <b>$username</b>, оставлен $time</div>
                        $text
@@ -209,12 +195,24 @@ for ($i = 0; $i < count($allActors); ++$i) {
             }
 
             ?>
-
-
         </div>
     </div>
 </article>
-<script>sliderInit("actor")</script>
+<script>
+    sliderInit("actor")
+    let textarea = document.getElementById("comment");
+    textarea.addEventListener('input', (event) => {
+        let btn = document.getElementById("add");
+        let error = document.getElementById("error");
+
+        if (textarea.value != "") {
+            btn.disabled = false;
+        } else {
+            btn.disabled = true;
+            error.style.display = "block";
+        }
+    });
+</script>
 <?php
 include('include/footer.php');
 ?>

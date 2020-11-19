@@ -20,19 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/css/bookmarks.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/user.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/bookmarks.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/user.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/php/Objects/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/film.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/film.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/actor.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/actor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/bookmarks.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/bookmarks.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/registration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/user.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +83,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML4 File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ind.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
@@ -168,7 +170,15 @@
       <workItem from="1605685191128" duration="901000" />
       <workItem from="1605694455509" duration="6818000" />
       <workItem from="1605702013995" duration="12578000" />
-      <workItem from="1605720025277" duration="2069000" />
+      <workItem from="1605720025277" duration="2211000" />
+      <workItem from="1605722373797" duration="2023000" />
+      <workItem from="1605727868319" duration="6000" />
+      <workItem from="1605731266490" duration="229000" />
+      <workItem from="1605731681392" duration="99000" />
+      <workItem from="1605732345077" duration="244000" />
+      <workItem from="1605735619853" duration="1597000" />
+      <workItem from="1605783555737" duration="69000" />
+      <workItem from="1605796549267" duration="45000" />
     </task>
     <servers />
   </component>
@@ -204,6 +214,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="630" y="158" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604679278879" />
+    <state x="712" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605731450219">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="712" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605731450219" />
     <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1605714609964">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -288,10 +302,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604677757929" />
-    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1605712758695">
+    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1605731723730">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="119" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605712758695" />
+    <state x="667" y="119" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605731723730" />
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog" timestamp="1604757553781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

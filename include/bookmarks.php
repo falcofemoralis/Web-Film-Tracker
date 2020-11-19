@@ -11,10 +11,10 @@
     <meta name="description" content="Сайт поиска информации про фильмы">
     <meta name="author" content="Иващенко Владислав Романович">
     <title>Трекер фильмов</title>
-    <link rel='stylesheet' href="./CSS//elements.css">
-    <link rel='stylesheet' href="./CSS//bookmarks.css">
+    <link rel='stylesheet' href="/CSS/elements.css">
+    <link rel='stylesheet' href="/CSS/bookmarks.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" href="./images/favicon.ico">
+    <link rel="icon" href="/images/favicon.ico">
 </head>
 
 <body>
@@ -24,7 +24,7 @@ include('include/header.php');
 
 <article>
     <div class="container center">
-        <img src="./images/constr.png" alt="no page"/>
+        <img src="/images/constr.png" alt="no page"/>
     </div>
 </article>
 <?php

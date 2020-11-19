@@ -118,6 +118,7 @@ input {
     color: #fff;
     font-size: 16px;
     padding: 20px 16px;
+    cursor: pointer;
     background-color: inherit;
 }
 

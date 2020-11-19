@@ -13,12 +13,12 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
     <meta name="description" content="Сайт поиска информации про фильмы">
     <meta name="author" content="Иващенко Владислав Романович">
     <title>Трекер фильмов</title>
-    <link rel='stylesheet' href="./CSS//main.css">
-    <link rel='stylesheet' href="./CSS//elements.css">
-    <link rel='stylesheet' href="./CSS//slider.css">
+    <link rel='stylesheet' href="/CSS/main.css">
+    <link rel='stylesheet' href="/CSS/elements.css">
+    <link rel='stylesheet' href="/CSS/slider.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" href="./images/favicon.ico">
-    <script src="./scripts/js/slider.js"></script>
+    <link rel="icon" href="/images/favicon.ico">
+    <script src="/scripts/js/slider.js"></script>
 </head>
 
 <body>
