@@ -24,7 +24,8 @@ class ObjectHelper
 
         for ($i = 0; $i < count($genres) - 1; $i++) {
             $genre = $this->databaseManager->getGenreById($genres[$i]);
-            echo "$genre";
+            $genreName = $genre[0];
+            echo "$genreName";
 
             if ($i != count($genres) - 2) echo ", ";
         }

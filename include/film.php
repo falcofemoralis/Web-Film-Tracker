@@ -21,7 +21,6 @@ require_once 'scripts/php/Objects/User.php';
     <link rel='stylesheet' href="/CSS/film.css">
     <link rel='stylesheet' href="/CSS/elements.css">
     <link rel='stylesheet' href="/CSS/slider.css">
-    <script src="/scripts/js/slider.js"></script>
 </head>
 
 <body>
@@ -103,7 +102,10 @@ for ($i = 0; $i < count($allActors); ++$i) {
                                 <? $genres = $film->getGenres();
                                 for ($i = 0; $i < count($genres) - 1; $i++) {
                                     $genre = $databaseManager->getGenreById($genres[$i]);
-                                    echo "$genre";
+                                    $genreName = $genre[0];
+                                    $genreId = $genre[1];
+
+                                    echo "<a class='actor-link' href='list?type=$genreId&page=1'>$genreName</a>";
 
                                     if ($i != count($genres) - 2) echo ", ";
                                 } ?>
@@ -111,7 +113,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
                         </tr>
 
                         <?
-                        for ($i = 0; $i < 4; $i++) {
+                        for ($i = 1; $i < 4; $i++) {
                             if ($sortedActors[$i] != null) {
                                 $title = $sortedActorsHeaders[$i];
                                 echo "<tr><td><b>$title</b></td><td>";
@@ -119,8 +121,10 @@ for ($i = 0; $i < count($allActors); ++$i) {
                                 $size = count($sortedActors[$i]);
                                 for ($j = 0; $j < $size; $j++) {
                                     $name = $sortedActors[$i][$j]->getName();
-                                    echo "$name";
-                                    if ($i != $size - 1) echo ", ";
+                                    $id = $sortedActors[$i][$j]->getPersonId();
+
+                                    echo "<a class='actor-link' href='actors?id=$id'>$name</a>";
+                                    if ($j != $size - 1) echo ", ";
                                 }
 
                                 echo "</td></tr>";
@@ -139,8 +143,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
         <div>
             <h2 class="section__title">Актеры в фильме</h2>
             <div class='slider' style="justify-content:  flex-start;">
-                <button class='slider__button' onclick="plusSlides(-1)">&#10094;</button>
-                <div class="slider__container">
+                <div class="slider__container" style="overflow: scroll">
                     <?php
                     $size = 5;
                     $pages = 1;
@@ -158,7 +161,6 @@ for ($i = 0; $i < count($allActors); ++$i) {
 
                     ?>
                 </div>
-                <button class='slider__button' onclick="plusSlides(1)">&#10095;</button>
             </div>
         </div>
 
@@ -199,7 +201,6 @@ for ($i = 0; $i < count($allActors); ++$i) {
     </div>
 </article>
 <script>
-    sliderInit("actor")
     let textarea = document.getElementById("comment");
     textarea.addEventListener('input', (event) => {
         let btn = document.getElementById("add");

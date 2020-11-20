@@ -18,8 +18,6 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel='stylesheet' href="/CSS/actor.css">
     <link rel='stylesheet' href="/CSS/elements.css">
-    <link rel='stylesheet' href="/CSS/slider.css">
-    <script src="/scripts/js/slider.js"></script>
 </head>
 
 <body>

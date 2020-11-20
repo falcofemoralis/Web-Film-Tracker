@@ -115,6 +115,11 @@
     margin-bottom: 15px;
 }
 
+.actor-link {
+    color: steelblue;
+    text-decoration: underline;
+}
+
 /* Mobile version */
 
 @media (max-width: 925px) {

@@ -57,7 +57,6 @@ function showSlides(n) {
 
     if (n < 1) slideIndex = slides.length
 
-    console.log(slides[slideIndex-1].offsetWidth);
     for (let i = 0; i < slides.length; ++i) {
         let posNext = width * (slideIndex - 1);
         slides[i].style.right = `${posNext}px`

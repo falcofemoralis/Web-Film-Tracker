@@ -36,7 +36,7 @@ class DatabaseManager
         if ($this->genresArray == null)
             $this->loadGenres();
 
-        return $this->genresArray[$genreId - 1][0];
+        return $this->genresArray[$genreId - 1];
     }
 
     public function getGenreByName($genreName)

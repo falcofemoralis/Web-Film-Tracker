@@ -12,9 +12,6 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
         let last = "";
 
         function toggle(id) {
-            console.log(last);
-            console.log(id);
-
             if (last != id) {
                 let lastMenu = document.getElementsByClassName(last);
                 if (lastMenu.length > 0) {

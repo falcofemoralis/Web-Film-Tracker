@@ -214,6 +214,7 @@ input {
     .mobile-menu__btn {
         background: transparent;
         text-decoration: none;
+        outline: none;
         border: none;
         cursor: pointer;
     }

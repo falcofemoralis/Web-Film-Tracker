@@ -26,10 +26,10 @@ switch ($arg) {
         }
 
         if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
-            $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-            $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
-            $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
-            $password = md5($password . "asdfhgewq123"); //шифрование пароля с солью
+            $email = htmlspecialchars($_POST['email']);
+            $username = htmlspecialchars($_POST['username']);
+            $password = htmlspecialchars($_POST['password']);
+            $password = md5(htmlspecialchars($password) . "asdfhgewq123"); //шифрование пароля с солью
 
             //запоминать ли юзера
             $isSave = false;
@@ -56,9 +56,9 @@ switch ($arg) {
 
         //если какое-то из полей пустое, сообщаем, что нужно ввести все поля
         if (!empty($_POST['username']) && !empty($_POST['password'])) {
-            $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
-            $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
-            $password = md5($password . "asdfhgewq123");
+            $username = htmlspecialchars($_POST['username']);
+            $password = htmlspecialchars($_POST['password']);
+            $password = md5(htmlspecialchars($password) . "asdfhgewq123");
 
             //запоминать ли юзера
             $isSave = false;
@@ -76,9 +76,8 @@ switch ($arg) {
         }
         break;
     case "addComment":
-        $comment = $_POST['comment'];
+        $comment = htmlspecialchars($_POST['comment']);
         $filmId = $_POST['filmId'];
-        $comment = htmlspecialchars($comment);
 
         $databaseManager->addComment($comment, $filmId, $_COOKIE['username'], time());
         $url = "location: films?id=" . $filmId;
