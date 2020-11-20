@@ -69,10 +69,38 @@ for ($i = 0; $i < count($allActors); ++$i) {
 <article class="page">
     <div class="container">
         <div class="film-container">
-            <h1 class='film__title'><? echo "$title" ?></h1>
+            <div class="film__title-row">
+                <h1 class='film__title'><? echo "$title" ?></h1>
+                <?
+
+                ?>
+            </div>
             <div class='film-main'>
-                <img class='film-main__poster' src='/images/posters/<? echo "$filmId" ?>.jpeg' alt='poster'>
-                <div class='film-main__info'>
+                <div class="film-main__poster-cont">
+                    <? echo "<img class='film-main__poster' src='/images/posters/$filmId.jpeg' alt='$title'>";
+                    if (isset($_COOKIE['username'])) {
+                        $isBookmarked = $databaseManager->getIsBookmarked($filmId);
+                        $userId = $databaseManager->getUserId($_COOKIE['username']);
+
+                        if ($isBookmarked) echo "<div class='bookmark_btn-cont'>
+                                    <a class='bookmark__btn' href='unbookmark?filmId=$filmId&userId=$userId'>
+                                       <img class='bookmark__btn-link' src='/images/unbookmark.svg' alt='unbookmark'>
+                                    </a>
+                                </div>";
+                        else echo "<div class='bookmark_btn-cont'>
+                                    <a class='bookmark__btn' href='bookmark?filmId=$filmId&userId=$userId'>
+                                         <img class='bookmark__btn-link' src='/images/bookmark.svg' alt='bookmark'>
+                                    </a>
+                                </div>";
+                    } ?>
+                </div>
+                <div id="hover-image" class="poster-hover__content">
+                    <span class="close">×</span>
+                    <? echo "<img class='poster-hover__image' src='/images/posters/$filmId.jpeg' alt='$title'>" ?>
+                    <div class="caption"><? echo "$title" ?> </div>
+                </div>
+
+                <div class=' film-main__info'>
                     <table>
                         <tr>
                             <td><B>Рейтинг:</B></td>
@@ -213,6 +241,21 @@ for ($i = 0; $i < count($allActors); ++$i) {
             error.style.display = "block";
         }
     });
+
+    let menu = document.getElementById('hover-image');
+    let isToggled = false;
+
+    window.onclick = function (event) {
+        console.log(event.target);
+        if (event.target.matches('.film-main__poster') && isToggled === false) {
+            menu.style.display = "block";
+            isToggled = true;
+        } else if (!event.target.matches('.film-main__poster') && isToggled === true) {
+            menu.style.display = "none";
+            isToggled = false;
+        }
+    }
+
 </script>
 <?php
 include('include/footer.php');

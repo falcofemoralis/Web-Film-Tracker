@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<?php
+require_once 'scripts/php/Objects/Film.php';
+require_once 'scripts/php/Managers/DatabaseManager.php';
+require_once 'scripts/php/Managers/ObjectHelper.php';
+?>
 
-</head>
 
 <head>
     <meta charset="UTF-8">
@@ -19,12 +22,36 @@
 
 <body>
 <?php
+
 include('include/header.php');
+
+$databaseManager = new DatabaseManager();
+$objectHelper = new ObjectHelper();
+
+$userId = $databaseManager->getUserId($_COOKIE['username']);
+$films = $databaseManager->getUserBookmarks($userId);
+
 ?>
 
 <article>
-    <div class="container center">
-        <img src="/images/constr.png" alt="no page"/>
+    <div class="container">
+        <div>
+            <h2 class='text__header'>Закладки</h2>
+            <div class="films-table">
+                <div class="films-container">
+                    <?php
+                    for ($i = 0; $i < count($films); ++$i) {
+                        $film = $databaseManager->getFilmByFilmId($films[$i], true);
+
+                        if ($film != null) {
+                            $name = $film->getTitle();
+                            $objectHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
     </div>
 </article>
 <?php

@@ -21,13 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/actor.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/actor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/film.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/film.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ic_menu.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/ic_menu.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/bookmarks.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/bookmarks.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/js/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/slider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +172,9 @@
       <workItem from="1605735619853" duration="1597000" />
       <workItem from="1605783555737" duration="69000" />
       <workItem from="1605796549267" duration="45000" />
-      <workItem from="1605881614972" duration="3187000" />
+      <workItem from="1605881614972" duration="7479000" />
+      <workItem from="1605897667871" duration="6767000" />
+      <workItem from="1605904531382" duration="1305000" />
     </task>
     <servers />
   </component>
@@ -296,10 +298,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604677757929" />
-    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1605884663977">
+    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1605901274816">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="119" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605884663977" />
+    <state x="667" y="119" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605901274816" />
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog" timestamp="1604757553781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -308,9 +310,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605884768228" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605714890534">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605905353844">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605714890534" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605905353844" />
   </component>
 </project>

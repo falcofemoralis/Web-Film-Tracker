@@ -1,3 +1,7 @@
+article{
+    height: 80vh;
+}
+
 .main {
     margin: 50px;
 }
@@ -10,7 +14,6 @@
 }
 
 .row {
-    width: 30%;
     padding: 15px;
     background-color: #f9f9f9;
     margin-bottom: 15px;
@@ -19,6 +22,7 @@
 
 .exit-btn{
     height: 50px;
+    width: 200px;
     color: white;
     outline: none;
     border: none;

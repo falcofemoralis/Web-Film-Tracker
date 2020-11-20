@@ -89,6 +89,20 @@ switch ($arg) {
     case "bookmarks":
         include('include/bookmarks.php');
         break;
+    case "bookmark":
+        $filmId = $_GET['filmId'];
+        $userId = $_GET['userId'];
+        $databaseManager->addToBookmarks($filmId, $userId);
+        $url = "location: films?id=$filmId";
+        header($url);
+        break;
+    case "unbookmark":
+        $filmId = $_GET['filmId'];
+        $userId = $_GET['userId'];
+        $databaseManager->removeFromBookmarks($filmId, $userId);
+        $url = "location: films?id=$filmId";
+        header($url);
+        break;
     case "exit":
         setcookie("username", "", time() - 3600 * 24 * 365);
         header('location: /');
