@@ -2,10 +2,6 @@
 <html lang="en">
 
 <head>
-
-</head>
-
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Сайт поиска информации про фильмы">
@@ -26,7 +22,7 @@ include('include/header.php');
     <div class="container">
         <form class="validation-content" action="register" method="post">
             <div class="validation-input">
-                <div class="validation-title">Регистрация</div>
+                <h2 class="validation-title">Регистрация</h2>
                 <label>E-mail<br>
                     <input name="email" type="email" required>
                 </label>

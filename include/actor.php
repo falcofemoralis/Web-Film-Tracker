@@ -62,8 +62,8 @@ for ($i = 0; $i < count($films); $i++) {
 
 <article class="page">
     <div class="container">
-        <section class="actor-container">
-            <h1 class='actor_name'><? echo "$name" ?></h1>
+        <div class="actor-container">
+            <h2 class='actor_name'><? echo "$name" ?></h2>
             <div class='actor-main'>
                 <img class='actor-main__photo' src='/images/photos/<? echo "$personId" ?>.jpeg' alt='photo'>
                 <div class='actor-main__info'>
@@ -92,7 +92,7 @@ for ($i = 0; $i < count($films); $i++) {
                             $age = $died - $born;
                             echo " <tr>
                             <td>
-                                <B>Дата смерти:</B>
+                                <b>Дата смерти:</b>
                             </td>
                             <td>
                                  $died г. (в возрасте $age лет)
@@ -104,9 +104,9 @@ for ($i = 0; $i < count($films); $i++) {
                     </table>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="section">
+        <div class="section">
             <?
             for ($i = 0; $i < 4; $i++) {
                 if ($sortedFilms[$i] != null) {
@@ -124,7 +124,7 @@ for ($i = 0; $i < count($films); $i++) {
                 }
             }
             ?>
-        </section>
+        </div>
     </div>
 </article>
 <?php

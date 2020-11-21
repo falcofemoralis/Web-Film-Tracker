@@ -19,7 +19,7 @@ class ObjectHelper
         <div class='film'>
             <a href='films?id=$filmId'>
             <img src='$poster' alt='poster'>
-            <h1>$title</h1>
+            <p><b class='film-title'>$title</b></p>
             <div>$year, ";
 
         for ($i = 0; $i < count($genres) - 1; $i++) {

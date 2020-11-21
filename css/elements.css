@@ -55,7 +55,7 @@ body {
     width: 156px;
 }
 
-.film h1 {
+.film-title {
     width: inherit;
     overflow-wrap: break-word;
 }
@@ -63,6 +63,10 @@ body {
 .film div {
     width: inherit;
     overflow-wrap: break-word;
+}
+
+.film p {
+    width: inherit;
 }
 
 /*Actor layout*/

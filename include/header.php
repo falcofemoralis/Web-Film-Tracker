@@ -1,39 +1,34 @@
 <?php
 require_once 'scripts/php/Managers/DatabaseManager.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <link rel='stylesheet' href="/CSS/header.css">
+<link rel='stylesheet' href="/CSS/header.css">
 
-    <script>
-        let isOpened = 0;
-        let last = "";
+<script>
+    let isOpened = 0;
+    let last = "";
 
-        function toggle(id) {
-            if (last != id) {
-                let lastMenu = document.getElementsByClassName(last);
-                if (lastMenu.length > 0) {
-                    lastMenu[0].style.display = "none";
-                    isOpened = 0;
-                }
-            }
-
-            let menu = document.getElementsByClassName(id);
-            if (isOpened) {
-                menu[0].style.display = "none";
+    function toggle(id) {
+        if (last != id) {
+            let lastMenu = document.getElementsByClassName(last);
+            if (lastMenu.length > 0) {
+                lastMenu[0].style.display = "none";
                 isOpened = 0;
-            } else {
-                menu[0].style.display = "block";
-                isOpened = 1;
-                last = id;
             }
         }
-    </script>
-</head>
 
-<body>
+        let menu = document.getElementsByClassName(id);
+        if (isOpened) {
+            menu[0].style.display = "none";
+            isOpened = 0;
+        } else {
+            menu[0].style.display = "block";
+            isOpened = 1;
+            last = id;
+        }
+    }
+</script>
+
 <?php
 
 function setGenres()
@@ -94,14 +89,14 @@ function setGenres()
                 </div>
 
                 <ul class="menu__list">
-                    <div class="dropdown-menu">
+                    <li class="dropdown-menu">
                         <button class="dropdown-menu__btn menu__link">Все жанры</button>
                         <div class="dropdown-content container">
                             <ul>
                                 <?php setGenres(); ?>
                             </ul>
                         </div>
-                    </div>
+                    </li>
                     <li>
                         <a href="list?type=action&page=1" class='menu__link'>Боевики</a>
                     </li>
@@ -129,7 +124,10 @@ function setGenres()
                 <!-- Mobile button -->
                 <div class="mobile-controls">
                     <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle('auth')">
-                        <img class="button-image" src="/images/ic_userPanel.svg" alt="site_logo">
+                        <?php
+                        if (isset($_COOKIE['username'])) echo "<img class='button-image' src='/images/ic_userPanel.svg' alt='site_logo'>";
+                        else  echo "<img class='button-image' src='/images/ic_authPanel.svg' alt='site_logo'>";
+                        ?>
                     </button>
                     <div>
                         <ul class="mobile-dropdown__menu auth">
@@ -157,5 +155,3 @@ function setGenres()
         </div>
     </div>
 </header>
-</body>
-</html>

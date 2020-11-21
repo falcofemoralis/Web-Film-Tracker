@@ -103,27 +103,32 @@ for ($i = 0; $i < count($allActors); ++$i) {
                 <div class=' film-main__info'>
                     <table>
                         <tr>
-                            <td><B>Рейтинг:</B></td>
-                            <td><? echo "<a class='film-main__info-rating' href='https://www.imdb.com/title/$filmId/'>IMDb<a>:&nbsp<b>$rating</b> ($votes)" ?></td>
+                            <td><b>Рейтинг:</b></td>
+                            <td><? echo "
+                                <a class='film-main__info-rating' href='https://www.imdb.com/title/$filmId/'>
+                                    IMDb
+                                </a>
+                                :&nbsp; <b>$rating</b> ($votes)" ?>
+                            </td>
                         </tr>
 
                         <tr>
-                            <td><b>Дата&nbspвыхода:</b></td>
+                            <td><b>Дата&nbsp;выхода:</b></td>
                             <td><? echo "$year год" ?></td>
                         </tr>
                         <tr>
                             <td><b>Время:</b></td>
                             <td><? echo "$runtime_minutes мин." ?></td>
                         </tr>
-                        <tr>
-                            <?
-                            if ($isAdult !== "") {
-                                echo "
-                             <td><b>Возраст:</b></td>
-                             <td>$isAdult</td>";
-                            }
-                            ?>
-                        </tr>
+                        <?
+                        if ($isAdult !== "") {
+                            echo "
+                              <tr>
+                                 <td><b>Возраст:</b></td>
+                                 <td>$isAdult</td> 
+                              </tr>";
+                        }
+                        ?>
                         <tr>
                             <td><b>Жанр:</b></td>
                             <td>
@@ -241,7 +246,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
             isToggled = false;
         }
     }
-    
+
     let textarea = document.getElementById("comment");
     textarea.addEventListener('input', (event) => {
         let btn = document.getElementById("add");

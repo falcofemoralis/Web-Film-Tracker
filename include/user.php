@@ -7,10 +7,6 @@ require_once 'scripts/php/Objects/User.php';
 ?>
 
 <head>
-
-</head>
-
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Сайт поиска информации про фильмы">
@@ -36,7 +32,7 @@ $email = $user->getEmail();
 <article>
     <div class="container">
         <div class="main">
-            <h1 class="main-header">Настройки профиля</h1>
+            <h2 class="main-header">Настройки профиля</h2>
             <label><b>Никнейм</b></label>
             <div class="row"><? echo "$username"; ?> <br></div>
             <label><b>Email</b></label>

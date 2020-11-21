@@ -113,11 +113,11 @@ input {
 /* Genre dropdown menu */
 
 .dropdown-menu__btn {
+    width: 85px;
     border: none;
     outline: none;
     color: #fff;
     font-size: 16px;
-    padding: 20px 16px;
     cursor: pointer;
     background-color: inherit;
 }
@@ -131,7 +131,7 @@ input {
     position: absolute;
     padding: 25px;
     background: rgba(255, 255, 255, 0.90);
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 100;
 }
 
