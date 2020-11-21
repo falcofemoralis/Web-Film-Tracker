@@ -1,27 +1,47 @@
 let slideIndex = 1;
-let width
+let width;
 let container;
+let sizeOfPage;
 
-function sliderInit(ref) {
-    //необходимые объекты
-    container = document.getElementsByClassName("slider__container"); //тут нахоядтся страницы слайдера
-    let film = document.getElementsByClassName(ref); //объект фильма, нужен для получения размера
+function getPages() {
+    let film = document.getElementsByClassName("film"); //объект фильма, нужен для получения размера
     let slider = document.getElementsByClassName("slider"); //слайдер (кнопки + конйтейнер)
 
     //получем размер страницы (кол-во фильмов на странице)
     //cwd - ширина слайдера fwd - ширина фильма
     let cwd = slider[0].offsetWidth;
     let fwd = film[0].offsetWidth;
-    let sizeOfPage = Math.trunc(cwd / fwd) - 1;
+    sizeOfPage = Math.trunc(cwd / fwd) - 1;
+}
+
+function reportWindowSize() {
+    sliderInit(false);
+}
+
+window.onresize = reportWindowSize;
+
+function sliderInit(isBefore) {
+    //необходимые объекты
+    container = document.getElementsByClassName("slider__container"); //тут нахоядтся страницы слайдера
+
+    getPages();
 
     //обновление фильмов в слайдере
-    let filmsChildren = container[0].children; //объекты фильмов в слайдере
-    for (let i = 0; i < filmsChildren.length; i++) {
-        filmsChildren[i].classList.add("slider__item");
+    let filmsChildren
+    if (isBefore) {
+        filmsChildren = container[0].children; //объекты фильмов в слайдере
+
+        for (let i = 0; i < filmsChildren.length; i++) {
+            filmsChildren[i].classList.add("slider__item");
+        }
     }
 
     //получение фильмов как non-Live list
     let films = document.querySelectorAll(".slider__item");
+
+    if (!isBefore) {
+        container[0].innerHTML = "";
+    }
 
     //разбиение фильмов на страницы
     let div;

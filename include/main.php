@@ -65,7 +65,7 @@ $objectHelper = new ObjectHelper();
         </div>
     </div>
 </article>
-<script>sliderInit("film")</script>
+<script>sliderInit(true)</script>
 <?php
 include('include/footer.php');
 ?>

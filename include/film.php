@@ -229,6 +229,19 @@ for ($i = 0; $i < count($allActors); ++$i) {
     </div>
 </article>
 <script>
+    let menu = document.getElementById('hover-image');
+    let isToggled = false;
+
+    window.onclick = function (event) {
+        if (event.target.matches('.film-main__poster') && isToggled === false) {
+            menu.style.display = "block";
+            isToggled = true;
+        } else if (!event.target.matches('.film-main__poster') && isToggled === true) {
+            menu.style.display = "none";
+            isToggled = false;
+        }
+    }
+    
     let textarea = document.getElementById("comment");
     textarea.addEventListener('input', (event) => {
         let btn = document.getElementById("add");
@@ -241,20 +254,6 @@ for ($i = 0; $i < count($allActors); ++$i) {
             error.style.display = "block";
         }
     });
-
-    let menu = document.getElementById('hover-image');
-    let isToggled = false;
-
-    window.onclick = function (event) {
-        console.log(event.target);
-        if (event.target.matches('.film-main__poster') && isToggled === false) {
-            menu.style.display = "block";
-            isToggled = true;
-        } else if (!event.target.matches('.film-main__poster') && isToggled === true) {
-            menu.style.display = "none";
-            isToggled = false;
-        }
-    }
 
 </script>
 <?php
