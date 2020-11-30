@@ -23,25 +23,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/auth/Auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/auth/AuthApi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/bookmarks/Bookmarks.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/bookmarks/BookmarksApi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trailer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/bookmarks/BookmarksApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/bookmarks/BookmarksApi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/comments/CommentsApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/comments/CommentsApi.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/film.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/film.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/footer.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/actor.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/actor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/validation.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/validation.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/bookmarks.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/userBookmarks.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/registration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Objects/Film.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Objects/Film.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +208,8 @@
       <workItem from="1606329505879" duration="11000" />
       <workItem from="1606724530830" duration="1089000" />
       <workItem from="1606730513272" duration="2684000" />
-      <workItem from="1606742630806" duration="3056000" />
+      <workItem from="1606742630806" duration="3808000" />
+      <workItem from="1606760748231" duration="10181000" />
     </task>
     <servers />
   </component>
@@ -337,18 +333,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606215401105" />
-    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1606744940987">
+    <state x="593" y="95" width="585" height="801" key="find.popup" timestamp="1606772542446">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="119" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606744940987" />
+    <state x="593" y="95" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606772542446" />
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog" timestamp="1604757553781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604757553781" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1605884768228">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1606771920484">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605884768228" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606771920484" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606062799229">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -17,7 +17,7 @@ class ObjectHelper
 
         echo "
         <div class='film'>
-            <a href='films?id=$filmId'>
+            <a href='film?id=$filmId'>
             <img src='$poster' alt='poster'>
             <p><b class='film-title'>$title</b></p>
             <div>$year, ";
@@ -38,7 +38,7 @@ class ObjectHelper
         if (!file_exists($photo)) $photo = "/images/photos/noimage_photo.jpeg";
 
         echo "
-        <a class='actor' href='actors?id=$actorId'>
+        <a class='actor' href='actor?id=$actorId'>
             <img src='$photo' alt='photo'>
             <div class='actor__info'>
                 <h1>$name</h1>";

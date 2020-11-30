@@ -13,7 +13,7 @@ class CommentsApi extends Api
 
         $databaseManager = new DatabaseManager();
         $databaseManager->addComment($comment, $filmId, $_COOKIE['username'], time());
-        $url = "location: films?id=" . $filmId;
+        $url = "location: film?id=" . $filmId;
         header($url);
     }
 

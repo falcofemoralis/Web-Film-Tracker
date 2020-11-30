@@ -123,16 +123,19 @@ input {
 }
 
 .dropdown-menu:hover .dropdown-content {
-    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 .dropdown-content {
-    display: none;
+    visibility: hidden;
     position: absolute;
     padding: 25px;
     background: rgba(255, 255, 255, 0.90);
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 100;
+    opacity: 0;
+    transition: opacity .3s;
 }
 
 .dropdown-content li {

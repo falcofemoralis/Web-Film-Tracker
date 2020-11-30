@@ -66,7 +66,7 @@ function setGenres()
                           <a href='login' class='menu__link'>Войти</a>
                                </li>
                           <li class='menu__item'>
-                              <a href='register' class='menu__link'>Регистрация</a>
+                              <a href='registration' class='menu__link'>Регистрация</a>
                           </li> ";
                     }
                     ?>
@@ -144,7 +144,7 @@ function setGenres()
                                   <a href='login' class='menu__link'>Логин</a>
                                        </li>
                                   <li class='menu__item'>
-                                      <a href='register' class='menu__link'>Регистрация</a>
+                                      <a href='registration' class='menu__link'>Регистрация</a>
                                   </li> ";
                             }
                             ?>

@@ -79,21 +79,30 @@ for ($i = 0; $i < count($allActors); ++$i) {
             <div class='film-main'>
                 <div class="film-main__poster-cont">
                     <? echo "<img class='film-main__poster' src='/images/posters/$filmId.jpeg' alt='$title'>";
-                    if (isset($_COOKIE['username'])) {
+                    if (isset($_COOKIE['username'])):
+
                         $isBookmarked = $databaseManager->getIsBookmarked($filmId);
                         $userId = $databaseManager->getUserId($_COOKIE['username']);
 
-                        if ($isBookmarked) echo "<div class='bookmark_btn-cont'>
-                                    <a class='bookmark__btn' href='unbookmark?filmId=$filmId&userId=$userId'>
-                                       <img class='bookmark__btn-link' src='/images/unbookmark.svg' alt='unbookmark'>
-                                    </a>
-                                </div>";
-                        else echo "<div class='bookmark_btn-cont'>
-                                    <a class='bookmark__btn' href='bookmark?filmId=$filmId&userId=$userId'>
-                                         <img class='bookmark__btn-link' src='/images/bookmark.svg' alt='bookmark'>
-                                    </a>
-                                </div>";
-                    } ?>
+                        if ($isBookmarked): ?>
+                            <form class='bookmark_btn-cont' action="bookmarks" method="POST">
+                                <input name="userId" type="hidden" value='<? echo "$userId"; ?>'>
+                                <input name="filmId" type="hidden" value='<? echo "$filmId"; ?>'>
+                                <input name="delete" type="hidden" value='true'>
+                                <button class='bookmark__btn'>
+                                    <img class='bookmark__btn-link' src='/images/unbookmark.svg' alt='unbookmark'>
+                                </button>
+                            </form>
+                        <? else: ?>
+                            <form class='bookmark_btn-cont' action="bookmarks" method="POST">
+                                <input name="userId" type="hidden" value='<? echo "$userId"; ?>'>
+                                <input name="filmId" type="hidden" value='<? echo "$filmId"; ?>'>
+                                <input name="delete" type="hidden" value='false'>
+                                <button class='bookmark__btn'>
+                                    <img class='bookmark__btn-link' src='/images/bookmark.svg' alt='bookmark'>
+                                </button>
+                            </form>
+                        <? endif; endif ?>
                 </div>
                 <div id="hover-image" class="poster-hover__content">
                     <span class="close">×</span>
@@ -157,7 +166,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
                                     $name = $sortedActors[$i][$j]->getName();
                                     $id = $sortedActors[$i][$j]->getPersonId();
 
-                                    echo "<a class='actor-link' href='actors?id=$id'>$name</a>";
+                                    echo "<a class='actor-link' href='actor?id=$id'>$name</a>";
                                     if ($j != $size - 1) echo ", ";
                                 }
 

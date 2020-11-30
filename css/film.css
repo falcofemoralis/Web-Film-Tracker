@@ -21,6 +21,7 @@
     max-width: 100%;
     transition: 0.3s;
     z-index: 1;
+    cursor: pointer;
 }
 
 .film-main__poster:hover {
@@ -180,12 +181,15 @@
 
 .poster-hover__image, .caption {
     animation-name: zoom;
-    animation-duration: 0.6s;
+    animation-duration: 0.88s;
 }
 
 .bookmark__btn {
     font-size: 30px;
     color: darkblue;
+    background:none;
+    border:none;
+    outline: none;
 }
 
 .bookmark_btn-cont {
@@ -206,14 +210,14 @@
 }
 
 .bookmark__btn-link:hover{
-    opacity: 0.9;
+    opacity: 0.77;
 }
 @keyframes zoom {
     from {
-        transform: scale(0)
+        opacity: 0;
     }
     to {
-        transform: scale(1)
+        opacity: 1;
     }
 }
 

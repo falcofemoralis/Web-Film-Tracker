@@ -1,9 +1,12 @@
 /*footer*/
 footer {
     height: 50px;
+    width: 100%;
     background-color: black;
     display: flex;
     align-items: center;
+    position: fixed;
+    bottom: 0;
 }
 
 .b-footer h3 {

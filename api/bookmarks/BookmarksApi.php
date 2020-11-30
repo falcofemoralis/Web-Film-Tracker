@@ -10,10 +10,15 @@ class BookmarksApi extends Api
     {
         $filmId = $_POST['filmId'];
         $userId = $_POST['userId'];
+        $isDelete = $_POST['delete'];
 
         $databaseManager = new DatabaseManager();
-        $databaseManager->addToBookmarks($filmId, $userId);
-        $url = "location: films?id=$filmId";
+        if ($isDelete == "true")
+            $databaseManager->removeFromBookmarks($filmId, $userId);
+        else
+            $databaseManager->addToBookmarks($filmId, $userId);
+
+        $url = "location: film?id=$filmId";
         header($url);
     }
 
@@ -38,7 +43,7 @@ class BookmarksApi extends Api
 
         $databaseManager = new DatabaseManager();
         $databaseManager->removeFromBookmarks($filmId, $userId);
-        $url = "location: films?id=$filmId";
+        $url = "location: film?id=$filmId";
         header($url);
     }
 }
