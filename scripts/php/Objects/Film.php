@@ -2,10 +2,10 @@
 
 class Film
 {
-    private string $film_id, $title, $rating, $votes, $runtime_minutes, $premiered, $plot, $isAdult;
+    private string $film_id, $title, $rating, $votes, $runtime_minutes, $premiered, $plot, $isAdult, $trailerId;
     private array $genres;
 
-    function __construct($film_id, $title, $isAdult, $premiered, $runtime_minutes, $genres, $plot, $rating, $votes)
+    function __construct($film_id, $title, $isAdult, $premiered, $runtime_minutes, $genres, $plot, $rating, $votes, $trailerId)
     {
         $this->film_id = $film_id;
         $this->title = $title;
@@ -19,6 +19,7 @@ class Film
 
         $this->genres = preg_split('/,/', $genres, -1);;
         $this->plot = $plot;
+        $this->trailerId = $trailerId;
     }
 
     /**
@@ -93,5 +94,11 @@ class Film
         return $this->genres;
     }
 
-
+    /**
+     * @return string
+     */
+    public function getTrailerId(): string
+    {
+        return $this->trailerId;
+    }
 }

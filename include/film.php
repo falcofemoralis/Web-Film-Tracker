@@ -40,6 +40,7 @@ $plot = $film->getPlot();
 $year = $film->getPremiered();
 $runtime_minutes = $film->getRuntimeMinutes();
 $isAdult = $film->getIsAdult();
+$trailerId = $film->getTrailerId();
 
 $allActors = $databaseManager->getActorsByFilmId($filmId);
 $sortedActors = array(array());
@@ -167,13 +168,22 @@ for ($i = 0; $i < count($allActors); ++$i) {
                     </table>
                 </div>
             </div>
-            <div class='film__plot'>
+            <div class='film__section'>
                 <h2 class='section__title'>Cюжет фильма</h2>
                 <? echo "$plot" ?>
             </div>
+
+            <div class="film__section">
+                <h2 class='section__title'>Трейлер фильма</h2>
+                <iframe width="560" height="315"
+                    <? echo "src='https://www.youtube.com/embed/$trailerId'" ?>
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
         </div>
 
-        <div>
+        <div class="film__section">
             <h2 class="section__title">Актеры в фильме</h2>
             <div class='slider' style="justify-content:  flex-start;">
                 <div class="slider__container" style="overflow: scroll">
@@ -199,7 +209,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
 
         <?php
         if (isset($_COOKIE['username'])) {
-            echo "<form action='addComment' method='post'>
+            echo "<form action='comments' method='post'>
                     <textarea id='comment' class='comment-input' name='comment' onchange='checkText()' placeholder='Написать комментарий'></textarea>
                     <div id='error' class='error-hint'>Введите текст!</div>
                     <button disabled='true' id='add' class='add-btn'>Добавить</button>

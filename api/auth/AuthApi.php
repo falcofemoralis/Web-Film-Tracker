@@ -1,28 +1,16 @@
 <?php
 
 require_once 'scripts/php/Managers/DatabaseManager.php';
+require_once 'api/Api.php';
 
-$requestUri = explode('/', stristr($_SERVER['REQUEST_URI'] . '?', '?', true));
-array_shift($requestUri); //т.к 1 элемент пустой, поэтому сдигаем
-
-$databaseManager = new DatabaseManager();
-
-$arg = array_shift($requestUri);
-switch ($arg) {
-    case "films":
-        include('include/film.php');
-        break;
-    case "list":
-        include('include/list.php');
-        break;
-    case "actors":
-        include('include/actor.php');
-        break;
-    case "register":
+class AuthApi extends Api
+{
+    // POST - Добавление в базу новых данных
+    protected function createAction()
+    {
         //если все поля пустые, то просто показываем регистрацию
         if (empty($_POST['username']) && empty($_POST['password']) && empty($_POST['email'])) {
             include('include/registration.php');
-            break;
         }
 
         if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
@@ -35,6 +23,7 @@ switch ($arg) {
             $isSave = false;
             if (!empty($_POST['isSave'])) $isSave = true;
 
+            $databaseManager = new DatabaseManager();
             $error = $databaseManager->registerUser($username, $password, $email);
 
             //если была ошибка, то показываем регистрацию и ошибку
@@ -46,67 +35,49 @@ switch ($arg) {
                 header('location: /');
             }
         }
-        break;
-    case "auth":
+    }
+
+    // PUT - Обновление данных
+    protected function updateAction()
+    {
+        echo "invalid method";
+    }
+
+    // GET - Просмотр данных
+    protected function viewAction()
+    {
         //если все поля пустые, то просто показываем форму логина
-        if (empty($_POST['username']) && empty($_POST['password'])) {
-            include('include/auth.php');
-            break;
+        if (empty($_GET['username']) && empty($_GET['password'])) {
+            include('include/login.php');
         }
 
         //если какое-то из полей пустое, сообщаем, что нужно ввести все поля
-        if (!empty($_POST['username']) && !empty($_POST['password'])) {
-            $username = htmlspecialchars($_POST['username']);
-            $password = htmlspecialchars($_POST['password']);
+        if (!empty($_GET['username']) && !empty($_GET['password'])) {
+            $username = htmlspecialchars($_GET['username']);
+            $password = htmlspecialchars($_GET['password']);
             $password = md5(htmlspecialchars($password) . "asdfhgewq123");
 
             //запоминать ли юзера
             $isSave = false;
-            if (!empty($_POST['isSave'])) $isSave = true;
+            if (!empty($_GET['isSave'])) $isSave = true;
 
-            $error = $databaseManager->authUser($username, $password);
+            $databaseManager = new DatabaseManager();
+            $error = $databaseManager->loginUser($username, $password);
 
             if (!empty($error)) {
-                include('include/auth.php');
+                include('include/login.php');
             } else {
                 if ($isSave) setcookie("username", $username, time() + time() + 3600 * 24 * 365);
                 else  setcookie("username", $username);
                 header('location: /');
             }
         }
-        break;
-    case "addComment":
-        $comment = htmlspecialchars($_POST['comment']);
-        $filmId = $_POST['filmId'];
+    }
 
-        $databaseManager->addComment($comment, $filmId, $_COOKIE['username'], time());
-        $url = "location: films?id=" . $filmId;
-        header($url);
-        break;
-    case "user":
-        include('include/user.php');
-        break;
-    case "bookmarks":
-        include('include/bookmarks.php');
-        break;
-    case "bookmark":
-        $filmId = $_GET['filmId'];
-        $userId = $_GET['userId'];
-        $databaseManager->addToBookmarks($filmId, $userId);
-        $url = "location: films?id=$filmId";
-        header($url);
-        break;
-    case "unbookmark":
-        $filmId = $_GET['filmId'];
-        $userId = $_GET['userId'];
-        $databaseManager->removeFromBookmarks($filmId, $userId);
-        $url = "location: films?id=$filmId";
-        header($url);
-        break;
-    case "exit":
-        setcookie("username", "", time() - 3600 * 24 * 365);
-        header('location: /');
-        break;
-    default:
-        include('include/main.php');
+    // DELETE - Удаление данных
+    protected function deleteAction()
+    {
+        echo "invalid method";
+    }
 }
+

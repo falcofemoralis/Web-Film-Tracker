@@ -20,7 +20,7 @@ include('include/header.php');
 
 <article>
     <div class="container">
-        <form class="validation-content" action="register" method="post">
+        <form class="validation-content" action="auth" method="POST">
             <div class="validation-input">
                 <h2 class="validation-title">Регистрация</h2>
                 <label>E-mail<br>

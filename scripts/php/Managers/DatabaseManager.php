@@ -100,7 +100,7 @@ class DatabaseManager
             $film = $this->getShortFilmsFromQuery($query);
         } else {
             $query = "SELECT films.title_id, films_translated.title, films.is_adult, films.premiered,
-            films.runtime_minutes, films.genres, films_translated.plot, ratings.rating, ratings.votes
+            films.runtime_minutes, films.genres, films_translated.plot, ratings.rating, ratings.votes, films.trailerId
             FROM films INNER JOIN films_translated ON films.title_id=films_translated.title_id 
             INNER JOIN ratings ON films.title_id=ratings.title_id " . $queryParam;
             $film = $this->getLongFilmsFromQuery($query);
@@ -118,7 +118,7 @@ class DatabaseManager
         $films = null;
         for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
             $row = mysqli_fetch_row($result);
-            $films[$i] = new Film($row[0], $row[1], "", $row[2], "", $row[3], "", "", "");
+            $films[$i] = new Film($row[0], $row[1], "", $row[2], "", $row[3], "", "", "", "");
         }
 
         return $films;
@@ -132,7 +132,7 @@ class DatabaseManager
         $films = null;
         for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
             $row = mysqli_fetch_row($result);
-            $films[$i] = new Film($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]);
+            $films[$i] = new Film($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9]);
         }
 
         return $films;
@@ -287,7 +287,7 @@ class DatabaseManager
         return $error;
     }
 
-    public function authUser($username, $password)
+    public function loginUser($username, $password)
     {
         $getQuery = "SELECT * 
                 FROM users

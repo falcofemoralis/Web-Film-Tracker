@@ -35,7 +35,7 @@ class ObjectHelper
     function createActor($actorId, $name, $characters, $category)
     {
         $photo = "./images/photos/$actorId.jpeg";
-        if (file_exists($photo) == false) $photo = "/images/photos/noimage_photo.jpeg";
+        if (!file_exists($photo)) $photo = "/images/photos/noimage_photo.jpeg";
 
         echo "
         <a class='actor' href='actors?id=$actorId'>
