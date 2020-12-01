@@ -215,19 +215,19 @@ for ($i = 0; $i < count($allActors); ++$i) {
                 </div>
             </div>
         </div>
-
-        <?php
-        if (isset($_COOKIE['username'])) {
-            echo "<form action='comments' method='post'>
-                    <textarea id='comment' class='comment-input' name='comment' onchange='checkText()' placeholder='Написать комментарий'></textarea>
-                    <div id='error' class='error-hint'>Введите текст!</div>
-                    <button disabled='true' id='add' class='add-btn'>Добавить</button>
-                    <input name='filmId' value='$filmId' style='display: none'/> 
-                </form>";
-        } else {
-            echo "<div class='comment-input' style='color: orangered; font-weight: bold; height: auto;'>Зарегестрируйтесь или войдите, чтобы оставить комментарий!</div><br>";
-        }
-        ?>
+        <?php if (isset($_COOKIE['username'])) : ?>
+            <form action='comments' method='post'>
+                <textarea id='comment' class='comment-input' name='comment' onchange='checkText()'
+                          placeholder='Написать комментарий'></textarea>
+                <div id='error' class='error-hint'>Введите текст!</div>
+                <button disabled='true' id='add' class='add-btn'>Добавить</button>
+                <? echo "<input name='filmId' value='$filmId' style='display: none'/>" ?>
+            </form>
+        <? else: ?>
+            <div class='comment-input' style='color: orangered; font-weight: bold; height: auto;'>Зарегестрируйтесь или
+                войдите, чтобы оставить комментарий!
+            </div><br>
+        <? endif; ?>
         <div>
             <?php
 

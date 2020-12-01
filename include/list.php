@@ -24,7 +24,7 @@ require_once 'scripts/php/Managers/PagesHelper.php';
 <?php
 include('include/header.php');
 
-$filmsPerPage = 30; //кол-во отображаемых фильмов на странице
+$filmsPerPage = 24; //кол-во отображаемых фильмов на странице
 $isGenre = false; //является ли параметр жанром
 $databaseManager = new DatabaseManager();
 $objectHelper = new ObjectHelper();

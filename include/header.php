@@ -54,22 +54,21 @@ function setGenres()
             <nav class="header-top__right">
                 <ul class="menu__list">
                     <?php
-                    if (isset($_COOKIE['username'])) {
-                        echo "<li class='menu__item'>
-                          <a href='userBookmarks' class='menu__link'>Закладки</a>
-                               </li>
-                          <li class='menu__item'>
-                              <a href='user' class='menu__link'>Пользователь</a>
-                          </li> ";
-                    } else {
-                        echo "<li class='menu__item'>
-                          <a href='login' class='menu__link'>Войти</a>
-                               </li>
-                          <li class='menu__item'>
-                              <a href='registration' class='menu__link'>Регистрация</a>
-                          </li> ";
-                    }
-                    ?>
+                    if (isset($_COOKIE['username'])): ?>
+                        <li class='menu__item'>
+                            <a href='userBookmarks' class='menu__link'>Закладки</a>
+                        </li>
+                        <li class='menu__item'>
+                            <a href='user' class='menu__link'>Пользователь</a>
+                        </li>
+                    <? else: ?>
+                        <li class='menu__item'>
+                            <a href='login' class='menu__link'>Войти</a>
+                        </li>
+                        <li class='menu__item'>
+                            <a href='registration' class='menu__link'>Регистрация</a>
+                        </li>
+                    <? endif; ?>
                 </ul>
             </nav>
         </div>
@@ -126,28 +125,27 @@ function setGenres()
                     <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle('login')">
                         <?php
                         if (isset($_COOKIE['username'])) echo "<img class='button-image' src='/images/ic_userPanel.svg' alt='site_logo'>";
-                        else  echo "<img class='button-image' src='/images/ic_authPanel.svg' alt='site_logo'>";
+                        else echo "<img class='button-image' src='/images/ic_authPanel.svg' alt='site_logo'>";
                         ?>
                     </button>
                     <div>
                         <ul class="mobile-dropdown__menu login">
                             <?php
-                            if (isset($_COOKIE['username'])) {
-                                echo "<li class='menu__item'>
-                                  <a href='userBookmarks' class='menu__link'>Закладки</a>
-                                       </li>
-                                  <li class='menu__item'>
-                                      <a href='user' class='menu__link'>Пользователь</a>
-                                  </li> ";
-                            } else {
-                                echo "<li class='menu__item'>
-                                  <a href='login' class='menu__link'>Логин</a>
-                                       </li>
-                                  <li class='menu__item'>
-                                      <a href='registration' class='menu__link'>Регистрация</a>
-                                  </li> ";
-                            }
-                            ?>
+                            if (isset($_COOKIE['username'])): ?>
+                                <li class='menu__item'>
+                                    <a href='userBookmarks' class='menu__link'>Закладки</a>
+                                </li>
+                                <li class='menu__item'>
+                                    <a href='user' class='menu__link'>Пользователь</a>
+                                </li>
+                            <? else: ?>
+                                <li class='menu__item'>
+                                    <a href='login' class='menu__link'>Логин</a>
+                                </li>
+                                <li class='menu__item'>
+                                    <a href='registration' class='menu__link'>Регистрация</a>
+                                </li>
+                            <? endif; ?>
                         </ul>
                     </div>
                 </div>

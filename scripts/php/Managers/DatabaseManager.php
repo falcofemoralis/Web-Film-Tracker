@@ -106,7 +106,6 @@ class DatabaseManager
             $film = $this->getLongFilmsFromQuery($query);
         }
 
-
         return $film[0];
     }
 

@@ -66,8 +66,8 @@ for ($i = 0; $i < count($films); $i++) {
             <h2 class='actor_name'><? echo "$name" ?></h2>
             <div class='actor-main'>
                 <?
-                $photo = "/images/photos/$personId.jpeg";
-                if (!file_exists($photo)) $photo = "/images/photos/noimage_photo.jpeg";
+                $photo = "images/photos/$personId.jpeg";
+                if (!file_exists($photo)) $photo = "images/photos/noimage_photo.jpeg";
                 ?>
                 <img class='actor-main__photo' src='<? echo "$photo" ?>' alt='photo'>
                 <div class='actor-main__info'>
@@ -90,21 +90,16 @@ for ($i = 0; $i < count($films); $i++) {
                                 ?>
                             </td>
                         </tr>
-                        <?
-
-                        if ($died != 0) {
-                            $age = $died - $born;
-                            echo " <tr>
-                            <td>
-                                <b>Дата смерти:</b>
-                            </td>
-                            <td>
-                                 $died г. (в возрасте $age лет)
-                            </td>
-                        </tr>";
-                        }
-                        ?>
-
+                        <? if ($died != 0) :$age = $died - $born; ?>
+                            <tr>
+                                <td>
+                                    <b>Дата смерти:</b>
+                                </td>
+                                <td>
+                                    <? echo " $died г. (в возрасте $age лет)" ?>
+                                </td>
+                            </tr>
+                        <? endif; ?>
                     </table>
                 </div>
             </div>
