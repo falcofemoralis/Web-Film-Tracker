@@ -23,12 +23,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/trailers/country.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/elements.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/elements.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/film.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/film.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/actor.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/actor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/userBookmarks.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/userBookmarks.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/js/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/slider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,8 +51,8 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="HTML4 File" />
         <option value="CSS File" />
+        <option value="HTML4 File" />
       </list>
     </option>
   </component>
@@ -205,7 +212,14 @@
       <workItem from="1606760748231" duration="10285000" />
       <workItem from="1606804501215" duration="998000" />
       <workItem from="1606812822288" duration="2426000" />
-      <workItem from="1606834483159" duration="813000" />
+      <workItem from="1606834483159" duration="1349000" />
+      <workItem from="1606842461203" duration="9449000" />
+      <workItem from="1606890804227" duration="4238000" />
+      <workItem from="1606904236624" duration="7775000" />
+      <workItem from="1606914402356" duration="155000" />
+      <workItem from="1606914565013" duration="3777000" />
+      <workItem from="1606923374715" duration="550000" />
+      <workItem from="1606930302608" duration="9888000" />
     </task>
     <servers />
   </component>
@@ -241,10 +255,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="630" y="158" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606215343926" />
-    <state x="712" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606743468109">
+    <state x="712" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606849378311">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="712" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606743468109" />
+    <state x="712" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606849378311" />
     <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1606072810397">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -309,10 +323,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="6" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604674353090" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1606745341768">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1606849547250">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606745341768" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606849547250" />
+    <state x="689" y="222" key="RollbackChangesDialog" timestamp="1606942756857">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="689" y="222" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606942756857" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1605298568196">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -329,18 +347,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606215401105" />
-    <state x="593" y="95" width="585" height="801" key="find.popup" timestamp="1606772542446">
+    <state x="593" y="95" width="585" height="801" key="find.popup" timestamp="1606943106064">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="593" y="95" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606772542446" />
+    <state x="593" y="95" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606943106064" />
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog" timestamp="1604757553781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604757553781" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1606771920484">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1606939496735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606771920484" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606939496735" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606062799229">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -38,7 +38,7 @@ $films = $databaseManager->getUserBookmarks($userId);
         <div>
             <h2 class='text__header'>Закладки</h2>
             <div class="films-table">
-                <div class="films-container">
+                <div class="films-container" style="width: calc(((156px * 4) + (6px * 4 * 2)));">
                     <?php
                     for ($i = 0; $i < count($films); ++$i) {
                         $film = $databaseManager->getFilmByFilmId($films[$i], true);

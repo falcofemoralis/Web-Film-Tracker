@@ -24,9 +24,9 @@ body {
 .text__header {
     font-size: 25px;
     font-weight: bold;
-    margin-left: 55px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-left: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /*Content of films*/
@@ -38,7 +38,7 @@ body {
 .films-container {
     display: inline-flex;
     flex-wrap: wrap;
-    width: calc(((156px * 4) + (6px * 4 * 2)));
+    width: calc(((156px * 3) + (6px * 3 * 2)));
 }
 
 /*Film layout*/
@@ -48,6 +48,8 @@ body {
 
 .film img {
     width: inherit;
+    border: 4px solid white;
+    border-radius: 5px;
 }
 
 .film a {
@@ -87,15 +89,59 @@ body {
     overflow-wrap: break-word;
 }
 
+/* Comment */
+
+.comment {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    background: #fdfdfd;;
+    margin-bottom: 15px;
+}
+
+.comment-avatar{
+    align-self: end;
+}
+
+.comment-avatar img{
+    width: 75px;
+}
+
+.comment-inside {
+    display: flex;
+    margin-left: 10px;
+    align-self: start;
+    flex-direction: column;
+}
+
+.comment-inside span {
+    width: 100%;
+    overflow-wrap: break-word;
+}
+
+.comment-header {
+    padding-bottom: 10px;
+    overflow-wrap: break-word;
+    width: 100%
+}
+
 /* Mobile version */
 
 @media (max-width: 925px) {
+    .text__header {
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+    }
+
     .film a {
         width: 100px;
     }
 
     .films-container {
-        width: calc(((100px * 4) + (6px * 4 * 2)));
+        width: calc(((100px * 3) + (6px * 3 * 2)));
     }
 
     .actor {
@@ -104,12 +150,6 @@ body {
 }
 
 @media (max-width: 458px) {
-    .text__header {
-        margin-left: 0;
-        display: flex;
-        justify-content: center;
-    }
-
     .films-container {
         width: calc(((100px * 3) + (6px * 3 * 2)));
     }

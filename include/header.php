@@ -12,17 +12,20 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
         if (last != id) {
             let lastMenu = document.getElementsByClassName(last);
             if (lastMenu.length > 0) {
-                lastMenu[0].style.display = "none";
+                lastMenu[0].style.visibility = "hidden";
+                lastMenu[0].style.opacity = "0";
                 isOpened = 0;
             }
         }
 
         let menu = document.getElementsByClassName(id);
         if (isOpened) {
-            menu[0].style.display = "none";
+            menu[0].style.visibility = "hidden";
+            menu[0].style.opacity = "0";
             isOpened = 0;
         } else {
-            menu[0].style.display = "block";
+            menu[0].style.visibility = "visible";
+            menu[0].style.opacity = "1";
             isOpened = 1;
             last = id;
         }
@@ -51,6 +54,7 @@ function setGenres()
             <a class='header__logo' href="/">
                 <img src="/images/site_logo.svg" alt="site_logo">
             </a>
+            <!-- Desktop user navigations -->
             <nav class="header-top__right">
                 <ul class="menu__list">
                     <?php
@@ -82,11 +86,13 @@ function setGenres()
                     </button>
                     <div>
                         <ul class="mobile-dropdown__menu genres">
+                            <li style="width: 100%; display: flex; justify-content: center"><a href='random' class="random" style="color: dodgerblue; font-size: 20px">Мне повезет!</a></li>
                             <?php setGenres(); ?>
                         </ul>
                     </div>
                 </div>
 
+                <!-- Desktop button -->
                 <ul class="menu__list">
                     <li class="dropdown-menu">
                         <button class="dropdown-menu__btn menu__link">Все жанры</button>
@@ -111,6 +117,9 @@ function setGenres()
                     <li>
                         <a href="list?type=thriller&page=1" class='menu__link'>Триллеры</a>
                     </li>
+                    <li>
+                        <a href="random" class='menu__link random'>Мне повезет!</a>
+                    </li>
                 </ul>
                 <div class='header-bot__search'>
                     <img class='header__search_button' src="/images/ic_search.svg" alt="ic_search">
@@ -120,13 +129,14 @@ function setGenres()
                     </form>
                 </div>
 
-                <!-- Mobile button -->
+                <!-- Mobile user navigations -->
                 <div class="mobile-controls">
                     <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle('login')">
-                        <?php
-                        if (isset($_COOKIE['username'])) echo "<img class='button-image' src='/images/ic_userPanel.svg' alt='site_logo'>";
-                        else echo "<img class='button-image' src='/images/ic_authPanel.svg' alt='site_logo'>";
-                        ?>
+                        <?php if (isset($_COOKIE['username'])) : ?>
+                            <img class='button-image' src='/images/ic_userPanel.svg' alt='site_logo'>
+                        <? else: ?>
+                            <img class='button-image' src='/images/ic_authPanel.svg' alt='site_logo'>
+                        <? endif; ?>
                     </button>
                     <div>
                         <ul class="mobile-dropdown__menu login">

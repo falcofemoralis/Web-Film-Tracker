@@ -18,8 +18,6 @@ function reportWindowSize() {
     sliderInit(false);
 }
 
-window.onresize = reportWindowSize;
-
 function sliderInit(isBefore) {
     //необходимые объекты
     container = document.getElementsByClassName("slider__container"); //тут нахоядтся страницы слайдера

@@ -8,11 +8,101 @@
     padding: 25px;
 }
 
+/* Фильтры */
+
+.films-content {
+    display: flex;
+    justify-content: center;
+}
+
+.films-filters {
+    width: 340px;
+    padding: 10px;
+    background-color: #fdfdfd;;
+    border-radius: 6px;
+}
+
+.filter {
+    margin-bottom: 10px;
+}
+
+.filter select {
+    width: 150px;
+    outline: none;
+}
+
+.filter li {
+    width: 50%;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.filter label {
+    color: black;
+}
+
+.center {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filer-button {
+    width: 160px;
+    height: 30px;
+    outline: none;
+    border: none;
+    color: white;
+    background-color: cornflowerblue;;
+    transition: background-color .3s;
+}
+
+.filer-button:hover {
+    background-color: dodgerblue;
+}
+
+.text__header{
+    margin-left: 20px;
+}
+/* Комментарии */
+
+.films-comments {
+    width: 340px;
+    height: 700px;
+}
+
+.films-comments h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.right-block {
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
 /* Mobile version */
+
+.mobile-filters {
+    display: none;
+}
 
 @media (max-width: 925px) {
     .page {
         padding: 5px;
+    }
+}
+
+@media (max-width: 720px) {
+    .right-block {
+        display: none;
+    }
+
+    .mobile-filters {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 

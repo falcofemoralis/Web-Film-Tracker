@@ -19,14 +19,16 @@
 
 /* Next & previous buttons */
 .slider__button {
-    width: 50px;
+    width: 42px;
     height: 100px;
     margin-bottom: 100px;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #000f2a;
     font-size: 20px;
     color: white;
     border: none;
+    outline: none;
+    border-radius: 8px;
     text-decoration: none;
     cursor: pointer;
     transition: background-color .3s ease-in-out;
@@ -37,7 +39,7 @@
 }
 
 .slider__button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #32599e;
 }
 
 /* Mobile */

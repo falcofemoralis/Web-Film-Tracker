@@ -152,18 +152,6 @@ class DatabaseManager
         return $actors;
     }
 
-    public function getFilmsAmountInCategory($genreId)
-    {
-        $query = "SELECT COUNT(*)
-            FROM films
-            WHERE (films.genres like '%,$genreId,%' OR films.genres like '$genreId,%') 
-            ";
-
-        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
-        $row = mysqli_fetch_row($result);
-        return $row[0];
-    }
-
     public function getFilmsIdsByCategory($genreId)
     {
         $query = "SELECT films.title_id
@@ -173,19 +161,6 @@ class DatabaseManager
             ORDER BY ratings.votes DESC, ratings.rating DESC";
 
         return $this->getFilmsFromQuery($query);
-    }
-
-    public function getFilmsAmountInSearch($param)
-    {
-        $query = "SELECT COUNT(*)
-                FROM films
-                INNER JOIN films_translated on films_translated.title_id=films.title_id
-                WHERE films_translated.lang_id=3 AND films_translated.title like '%$param%'
-            ";
-
-        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
-        $row = mysqli_fetch_row($result);
-        return $row[0];
     }
 
     public function getFilmsIdsBySearch($param)
@@ -395,5 +370,56 @@ class DatabaseManager
 
         return $films;
     }
+
+    public function getLastComments()
+    {
+        $query = "SELECT films_comments.titleId, films_comments.userId, films_comments.time, films_comments.comment 
+            FROM films_comments 
+            ORDER BY films_comments.time DESC
+            LIMIT 5";
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+
+        $comments = array();
+        for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
+            $row = mysqli_fetch_row($result);
+            $comments[] = new Comment($row[0], $row[2], $row[3], $row[1]);
+        }
+
+        return $comments;
+    }
+
+    public function getYearsRange()
+    {
+        $query = "SELECT DISTINCT films.premiered FROM films ORDER BY films.premiered DESC;";
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+
+        $years = array();
+        for ($i = 0; $i < mysqli_num_rows($result); ++$i)
+            $years[] = mysqli_fetch_row($result)[0];
+
+        return $years;
+    }
+
+    public function getFilmsByFilters($where, $order)
+    {
+        $whereQuery = "WHERE ";
+        for ($i = 0; $i < count($where); ++$i) {
+            $whereQuery .= $where[$i];
+            if ($i != count($where) - 1) $whereQuery .= " AND ";
+        }
+
+        if($where != null) $whereQuery .= " AND ";
+        $whereQuery .= " films_translated.lang_id = 3";
+
+        $query = "SELECT films.title_id
+            FROM films
+            INNER JOIN ratings ON films.title_id=ratings.title_id
+            INNER JOIN films_translated on films_translated.title_id=films.title_id " . $whereQuery . " ORDER BY " . $order;
+
+        return $this->getFilmsFromQuery($query);
+    }
 }
+
 

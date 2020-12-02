@@ -184,7 +184,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
 
             <div class="film__section">
                 <h2 class='section__title'>Трейлер фильма</h2>
-                <iframe width="560" height="315"
+                <iframe width="100%" height="315"
                     <? echo "src='https://www.youtube.com/embed/$trailerId'" ?>
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -240,10 +240,16 @@ for ($i = 0; $i < count($allActors); ++$i) {
                 $text = $comments[$i]->getComment();
 
                 echo "<div class='comment'>
-                <img src='/images/avatar.jpeg' alt='avatar'/>
-                <div class='comment-inside'>
-                   <div style='padding-bottom: 10px'> <b>$username</b>, оставлен $time</div>
-                       $text
+                    <div class='comment-avatar'>
+                       <img src='/images/avatar.jpeg' alt='avatar'/>
+                    </div>
+                    <div class='comment-inside'>
+                       <div class='comment-header'>
+                            <b>$username</b>, оставлен $time
+                       </div>
+                       <span>
+                            $text
+                       </span>
                     </div>
                 </div>";
             }

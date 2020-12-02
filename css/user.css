@@ -23,10 +23,10 @@
     outline: none;
     border: none;
     cursor: pointer;
-    background-color: cadetblue;
+    background-color: cornflowerblue;;
     transition: background-color .3s;
 }
 
 .exit-btn:hover{
-    background-color: deepskyblue;
+    background-color: dodgerblue;;
 }

@@ -109,6 +109,11 @@ input {
     border: 0 solid transparent;
 }
 
+.random {
+    color: white;
+    font-weight: bold;
+}
+
 /* Genre dropdown menu */
 
 .dropdown-menu__btn {
@@ -168,15 +173,17 @@ input {
 /* Mobile Dropdown menu */
 
 .mobile-dropdown__menu {
-    display: none;
+    visibility: hidden;
     flex-direction: column;
     position: absolute;
     padding: 15px;
     background: rgba(255, 255, 255, 0.90);
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 100;
     width: 100%;
     margin-top: 15px;
+    opacity: 0;
+    transition: opacity .5s, visibility .5s;
 }
 
 .mobile-dropdown__menu li {
