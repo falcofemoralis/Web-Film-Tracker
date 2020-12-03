@@ -14,8 +14,8 @@ require_once 'scripts/php/Managers/PagesHelper.php';
     <meta name="description" content="Сайт поиска информации про фильмы">
     <meta name="author" content="Иващенко Владислав Романович">
     <title>Трекер фильмов</title>
-    <link rel='stylesheet' href="/CSS/list.css">
     <link rel='stylesheet' href="/CSS/elements.css">
+    <link rel='stylesheet' href="/CSS/list.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" href="/images/favicon.ico">
 </head>
@@ -35,7 +35,7 @@ $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
         <div>
             <? echo "<h2 class='text__header'>$filmsHeader</h2>"; ?>
             <div class="films-table">
-                <div class="films-container" style="width: calc(((156px * 4) + (6px * 4 * 2)));">
+                <div class="films-container">
                     <?php
                     for ($i = $filmsPerPage * ($cur_page - 1); $i < $filmsPerPage * $cur_page; $i++) {
                         if($i == $filmsAmount) break;

@@ -18,7 +18,7 @@ class BookmarksApi extends Api
         else
             $databaseManager->addToBookmarks($filmId, $userId);
 
-        $url = "location: film?id=$filmId";
+        $url = "location: /film?id=$filmId";
         header($url);
     }
 
@@ -43,7 +43,7 @@ class BookmarksApi extends Api
 
         $databaseManager = new DatabaseManager();
         $databaseManager->removeFromBookmarks($filmId, $userId);
-        $url = "location: film?id=$filmId";
+        $url = "location: /film?id=$filmId";
         header($url);
     }
 }

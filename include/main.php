@@ -40,6 +40,8 @@ include('include/header.php');
 $databaseManager = new DatabaseManager();
 $objectHelper = new ObjectHelper();
 
+$min = $databaseManager->getRating("min");
+
 function setYears(DatabaseManager $db)
 {
     $years = $db->getYearsRange();
@@ -92,7 +94,7 @@ function setYears(DatabaseManager $db)
                 </div>
                 <div class="right-block">
                     <div class="films-filters">
-                        <form action="list" method="GET">
+                        <form action="list/filter" method="GET">
                             <div class="filter center">
                                 <select size="1" name="genre">
                                     <option disabled selected>Жанр</option>
@@ -143,6 +145,21 @@ function setYears(DatabaseManager $db)
                                     <input type="radio" name="sort" value="abc"> <label>По алфавиту</label>
                                 </li>
                             </ul>
+                            <div class="filter-range">
+                                <label> Минимальный рейтинг <b id="minRating"><? echo $min ?></b></label>
+                                <input name="min" id="rangeSlider" type="range" min="<? echo $min ?>" max="10"
+                                       value="<? echo $min ?>" step="0.1"
+                                       oninput="document.getElementById('minRating').textContent = document.getElementById('rangeSlider').value;">
+                                <div style="display: flex; justify-content: space-between; padding: 5px 4px 5px 4px">
+                                    <span><? echo $min ?></span>
+                                    <span>
+                                        <?
+                                        echo ((10 - $min) / 2) + $min;
+                                        ?>
+                                    </span>
+                                    <span>10</span>
+                                </div>
+                            </div>
                             <button class="filer-button">Найти</button>
                         </form>
                     </div>
@@ -168,7 +185,7 @@ function setYears(DatabaseManager $db)
                                         <img src='/images/avatar.jpeg' alt='avatar'/>
                                     </div>
                                     <div class='comment-inside'>
-                                       <div class='comment-header'> <b>$username</b>, оставлен $time на <a href='film?id=$filmId' style='color: black; text-decoration: underline'>$filmName</a></div>
+                                       <div class='comment-header'> <b>$username</b>, оставлен $time на <a href='/film?id=$filmId' style='color: black; text-decoration: underline'>$filmName</a></div>
                                        <span>
                                          $text
                                        </span>

@@ -14,10 +14,11 @@ class ObjectHelper
     {
         $poster = "./images/posters/$filmId.jpeg";
         if (!file_exists($poster)) $poster = "/images/posters/noimage_poster.jpeg";
+        else $poster = "/images/posters/$filmId.jpeg";
 
         echo "
         <div class='film'>
-            <a href='film?id=$filmId'>
+            <a href='/film?id=$filmId'>
             <img src='$poster' alt='poster'>
             <p><b class='film-title'>$title</b></p>
             <div>$year, ";

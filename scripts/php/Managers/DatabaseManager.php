@@ -416,6 +416,15 @@ class DatabaseManager
 
         return $countries;
     }
+
+    public function getRating($type)
+    {
+        $query = "SELECT " . $type . "(ratings.rating) FROM ratings";
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+        $row = mysqli_fetch_row($result);
+        return $row[0];
+    }
 }
 
 

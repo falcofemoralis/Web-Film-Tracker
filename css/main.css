@@ -26,6 +26,10 @@
     margin-bottom: 10px;
 }
 
+.filter-range input {
+    width: 100%;
+}
+
 .filter select {
     width: 150px;
     outline: none;
@@ -60,13 +64,14 @@
     background-color: dodgerblue;
 }
 
-.text__header{
+.text__header {
     margin-left: 20px;
 }
 
-.hide{
+.hide {
     display: none;
 }
+
 /* Комментарии */
 
 .films-comments {

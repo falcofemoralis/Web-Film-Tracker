@@ -138,7 +138,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
                                 $countryObj = $databaseManager->getCountryById($film->getCountryId());
                                 $country = $countryObj->getCountry();
                                 $countryId = $countryObj->getCountryId();
-                                echo "<a class='link' href='list?country=$countryId'>$country</a>"
+                                echo "<a class='link' href='/list/filter?country=$countryId'>$country</a>"
                                 ?>
                             </td>
 
@@ -165,7 +165,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
                                     $genre = $genreObj->getGenre();
                                     $genre_name = $genreObj->getGenreName();
 
-                                    echo "<a class='link' href='list?genre=$genre_name&page=1'>$genre</a>";
+                                    echo "<a class='link' href='/list/filter?genre=$genre_name&page=1'>$genre</a>";
 
                                     if ($i != count($genres) - 2) echo ", ";
                                 } ?>
