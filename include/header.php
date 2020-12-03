@@ -40,10 +40,9 @@ function setGenres()
     $genres = $databaseManager->getGenres();
 
     for ($i = 0; $i < count($genres); ++$i) {
-
-        $genre_id = $genres[$i][1];
-        $genre_name = $genres[$i][0];
-        echo "<li><a href='list?type=$genre_id&page=1'>$genre_name</a></li>";
+        $genre_name = $genres[$i]->getGenreName();
+        $genre = $genres[$i]->getGenre();
+        echo "<li><a href='list?genre=$genre_name&page=1'>$genre</a></li>";
     }
 }
 
@@ -86,7 +85,10 @@ function setGenres()
                     </button>
                     <div>
                         <ul class="mobile-dropdown__menu genres">
-                            <li style="width: 100%; display: flex; justify-content: center"><a href='random' class="random" style="color: dodgerblue; font-size: 20px">Мне повезет!</a></li>
+                            <li style="width: 100%; display: flex; justify-content: center"><a href='random'
+                                                                                               class="random"
+                                                                                               style="color: dodgerblue; font-size: 20px">Мне
+                                    повезет!</a></li>
                             <?php setGenres(); ?>
                         </ul>
                     </div>
@@ -103,19 +105,19 @@ function setGenres()
                         </div>
                     </li>
                     <li>
-                        <a href="list?type=action&page=1" class='menu__link'>Боевики</a>
+                        <a href="list?genre=action&page=1" class='menu__link'>Боевики</a>
                     </li>
                     <li>
-                        <a href="list?type=comedy&page=1" class='menu__link'>Комедии</a>
+                        <a href="list?genre=comedy&page=1" class='menu__link'>Комедии</a>
                     </li>
                     <li>
-                        <a href="list?type=drama&page=1" class='menu__link'>Драма</a>
+                        <a href="list?genre=drama&page=1" class='menu__link'>Драма</a>
                     </li>
                     <li>
-                        <a href="list?type=scifi&page=1" class='menu__link'>Фантастика</a>
+                        <a href="list?genre=scifi&page=1" class='menu__link'>Фантастика</a>
                     </li>
                     <li>
-                        <a href="list?type=thriller&page=1" class='menu__link'>Триллеры</a>
+                        <a href="list?genre=thriller&page=1" class='menu__link'>Триллеры</a>
                     </li>
                     <li>
                         <a href="random" class='menu__link random'>Мне повезет!</a>

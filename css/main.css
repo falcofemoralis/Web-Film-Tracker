@@ -63,6 +63,10 @@
 .text__header{
     margin-left: 20px;
 }
+
+.hide{
+    display: none;
+}
 /* Комментарии */
 
 .films-comments {

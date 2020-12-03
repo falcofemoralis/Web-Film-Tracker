@@ -2,10 +2,10 @@
 
 class Film
 {
-    private string $film_id, $title, $rating, $votes, $runtime_minutes, $premiered, $plot, $isAdult, $trailerId;
+    private string $film_id, $title, $rating, $votes, $runtime_minutes, $premiered, $plot, $isAdult, $trailerId, $country_id;
     private array $genres;
 
-    function __construct($film_id, $title, $isAdult, $premiered, $runtime_minutes, $genres, $plot, $rating, $votes, $trailerId)
+    function __construct($film_id, $title, $isAdult, $premiered, $runtime_minutes, $genres, $plot, $rating, $votes, $trailerId, $country_id)
     {
         $this->film_id = $film_id;
         $this->title = $title;
@@ -20,6 +20,7 @@ class Film
         $this->genres = preg_split('/,/', $genres, -1);;
         $this->plot = $plot;
         $this->trailerId = $trailerId;
+        $this->country_id = $country_id;
     }
 
     /**
@@ -101,4 +102,14 @@ class Film
     {
         return $this->trailerId;
     }
+
+    /**
+     * @return string
+     */
+    public function getCountryId(): string
+    {
+        return $this->country_id;
+    }
+
+
 }

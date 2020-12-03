@@ -34,7 +34,7 @@ function sliderInit(isBefore) {
         }
     }
 
-    //получение фильмов как non-Live list
+    //получение фильмов как non-Live лист
     let films = document.querySelectorAll(".slider__item");
 
     if (!isBefore) {

@@ -4,6 +4,7 @@
 <?php
 require_once 'scripts/php/Objects/Film.php';
 require_once 'scripts/php/Managers/ObjectHelper.php';
+require_once 'scripts/php/Managers/DatabaseManager.php';
 ?>
 
 <head>
@@ -18,6 +19,18 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" href="/images/favicon.ico">
     <script src="/scripts/js/slider.js"></script>
+    <script>
+        function restrictYears(selectedYear, restrictedYears, direction) {
+            let year = document.getElementById(selectedYear).value;
+            let years = document.getElementById(restrictedYears);
+            let children = years.children;
+
+            for (let i = 0; i < children.length; i++) {
+                if (children[i].textContent * direction > year * direction) children[i].classList.add("hide");
+                else children[i].classList.remove("hide");
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -27,7 +40,7 @@ include('include/header.php');
 $databaseManager = new DatabaseManager();
 $objectHelper = new ObjectHelper();
 
-function setYears($db)
+function setYears(DatabaseManager $db)
 {
     $years = $db->getYearsRange();
 
@@ -87,25 +100,31 @@ function setYears($db)
                                     $genres = $databaseManager->getGenres();
 
                                     for ($i = 0; $i < count($genres); ++$i) {
-                                        $genre_id = $genres[$i][1];
-                                        $genre_name = $genres[$i][0];
-                                        echo "<option value='$genre_id'>$genre_name</option>";
+                                        $genre_name = $genres[$i]->getGenreName();
+                                        $genre = $genres[$i]->getGenre();
+                                        echo "<option value='$genre_name'>$genre</option>";
                                     }
                                     ?>
                                 </select>
                                 <select size="1" name="country">
                                     <option disabled selected>Страна</option>
-                                    <option value="йуц">США</option>
-                                    <option value="13">Украина</option>
-                                    <option value="515">ВБ</option>
+                                    <?
+                                    $countries = $databaseManager->getCountries();
+
+                                    for ($i = 0; $i < count($countries); ++$i) {
+                                        $countryId = $countries[$i]->getCountryId();
+                                        $country = $countries[$i]->getCountry();
+                                        echo "<option value='$countryId'>$country</option>";
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <div class="filter center">
-                                <select size="1" name="from">
+                                <select id="from" size="1" name="from" onchange="restrictYears('from', 'to', -1)">
                                     <option disabled selected>Год от</option>
                                     <? setYears($databaseManager); ?>
                                 </select>
-                                <select size="1" name="to">
+                                <select id="to" size="1" name="to" onchange="restrictYears('to', 'from', 1)">
                                     <option disabled selected>до</option>
                                     <? setYears($databaseManager); ?>
                                 </select>
@@ -115,13 +134,13 @@ function setYears($db)
                                     <input type="radio" name="sort" value="rating" checked> <label>По рейтингу</label>
                                 </li>
                                 <li>
+                                    <input type="radio" name="sort" value="votes"> <label>По голосам</label>
+                                </li>
+                                <li>
                                     <input type="radio" name="sort" value="year"> <label>По году</label>
                                 </li>
                                 <li>
                                     <input type="radio" name="sort" value="abc"> <label>По алфавиту</label>
-                                </li>
-                                <li>
-                                    <input type="radio" name="sort" value="votes"> <label>По голосам</label>
                                 </li>
                             </ul>
                             <button class="filer-button">Найти</button>
@@ -187,7 +206,6 @@ function setYears($db)
 
     onResize();
     window.onresize = onResize;
-
 </script>
 <?php
 include('include/footer.php');

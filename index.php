@@ -36,7 +36,6 @@ if (!empty ($arg)) {
         case "list":
             // Получаем данные из гет запроса
             $cur_page = $_GET["page"]; //текущая страницы
-            $genreName = $_GET["type"]; //имя жанра
             $searchParam = $_GET["search"]; //аргумент поиска
 
             $filers = array("genre", "country", "director", "from", "to", "sort");
@@ -47,18 +46,15 @@ if (!empty ($arg)) {
             $filmsHeader = null; // Заголовок списка
             $link = null; // Ссылка на след страницу
 
-            if ($genreName != null) {
-                $genre = $databaseManager->getGenreByName($genreName); //жанр
-                $filmsIDs = $databaseManager->getFilmsIdsByCategory($genre[0]);
-                $filmsHeader = "Фильмы жанра " . $genre[1];
-                $link = "list?type=" . $genreName;
-            } else if ($searchParam != null) {
+            if ($searchParam != null) {
                 $filmsIDs = $databaseManager->getFilmsIdsBySearch($searchParam);
                 $filmsHeader = "Результаты поиска «" . $searchParam . "»";
                 $link = "list?search=" . $searchParam;
             } else {
                 $where = array();
-                $order = null;
+                $order = " ratings.votes DESC, ratings.rating DESC ";
+                $link = "list?";
+                $linkAttributes = array();
 
                 for ($i = 0; $i < count($filers); ++$i) {
                     $data = $_GET[$filers[$i]];
@@ -66,11 +62,15 @@ if (!empty ($arg)) {
                     if ($data != null) {
                         switch ($filers[$i]) {
                             case $filers[0]:
-                                $genreId = $databaseManager->getGenreByName($data)[0];
+                                $genreObj = $databaseManager->getGenreByName($data);
+                                $genreId = $genreObj->getGenreId();
                                 $where[] = " (films.genres like '%,$genreId,%' OR films.genres like '$genreId,%') ";
+                                $filmsHeader = "Фильмы жанра " . $genreObj->getGenre();
                                 break;
                             case $filers[1]:
-                                $where[] = " films.country = '$data' ";
+                                $where[] = " films.country_id = '$data' ";
+                                $country = $databaseManager->getCountryById($data);
+                                $filmsHeader = "Фильмы из страны " . $country->getCountry();
                                 break;
                             case $filers[3]:
                                 $where[] = "  films.premiered >= $data ";
@@ -93,13 +93,19 @@ if (!empty ($arg)) {
                                         $order = "ratings.votes DESC";
                                         break;
                                 }
+                                $filmsHeader = "Результаты поиска по установленым фильтрам";
                                 break;
                         }
+                        $linkAttributes[] = array($i, $data);
                     }
                 }
 
+                for ($i = 0; $i < count($linkAttributes); ++$i) {
+                    $link .= ($filers[$linkAttributes[$i][0]] . "=" . $linkAttributes[$i][1]);
+                    if ($i != count($linkAttributes) - 1) $link .= "&";
+                }
+
                 $filmsIDs = $databaseManager->getFilmsByFilters($where, $order);
-                $filmsHeader = "Результаты поиска по установленым фильтрам";
             }
 
             if ($cur_page == null) $cur_page = 1; // Если страница не пришла, то это 1 страница

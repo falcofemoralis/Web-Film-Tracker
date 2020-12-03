@@ -78,7 +78,12 @@ for ($i = 0; $i < count($allActors); ++$i) {
             </div>
             <div class='film-main'>
                 <div class="film-main__poster-cont">
-                    <? echo "<img class='film-main__poster' src='/images/posters/$filmId.jpeg' alt='$title'>";
+                    <?
+                    $poster = "images/posters/$filmId.jpeg";
+                    if (!file_exists($poster)) $poster = "images/posters/noimage_poster.jpeg";
+                    ?>
+                    <img class='film-main__poster' src='<? echo "$poster" ?>' alt='poster'>
+                    <?
                     if (isset($_COOKIE['username'])):
 
                         $isBookmarked = $databaseManager->getIsBookmarked($filmId);
@@ -106,7 +111,8 @@ for ($i = 0; $i < count($allActors); ++$i) {
                 </div>
                 <div id="hover-image" class="poster-hover__content">
                     <span class="close">×</span>
-                    <? echo "<img class='poster-hover__image' src='/images/posters/$filmId.jpeg' alt='$title'>" ?>
+                    <?
+                    echo "<img class='poster-hover__image' src='/images/posters/$filmId.jpeg' alt='$title'>" ?>
                     <div class="caption"><? echo "$title" ?> </div>
                 </div>
 
@@ -127,6 +133,17 @@ for ($i = 0; $i < count($allActors); ++$i) {
                             <td><? echo "$year год" ?></td>
                         </tr>
                         <tr>
+                            <td><b>Страна:</b></td>
+                            <td><?
+                                $countryObj = $databaseManager->getCountryById($film->getCountryId());
+                                $country = $countryObj->getCountry();
+                                $countryId = $countryObj->getCountryId();
+                                echo "<a class='link' href='list?country=$countryId'>$country</a>"
+                                ?>
+                            </td>
+
+                        </tr>
+                        <tr>
                             <td><b>Время:</b></td>
                             <td><? echo "$runtime_minutes мин." ?></td>
                         </tr>
@@ -144,11 +161,11 @@ for ($i = 0; $i < count($allActors); ++$i) {
                             <td>
                                 <? $genres = $film->getGenres();
                                 for ($i = 0; $i < count($genres) - 1; $i++) {
-                                    $genre = $databaseManager->getGenreById($genres[$i]);
-                                    $genreName = $genre[0];
-                                    $genreId = $genre[1];
+                                    $genreObj = $databaseManager->getGenreById($genres[$i]);
+                                    $genre = $genreObj->getGenre();
+                                    $genre_name = $genreObj->getGenreName();
 
-                                    echo "<a class='actor-link' href='list?type=$genreId&page=1'>$genreName</a>";
+                                    echo "<a class='link' href='list?genre=$genre_name&page=1'>$genre</a>";
 
                                     if ($i != count($genres) - 2) echo ", ";
                                 } ?>
@@ -166,7 +183,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
                                     $name = $sortedActors[$i][$j]->getName();
                                     $id = $sortedActors[$i][$j]->getPersonId();
 
-                                    echo "<a class='actor-link' href='actor?id=$id'>$name</a>";
+                                    echo "<a class='link' href='actor?id=$id'>$name</a>";
                                     if ($j != $size - 1) echo ", ";
                                 }
 

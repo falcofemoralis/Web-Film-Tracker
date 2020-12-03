@@ -23,9 +23,9 @@ class ObjectHelper
             <div>$year, ";
 
         for ($i = 0; $i < count($genres) - 1; $i++) {
-            $genre = $this->databaseManager->getGenreById($genres[$i]);
-            $genreName = $genre[0];
-            echo "$genreName";
+            $genreObj = $this->databaseManager->getGenreById($genres[$i]);
+            $genre = $genreObj->getGenre();
+            echo "$genre";
 
             if ($i != count($genres) - 2) echo ", ";
         }

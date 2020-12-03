@@ -1,12 +1,14 @@
 <?php
-require_once 'scripts/php/Objects/Film.php';
 require_once 'scripts/php/Objects/Actor.php';
-require_once 'scripts/php/Objects/User.php';
 require_once 'scripts/php/Objects/Comment.php';
+require_once 'scripts/php/Objects/Country.php';
+require_once 'scripts/php/Objects/Film.php';
+require_once 'scripts/php/Objects/Genre.php';
+require_once 'scripts/php/Objects/User.php';
 
 class DatabaseManager
 {
-    public $connection, $genresArray;
+    public $connection;
 
     function __construct()
     {
@@ -21,52 +23,44 @@ class DatabaseManager
         $this->connection = $connection;
     }
 
+    // Получение всех жанров фильмов
     public function getGenres()
     {
-        if ($this->genresArray == null) {
-            $this->loadGenres();
-            return $this->genresArray;
-        } else {
-            return $this->genresArray;
-        }
-    }
-
-    public function getGenreById($genreId)
-    {
-        if ($this->genresArray == null)
-            $this->loadGenres();
-
-        return $this->genresArray[$genreId - 1];
-    }
-
-    public function getGenreByName($genreName)
-    {
-        $query = "SELECT  genres.genre_id, genres_translated.genre
-                FROM genres 
-                INNER JOIN genres_translated on genres_translated.genre_id=genres.genre_id
-                WHERE genres.name = '$genreName' AND genres_translated.lang_id = 3";
+        $query = "SELECT * FROM genres";
 
         $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
-        return mysqli_fetch_row($result);
-    }
-
-    private function loadGenres()
-    {
-        $query = "SELECT genres_translated.genre, genres.name, genres.genre_id FROM genres 
-        INNER JOIN genres_translated on genres_translated.genre_id=genres.genre_id 
-        WHERE genres_translated.lang_id = 3";
-
-        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+        $genres = array();
         if ($result) {
-
             for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
                 $row = mysqli_fetch_row($result);
-                $this->genresArray[$row[2] - 1] = array($row[0], $row[1]);
+                $genres[$row[0] - 1] = new Genre($row[0], $row[1], $row[2]);
             }
         }
+
+        return $genres;
     }
 
-    //Популярные фильмы
+    // Получение жанра по его id
+    public function getGenreById($genreId)
+    {
+        $query = "SELECT * FROM genres WHERE genres.genre_id =" . $genreId;
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+        $row = mysqli_fetch_row($result);
+        return new Genre($row[0], $row[1], $row[2]);
+    }
+
+    // Получение жанра по его названию (action, animation и т.д)
+    public function getGenreByName($genreName)
+    {
+        $query = "SELECT * FROM genres WHERE genres.genre_name = '$genreName'";
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+        $row = mysqli_fetch_row($result);
+        return new Genre($row[0], $row[1], $row[2]);
+    }
+
+    // Популярные фильмы
     public function getPopularFilms($limit)
     {
         $query = "SELECT films.title_id, films_translated.title, films.premiered, films.genres
@@ -78,7 +72,7 @@ class DatabaseManager
         return $this->getShortFilmsFromQuery($query);
     }
 
-    //фильмы 2020 года
+    //фильмы year года
     public function getFilmsByYear($year, $limit)
     {
         $query = "SELECT films.title_id, films_translated.title, films.premiered, films.genres
@@ -89,6 +83,7 @@ class DatabaseManager
         return $this->getShortFilmsFromQuery($query);
     }
 
+    // Получение фильма по его id
     public function getFilmByFilmId($id, $isShort)
     {
         $queryParam = "WHERE films_translated.lang_id = 3 AND films.title_id = '$id'";
@@ -97,16 +92,18 @@ class DatabaseManager
         if ($isShort) {
             $query = "SELECT films.title_id, films_translated.title, films.premiered, films.genres
              FROM films INNER JOIN films_translated ON films.title_id=films_translated.title_id " . $queryParam;
-            $film = $this->getShortFilmsFromQuery($query);
         } else {
             $query = "SELECT films.title_id, films_translated.title, films.is_adult, films.premiered,
-            films.runtime_minutes, films.genres, films_translated.plot, ratings.rating, ratings.votes, films.trailerId
+            films.runtime_minutes, films.genres, films_translated.plot, ratings.rating, ratings.votes, films.trailerId, films.country_id 
             FROM films INNER JOIN films_translated ON films.title_id=films_translated.title_id 
             INNER JOIN ratings ON films.title_id=ratings.title_id " . $queryParam;
-            $film = $this->getLongFilmsFromQuery($query);
         }
 
-        return $film[0];
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+        $row = mysqli_fetch_row($result);
+
+        if ($isShort) return new Film($row[0], $row[1], "", $row[2], "", $row[3], "", "", "", "", "");
+        else return new Film($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10]);
     }
 
     //получение короткой информации про фильм
@@ -117,21 +114,7 @@ class DatabaseManager
         $films = null;
         for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
             $row = mysqli_fetch_row($result);
-            $films[$i] = new Film($row[0], $row[1], "", $row[2], "", $row[3], "", "", "", "");
-        }
-
-        return $films;
-    }
-
-    //получение полной информации про фильм
-    private function getLongFilmsFromQuery($query)
-    {
-        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
-
-        $films = null;
-        for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
-            $row = mysqli_fetch_row($result);
-            $films[$i] = new Film($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9]);
+            $films[$i] = new Film($row[0], $row[1], "", $row[2], "", $row[3], "", "", "", "", "");
         }
 
         return $films;
@@ -152,15 +135,17 @@ class DatabaseManager
         return $actors;
     }
 
-    public function getFilmsIdsByCategory($genreId)
+    private function getFilmsFromQuery($query)
     {
-        $query = "SELECT films.title_id
-            FROM films
-            INNER JOIN ratings ON films.title_id=ratings.title_id
-            WHERE (films.genres like '%,$genreId,%' OR films.genres like '$genreId,%') 
-            ORDER BY ratings.votes DESC, ratings.rating DESC";
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
 
-        return $this->getFilmsFromQuery($query);
+        $filmsIDs = null;
+        for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
+            $row = mysqli_fetch_row($result);
+            $filmsIDs[] = $row[0];
+        }
+
+        return $filmsIDs;
     }
 
     public function getFilmsIdsBySearch($param)
@@ -168,7 +153,7 @@ class DatabaseManager
         $query = "SELECT films.title_id
             FROM films
             INNER JOIN ratings ON films.title_id=ratings.title_id
-             INNER JOIN films_translated on films_translated.title_id=films.title_id
+            INNER JOIN films_translated on films_translated.title_id=films.title_id
             WHERE films_translated.lang_id=3 AND films_translated.title like '%$param%'
             ORDER BY ratings.votes DESC, ratings.rating DESC";
 
@@ -184,19 +169,6 @@ class DatabaseManager
 
         $row = mysqli_fetch_row($result);
         return new Actor($row[0], $row[1], $row[2], $row[3], "", "");
-    }
-
-    private function getFilmsFromQuery($query)
-    {
-        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
-
-        $filmsIDs = null;
-        for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
-            $row = mysqli_fetch_row($result);
-            $filmsIDs[] = $row[0];
-        }
-
-        return $filmsIDs;
     }
 
     public function getFilmsByPersonId($personId)
@@ -410,7 +382,7 @@ class DatabaseManager
             if ($i != count($where) - 1) $whereQuery .= " AND ";
         }
 
-        if($where != null) $whereQuery .= " AND ";
+        if ($where != null) $whereQuery .= " AND ";
         $whereQuery .= " films_translated.lang_id = 3";
 
         $query = "SELECT films.title_id
@@ -419,6 +391,30 @@ class DatabaseManager
             INNER JOIN films_translated on films_translated.title_id=films.title_id " . $whereQuery . " ORDER BY " . $order;
 
         return $this->getFilmsFromQuery($query);
+    }
+
+    public function getCountryById($countryId)
+    {
+        $query = "SELECT * FROM countries WHERE country_id = " . $countryId;
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+        $row = mysqli_fetch_row($result);
+        return new Country($row[0], $row[1]);
+    }
+
+    public function getCountries()
+    {
+        $query = "SELECT * FROM countries";
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+
+        $countries = array();
+        for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
+            $row = mysqli_fetch_row($result);
+            $countries[] = new Country($row[0], $row[1]);
+        }
+
+        return $countries;
     }
 }
 
