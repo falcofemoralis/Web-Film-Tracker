@@ -35,7 +35,7 @@ class ListApi extends Api
             case "filter":
                 $where = array();
                 $order = " ratings.votes DESC, ratings.rating DESC ";
-                $link = "list?";
+                $link = "filter?";
                 $linkAttributes = array();
 
                 for ($i = 0; $i < count($filers); ++$i) {
@@ -96,7 +96,7 @@ class ListApi extends Api
                 $searchParam = $_GET["search"]; //аргумент поиска
                 $filmsIDs = $databaseManager->getFilmsIdsBySearch($searchParam);
                 $filmsHeader = "Результаты поиска «" . $searchParam . "»";
-                $link = "list?search=" . $searchParam;
+                $link = "search?search=" . $searchParam;
                 break;
         }
 

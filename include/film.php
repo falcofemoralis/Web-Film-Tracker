@@ -21,6 +21,119 @@ require_once 'scripts/php/Objects/User.php';
     <link rel='stylesheet' href="/CSS/film.css">
     <link rel='stylesheet' href="/CSS/elements.css">
     <link rel='stylesheet' href="/CSS/slider.css">
+    <script>
+        function deleteComment(filmId, time, parentId) {
+            let parent = document.getElementById(parentId);
+
+            let request = new XMLHttpRequest();
+            request.open('DELETE', 'comments/' + filmId + '/' + time, true);
+            request.addEventListener('readystatechange', function () {
+                if ((request.readyState === 4) && (request.status === 200)) {
+                    if (request.responseText == "") {
+                        parent.remove();
+                    } else {
+                        alert("Ошибка удаления: " + request.responseText)
+                    }
+                }
+            });
+            request.send();
+        }
+
+        function addComment(filmId) {
+            let comment = document.getElementById("comment").value;
+            let parent = document.getElementById("comments-block");
+            let date = new Date();
+
+            let request = new XMLHttpRequest();
+            request.open('POST', 'comments', true);
+            request.addEventListener('readystatechange', function () {
+                if ((request.readyState === 4) && (request.status === 200)) {
+                    if (request.responseText == "") {
+                        let childrenArray = parent.children;
+                        let lastComment = childrenArray[parent.childElementCount - 1];
+
+                        let timestamp = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+                        let filmId = document.getElementsByClassName("film-main")[0].id;
+
+                        // Определение id
+                        let id = 0;
+                        if (lastComment != null)
+                            id = +lastComment.id.split("_")[1] + 1;
+
+                        // Создаем контейнер
+                        let comment = document.createElement("div");
+                        comment.classList.add("comment");
+                        comment.id = "comment_" + id;
+                        parent.insertBefore(comment, parent.firstChild);
+
+                        // Создаем место под аватарку
+                        let comment_avatar = getElement(comment, "div", "comment-avatar", null);
+                        // Создаем аватарку
+                        let avatar = document.createElement("img");
+                        avatar.src = "/images/avatar.jpeg";
+                        avatar.alt = "avatar";
+                        comment_avatar.appendChild(avatar);
+
+                        // Создаем внутриности комментария
+                        let comment_inside = getElement(comment, "div", "comment-inside", null);
+                        // Создаем заголовок комментария
+                        let comment_header = getElement(comment_inside, "div", "comment-header", null);
+
+                        // Получаем имя пользователя
+                        let username = getCookie("username");
+                        if (username != "") {
+                            // Создаем заголовок
+                            let header = getElement(comment_header, "span", null, null);
+
+                            // Создаем имя юзера
+                            let name = getElement(header, "b", null, null);
+                            name.innerText = username + ", ";
+
+                            // Создаем время юзера
+                            let time = getElement(header, "span", null);
+                            time.innerText = "оставлен " + timestamp;
+
+                            // Создаем кнопку удаления
+                            let button = getElement(comment_header, "button", null);
+                            button.onclick = () => deleteComment(filmId, Math.floor(date.getTime() / 1000), "comment_" + id);
+                            button.innerText = "×";
+                        }
+
+                        let text = getElement(comment_inside, "span", null);
+                        text.innerText = document.getElementById("comment").value;
+                    } else {
+                        alert("Ошибка добавления: " + request.responseText);
+                    }
+                }
+            });
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+            let data = 'filmId=' + window.encodeURIComponent(filmId) + '&comment=' + window.encodeURIComponent(comment);
+            request.send(data);
+        }
+
+        function getElement(parent, type, clazz) {
+            let child = document.createElement(type);
+            if (clazz != null) child.classList.add(clazz);
+            parent.appendChild(child);
+            return child;
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
 </head>
 
 <body>
@@ -76,7 +189,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
 
                 ?>
             </div>
-            <div class='film-main'>
+            <div id="<? echo $filmId ?>" class='film-main'>
                 <div class="film-main__poster-cont">
                     <?
                     $poster = "images/posters/$filmId.jpeg";
@@ -212,7 +325,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
         <div class="film__section">
             <h2 class="section__title">Актеры в фильме</h2>
             <div class='slider' style="justify-content:  flex-start;">
-                <div class="slider__container" style="overflow: scroll">
+                <div class="slider__container" style="overflow: scroll; overflow-y: hidden;">
                     <?php
                     $size = 5;
                     $pages = 1;
@@ -227,51 +340,54 @@ for ($i = 0; $i < count($allActors); ++$i) {
                             $objectHelper->createActor($actor->getPersonId(), $actor->getName(), $actor->getCharacters(), $actor->getCategory());
                         }
                     }
-
                     ?>
                 </div>
             </div>
         </div>
         <?php if (isset($_COOKIE['username'])) : ?>
-            <form action='comments' method='post'>
-                <textarea id='comment' class='comment-input' name='comment' onchange='checkText()'
+            <div>
+                <textarea id='comment' class='comment-input' name='comment'
                           placeholder='Написать комментарий'></textarea>
                 <div id='error' class='error-hint'>Введите текст!</div>
-                <button disabled='true' id='add' class='add-btn'>Добавить</button>
-                <? echo "<input name='filmId' value='$filmId' style='display: none'/>" ?>
-            </form>
+                <button disabled='true' id='add' class='add-btn' onclick='addComment("<? echo $filmId ?>")'>Добавить
+                </button>
+
+            </div>
         <? else: ?>
             <div class='comment-input' style='color: orangered; font-weight: bold; height: auto;'>Зарегестрируйтесь или
                 войдите, чтобы оставить комментарий!
             </div><br>
         <? endif; ?>
-        <div>
+        <div id="comments-block">
             <?php
-
             $comments = $databaseManager->getComments($filmId);
 
             for ($i = 0; $i < count($comments); ++$i) {
                 $user = $databaseManager->getUserByUserId($comments[$i]->getUserId());
                 $username = $user->getUsername();
                 $time = $comments[$i]->getTime();
+                $timestamp = $comments[$i]->getTimestamp();
                 $text = $comments[$i]->getComment();
+                ?>
 
-                echo "<div class='comment'>
+                <div class='comment' <? echo "id='comment_$i'" ?>>
                     <div class='comment-avatar'>
-                       <img src='/images/avatar.jpeg' alt='avatar'/>
+                        <img src='/images/avatar.jpeg' alt='avatar'/>
                     </div>
                     <div class='comment-inside'>
-                       <div class='comment-header'>
-                            <b>$username</b>, оставлен $time
-                       </div>
-                       <span>
-                            $text
+                        <div class='comment-header'>
+                            <? echo "<b>$username</b>, оставлен $timestamp";
+                            if (isset($_COOKIE['username']) && $_COOKIE['username'] == $username) {
+                                echo "<button onclick='deleteComment(\"$filmId\", \"$time\" ,\"comment_$i\")'>×</button>";
+                            }
+                            ?>
+                        </div>
+                        <span>
+                           <? echo $text ?>
                        </span>
                     </div>
-                </div>";
-            }
-
-            ?>
+                </div>
+            <? } ?>
         </div>
     </div>
 </article>

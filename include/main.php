@@ -197,7 +197,7 @@ function setYears(DatabaseManager $db)
                             for ($i = 0; $i < count($comments); ++$i) {
                                 $user = $databaseManager->getUserByUserId($comments[$i]->getUserId());
                                 $username = $user->getUsername();
-                                $time = $comments[$i]->getTime();
+                                $timestamp = $comments[$i]->getTimestamp();
                                 $text = $comments[$i]->getComment();
                                 $filmId = $comments[$i]->getFilmId();
 
@@ -209,7 +209,7 @@ function setYears(DatabaseManager $db)
                                         <img src='/images/avatar.jpeg' alt='avatar'/>
                                     </div>
                                     <div class='comment-inside'>
-                                       <div class='comment-header'> <b>$username</b>, оставлен $time на <a href='/film?id=$filmId'>$filmName</a></div>
+                                       <div class='comment-header'> <b>$username</b>, оставлен $timestamp на <a href='/film?id=$filmId'>$filmName</a></div>
                                        <span>
                                          $text
                                        </span>

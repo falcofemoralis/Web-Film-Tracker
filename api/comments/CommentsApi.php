@@ -12,9 +12,8 @@ class CommentsApi extends Api
         $filmId = $_POST['filmId'];
 
         $databaseManager = new DatabaseManager();
-        $databaseManager->addComment($comment, $filmId, $_COOKIE['username'], time());
-        $url = "location: /film?id=" . $filmId;
-        header($url);
+        $error = $databaseManager->addComment($comment, $filmId, $_COOKIE['username'], time());
+        echo $error;
     }
 
     // PUT - Обновление данных
@@ -32,7 +31,12 @@ class CommentsApi extends Api
     // DELETE - Удаление данных
     protected function deleteAction()
     {
-        echo "invalid method";
+        $filmId = array_shift($this->requestUri);
+        $time = array_shift($this->requestUri);
+
+        $databaseManager = new DatabaseManager();
+        $error = $databaseManager->deleteComment($filmId, $_COOKIE['username'], $time);
+        echo $error;
     }
 }
 

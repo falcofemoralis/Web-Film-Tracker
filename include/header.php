@@ -59,17 +59,17 @@ function setGenres()
                     <?php
                     if (isset($_COOKIE['username'])): ?>
                         <li class='menu__item'>
-                            <a href='userBookmarks' class='menu__link'>Закладки</a>
+                            <a href='/userBookmarks' class='menu__link'>Закладки</a>
                         </li>
                         <li class='menu__item'>
-                            <a href='user' class='menu__link'>Пользователь</a>
+                            <a href='/user' class='menu__link'>Пользователь</a>
                         </li>
                     <? else: ?>
                         <li class='menu__item'>
-                            <a href='login' class='menu__link'>Войти</a>
+                            <a href='/login' class='menu__link'>Войти</a>
                         </li>
                         <li class='menu__item'>
-                            <a href='registration' class='menu__link'>Регистрация</a>
+                            <a href='/registration' class='menu__link'>Регистрация</a>
                         </li>
                     <? endif; ?>
                 </ul>
@@ -85,10 +85,7 @@ function setGenres()
                     </button>
                     <div>
                         <ul class="mobile-dropdown__menu genres">
-                            <li style="width: 100%; display: flex; justify-content: center"><a href='random'
-                                                                                               class="random"
-                                                                                               style="color: dodgerblue; font-size: 20px">Мне
-                                    повезет!</a></li>
+                            <li style="width: 100%; display: flex; justify-content: center"><a href='random' class="random" style="color: dodgerblue; font-size: 20px">Мне повезет!</a></li>
                             <?php setGenres(); ?>
                         </ul>
                     </div>
@@ -125,7 +122,7 @@ function setGenres()
                 </ul>
                 <div class='header-bot__search'>
                     <img class='header__search_button' src="/images/ic_search.svg" alt="ic_search">
-                    <form action="list/search" style="width: 100%">
+                    <form action="/list/search" style="width: 100%">
                         <input class='header__search_input' type="search" placeholder="Я ищу фильм..." name="search">
                         <button type="submit" style="display: none"></button>
                     </form>
@@ -145,17 +142,17 @@ function setGenres()
                             <?php
                             if (isset($_COOKIE['username'])): ?>
                                 <li class='menu__item'>
-                                    <a href='userBookmarks' class='menu__link'>Закладки</a>
+                                    <a href='/userBookmarks' class='menu__link'>Закладки</a>
                                 </li>
                                 <li class='menu__item'>
-                                    <a href='user' class='menu__link'>Пользователь</a>
+                                    <a href='/user' class='menu__link'>Пользователь</a>
                                 </li>
                             <? else: ?>
                                 <li class='menu__item'>
-                                    <a href='login' class='menu__link'>Логин</a>
+                                    <a href='/login' class='menu__link'>Логин</a>
                                 </li>
                                 <li class='menu__item'>
-                                    <a href='registration' class='menu__link'>Регистрация</a>
+                                    <a href='/registration' class='menu__link'>Регистрация</a>
                                 </li>
                             <? endif; ?>
                         </ul>
