@@ -24,9 +24,10 @@
     border: none;
     cursor: pointer;
     background-color: cornflowerblue;;
-    transition: background-color .3s;
+    transition: background-color .3s, filter .3s;
 }
 
 .exit-btn:hover{
     background-color: dodgerblue;;
+    filter: drop-shadow(0 0 4px #00acff);
 }

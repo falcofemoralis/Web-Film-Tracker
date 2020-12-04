@@ -348,7 +348,7 @@ class DatabaseManager
         $query = "SELECT films_comments.titleId, films_comments.userId, films_comments.time, films_comments.comment 
             FROM films_comments 
             ORDER BY films_comments.time DESC
-            LIMIT 5";
+            LIMIT 10";
 
         $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
 

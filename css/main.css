@@ -18,7 +18,7 @@
 .films-filters {
     width: 340px;
     padding: 10px;
-    background-color: #fdfdfd;;
+    background-color: #f1f3f4;
     border-radius: 6px;
 }
 
@@ -56,12 +56,15 @@
     outline: none;
     border: none;
     color: white;
+    cursor: pointer;
     background-color: cornflowerblue;;
-    transition: background-color .3s;
+    transition: background-color .3s, filter .3s;
+    border-radius: 6px;
 }
 
 .filer-button:hover {
     background-color: dodgerblue;
+    filter: drop-shadow(0 0 4px #00acff);
 }
 
 .text__header {

@@ -29,9 +29,14 @@
     border: none;
     cursor: pointer;
     width: 100%;
-    transition: background-color .3s;
+    transition: background-color .3s, filter .3s;
 }
 
 .validation-btn:hover {
     background-color: #069906;
+    filter: drop-shadow(0 0 4px #07a701);
+}
+
+.validation-btn:focus{
+    outline: none;
 }

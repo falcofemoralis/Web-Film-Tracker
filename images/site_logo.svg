@@ -7,129 +7,145 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="site_logo.svg"
-   xml:space="preserve"
-   viewBox="0 0 173.27213 38.812798"
-   y="0px"
-   x="0px"
-   id="Capa_1"
-   version="1.1"
-   width="173.27213"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
    height="38.812798"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"><metadata
+   width="330.44009"
+   version="1.1"
+   id="Capa_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 330.4401 38.812798"
+   xml:space="preserve"
+   sodipodi:docname="site_logo.svg"><metadata
    id="metadata41"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
-   id="defs39"><filter
-     inkscape:collect="always"
-     style="color-interpolation-filters:sRGB"
-     id="filter946"
-     x="-4.4850753e-05"
-     width="1.0000896"
+   id="defs39"><rect
+     id="rect859"
+     height="129.76959"
+     width="489.58527"
+     y="-50.138248"
+     x="-61.345623" /><rect
+     id="rect853"
+     height="142.74655"
+     width="492.53458"
+     y="-54.857143"
+     x="-30.082951" /><filter
+     height="1.0000833"
      y="-4.1666448e-05"
-     height="1.0000833"><feGaussianBlur
-       inkscape:collect="always"
+     width="1.0000896"
+     x="-4.4850753e-05"
+     id="filter946"
+     style="color-interpolation-filters:sRGB"
+     inkscape:collect="always"><feGaussianBlur
+       id="feGaussianBlur948"
        stdDeviation="0.005380128"
-       id="feGaussianBlur948" /></filter></defs><sodipodi:namedview
-   inkscape:document-rotation="0"
-   pagecolor="#ffffff"
-   bordercolor="#666666"
-   borderopacity="1"
-   objecttolerance="10"
-   gridtolerance="10"
-   guidetolerance="10"
-   inkscape:pageopacity="0"
-   inkscape:pageshadow="2"
-   inkscape:window-width="1920"
-   inkscape:window-height="1017"
-   id="namedview37"
-   showgrid="false"
-   inkscape:snap-text-baseline="false"
-   inkscape:zoom="2.3975339"
-   inkscape:cx="56.016845"
-   inkscape:cy="29.842262"
-   inkscape:window-x="-8"
-   inkscape:window-y="-8"
+       inkscape:collect="always" /></filter></defs><sodipodi:namedview
+   inkscape:current-layer="Capa_1"
    inkscape:window-maximized="1"
-   inkscape:current-layer="Capa_1" />
+   inkscape:window-y="-8"
+   inkscape:window-x="-8"
+   inkscape:cy="11.62366"
+   inkscape:cx="45.460538"
+   inkscape:zoom="1.6953125"
+   inkscape:snap-text-baseline="false"
+   showgrid="false"
+   id="namedview37"
+   inkscape:window-height="1017"
+   inkscape:window-width="1920"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0"
+   guidetolerance="10"
+   gridtolerance="10"
+   objecttolerance="10"
+   borderopacity="1"
+   bordercolor="#666666"
+   pagecolor="#ffffff"
+   inkscape:document-rotation="0" />
 
 <g
-   id="g952"
-   transform="matrix(0.10410686,0,0,0.10410686,0.00134426,-7.244285)"><path
-     id="path2"
+   transform="matrix(0.10410686,0,0,0.10410686,0.00134426,-7.244285)"
+   id="g952"><path
+     style="fill:#ff474f;fill-opacity:1;filter:url(#filter946)"
      d="M 150.962,379.495 H 0 L 136.118,146.541 287.895,69.598 Z"
-     style="fill:#ff474f;fill-opacity:1;filter:url(#filter946)" /><path
-     id="path4"
+     id="path2" /><path
+     style="fill:#e4233a;fill-opacity:1"
      d="M 512,442.402 H 126.163 V 412.368 H 340.582 L 231.503,272.768 309.235,95.39 Z"
-     style="fill:#e4233a;fill-opacity:1" /></g>
+     id="path4" /></g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g6">
+   id="g6"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g8">
+   id="g8"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g10">
+   id="g10"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g12">
+   id="g12"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g14">
+   id="g14"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g16">
+   id="g16"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g18">
+   id="g18"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g20">
+   id="g20"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g22">
+   id="g22"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g24">
+   id="g24"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g26">
+   id="g26"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g28">
+   id="g28"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g30">
+   id="g30"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g32">
+   id="g32"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <g
-   transform="translate(-13.669496,-10.697137)"
-   id="g34">
+   id="g34"
+   transform="translate(-13.669496,-10.697137)">
 </g>
 <text
-   xml:space="preserve"
-   style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none"
-   x="70.166656"
+   id="text956"
    y="31.846584"
-   id="text956"><tspan
-     style="fill:#ffffff;fill-opacity:1"
-     sodipodi:role="line"
-     id="tspan954"
+   x="70.166656"
+   style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;"
+   xml:space="preserve"><tspan
+     y="31.846584"
      x="70.166656"
-     y="31.846584">Films</tspan></text></svg>
+     id="tspan954"
+     sodipodi:role="line"
+     style="fill:#ffffff;fill-opacity:1;">FilmsTracker</tspan></text><text
+   style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect853);fill:#000000;fill-opacity:1;stroke:none;"
+   id="text851"
+   xml:space="preserve" /><text
+   style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect859);fill:#000000;fill-opacity:1;stroke:none;"
+   id="text857"
+   xml:space="preserve" /></svg>

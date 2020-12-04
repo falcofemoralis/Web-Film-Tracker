@@ -23,17 +23,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/list/List" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/list/ListApi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/list.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/list.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/elements.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/elements.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/slider.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/slider.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/site_logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/site_logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trailers/country.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +221,8 @@
       <workItem from="1607002916771" duration="1410000" />
       <workItem from="1607006246579" duration="3109000" />
       <workItem from="1607010178168" duration="255000" />
-      <workItem from="1607017805360" duration="6016000" />
+      <workItem from="1607017805360" duration="6799000" />
+      <workItem from="1607076783883" duration="5119000" />
     </task>
     <servers />
   </component>
@@ -354,10 +354,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606215401105" />
-    <state x="687" y="89" width="1091" height="779" key="find.popup" timestamp="1607024586163">
+    <state x="687" y="89" width="1091" height="779" key="find.popup" timestamp="1607081835607">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="687" y="89" width="1091" height="779" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607024586163" />
+    <state x="687" y="89" width="1091" height="779" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607081835607" />
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog" timestamp="1604757553781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

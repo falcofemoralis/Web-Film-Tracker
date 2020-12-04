@@ -58,7 +58,13 @@ function setYears(DatabaseManager $db)
         <div>
             <h2 class='text__header' style="margin-left: 13%;">Популярные фильмы</h2>
             <div class='slider'>
-                <button class='slider__button' onclick="plusSlides(-1)">&#10094;</button>
+
+                <button class='slider__button' onclick="plusSlides(-1)" style="margin-right: 5px">
+                    <svg viewBox="0 0 17 49" style="transform: rotate(-180deg)">
+                        <path d="M14.5824 24.2177L0.169802 1.64078C-0.133787 1.16522 -0.0203484 0.520408 0.43077 0.190628C0.896295 -0.149684 1.53586 -0.0208369 1.84885 0.469445L17 24.2034L1.85515 48.5205C1.54761 49.0143 0.909647 49.151 0.440354 48.8163C-0.0145324 48.4918 -0.134893 47.8483 0.163502 47.3692L14.5824 24.2177Z"></path>
+                    </svg>
+                </button>
+
                 <div class="slider__container">
                     <?php
                     //Блок популярных фильмов
@@ -69,7 +75,13 @@ function setYears(DatabaseManager $db)
                     }
                     ?>
                 </div>
-                <button class='slider__button' onclick="plusSlides(1)">&#10095;</button>
+
+                <button class='slider__button' onclick="plusSlides(1)" style="margin-left: 5px;">
+                    <svg viewBox="0 0 17 49">
+                        <path d="M14.5824 24.2177L0.169802 1.64078C-0.133787 1.16522 -0.0203484 0.520408 0.43077 0.190628C0.896295 -0.149684 1.53586 -0.0208369 1.84885 0.469445L17 24.2034L1.85515 48.5205C1.54761 49.0143 0.909647 49.151 0.440354 48.8163C-0.0145324 48.4918 -0.134893 47.8483 0.163502 47.3692L14.5824 24.2177Z"></path>
+                    </svg>
+                </button>
+
             </div>
         </div>
 
@@ -133,16 +145,28 @@ function setYears(DatabaseManager $db)
                             </div>
                             <ul class="filter">
                                 <li>
-                                    <input type="radio" name="sort" value="rating" checked> <label>По рейтингу</label>
+                                    <label>
+                                        <input type="radio" name="sort" value="rating" checked>
+                                        По рейтингу
+                                    </label>
                                 </li>
                                 <li>
-                                    <input type="radio" name="sort" value="votes"> <label>По голосам</label>
+                                    <label>
+                                        <input type="radio" name="sort" value="votes">
+                                        По голосам
+                                    </label>
                                 </li>
                                 <li>
-                                    <input type="radio" name="sort" value="year"> <label>По году</label>
+                                    <label>
+                                        <input type="radio" name="sort" value="year">
+                                        По году
+                                    </label>
                                 </li>
                                 <li>
-                                    <input type="radio" name="sort" value="abc"> <label>По алфавиту</label>
+                                    <label>
+                                        <input type="radio" name="sort" value="abc">
+                                        По алфавиту
+                                    </label>
                                 </li>
                             </ul>
                             <div class="filter-range">
@@ -185,7 +209,7 @@ function setYears(DatabaseManager $db)
                                         <img src='/images/avatar.jpeg' alt='avatar'/>
                                     </div>
                                     <div class='comment-inside'>
-                                       <div class='comment-header'> <b>$username</b>, оставлен $time на <a href='/film?id=$filmId' style='color: black; text-decoration: underline'>$filmName</a></div>
+                                       <div class='comment-header'> <b>$username</b>, оставлен $time на <a href='/film?id=$filmId'>$filmName</a></div>
                                        <span>
                                          $text
                                        </span>
