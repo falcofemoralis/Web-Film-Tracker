@@ -20,7 +20,7 @@ include('include/header.php');
 
 <article>
     <div class="container">
-        <form class="validation-content" action="auth" method="POST">
+        <form enctype="multipart/form-data" class="validation-content" action="auth" method="POST">
             <div class="validation-input">
                 <h2 class="validation-title">Регистрация</h2>
                 <label>E-mail<br>
@@ -32,6 +32,11 @@ include('include/header.php');
 
                 <label>Пароль<br>
                     <input name="password" type="password" required>
+                </label>
+
+                <label>Загрузить аватар <br> <span style="font-size: 12px">Максимальный размер файла 1мб</span>
+                    <input name="avatar" type="file" style="border: none; padding: 12px 0 12px 0"
+                           accept=".jpg, .jpeg, .png">
                 </label>
 
                 <label>Запомнить меня?

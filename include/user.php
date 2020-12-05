@@ -27,12 +27,16 @@ $databaseManager = new DatabaseManager();
 $username = $_COOKIE['username'];
 $user = $databaseManager->getUserByUserId($databaseManager->getUserId($username));
 $email = $user->getEmail();
+$avatar = $user->getAvatar();
 ?>
 
 <article>
     <div class="container">
         <div class="main">
-            <h2 class="main-header">Настройки профиля</h2>
+            <h2 class="main-header center">Настройки профиля</h2>
+            <div class="center">
+                <? echo "<img style='width: 50%' src='$avatar' alt='$username'>" ?>
+            </div>
             <label><b>Никнейм</b></label>
             <div class="row"><? echo "$username"; ?> <br></div>
             <label><b>Email</b></label>

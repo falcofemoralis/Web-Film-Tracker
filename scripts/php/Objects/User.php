@@ -3,7 +3,7 @@
 class User
 {
     private int $userId;
-    private string $username, $email, $password;
+    private string $username, $email, $password, $avatar;
 
     /**
      * User constructor.
@@ -17,7 +17,16 @@ class User
         $this->userId = $userId;
         $this->username = $username;
         $this->email = $email;
+        $this->avatar = User::checkAvatar($username);
         $this->password = $password;
+
+    }
+
+    public static function checkAvatar($username)
+    {
+        $avatar = "images/avatars/" . $username . ".png";
+        if (!file_exists($avatar)) $avatar = "/images/avatar.jpeg";
+        return $avatar;
     }
 
     /**
@@ -50,5 +59,13 @@ class User
     public function getPassword(): string
     {
         return $this->password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAvatar(): string
+    {
+        return $this->avatar;
     }
 }

@@ -184,6 +184,10 @@ body {
     color: white;
 }
 
+.center{
+    display: flex;
+    justify-content: center;
+}
 
 /* Mobile version */
 

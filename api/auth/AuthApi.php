@@ -33,8 +33,20 @@ class AuthApi extends Api
             $isSave = false;
             if (!empty($save)) $isSave = true;
 
-            if ($type == "registration") $error = $databaseManager->registerUser($username, $password, $email);
-            else $error = $databaseManager->loginUser($username, $password);
+            if ($type == "registration") {
+                $error = $databaseManager->registerUser($username, $password, $email);
+                if (empty($error)) {
+                    $pathToSave = $_SERVER['DOCUMENT_ROOT'] . "\\images\\avatars\\" . $username . ".png";
+
+                    if ($_FILES['avatar']['size'] < 1 * 1024 * 1024) {
+                        move_uploaded_file($_FILES['avatar']['tmp_name'], $pathToSave);
+                    } else {
+                        $error = "Файл слишком большой!";
+                    }
+                }
+            } else {
+                $error = $databaseManager->loginUser($username, $password);
+            }
 
             $this->saveUser($isSave, $type, $username, $password, $error);
         }
@@ -64,7 +76,7 @@ class AuthApi extends Api
         if (empty($_GET['username']) && empty($_GET['password'])) {
             include('include/login.php');
         } else {
-            $this->checkUser($_GET['username'], $_GET['password'], "email", $_GET['isSave'], "login");
+            $this->checkUser($_GET['username'], $_GET['password'], "null", $_GET['isSave'], "login");
         }
     }
 

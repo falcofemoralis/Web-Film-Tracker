@@ -37,6 +37,9 @@ if (!empty ($arg)) {
             $url = "location: /film?id=$filmId";
             header($url);
             break;
+        case "checkAvatar":
+            echo User::checkAvatar($_GET['username']);
+            break;
         case "exit":
             setcookie("username", "", time() - 3600 * 24 * 365);
             header('location: /');

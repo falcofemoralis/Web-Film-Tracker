@@ -85,7 +85,7 @@ function setGenres()
                     </button>
                     <div>
                         <ul class="mobile-dropdown__menu genres">
-                            <li style="width: 100%; display: flex; justify-content: center"><a href='random' class="random" style="color: dodgerblue; font-size: 20px">Мне повезет!</a></li>
+                            <li style="width: 100%; display: flex; justify-content: center"><a href='/random' class="random" style="color: dodgerblue; font-size: 20px">Мне повезет!</a></li>
                             <?php setGenres(); ?>
                         </ul>
                     </div>

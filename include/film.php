@@ -62,6 +62,14 @@ require_once 'scripts/php/Objects/User.php';
             request.send();
         }
 
+        function getAvatar(username) {
+            let request = new XMLHttpRequest();
+            request.open('GET', "checkAvatar?username=" + username, false);
+            request.send();
+            if (request.status === 200) return request.responseText;
+            else return "error";
+        }
+
         function addComment(filmId) {
             let comment = document.getElementById("comment").value;
             let parent = document.getElementById("comments-block");
@@ -72,14 +80,15 @@ require_once 'scripts/php/Objects/User.php';
             request.addEventListener('readystatechange', function () {
                 if ((request.readyState === 4) && (request.status === 200)) {
                     if (request.responseText == "") {
+                        // нужны переменные
+                        let timestamp = date.toLocaleDateString() + " " + date.toLocaleTimeString(); // времой штамп
+                        let filmId = document.getElementsByClassName("film-main")[0].id; // id фильма
+                        let username = getCookie("username"); // Получаем имя пользователя
+
+                        // Определение последнего комментарий id
+                        let id = 0;
                         let childrenArray = parent.children;
                         let lastComment = childrenArray[parent.childElementCount - 1];
-
-                        let timestamp = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-                        let filmId = document.getElementsByClassName("film-main")[0].id;
-
-                        // Определение id
-                        let id = 0;
                         if (lastComment != null)
                             id = +lastComment.id.split("_")[1] + 1;
 
@@ -99,17 +108,15 @@ require_once 'scripts/php/Objects/User.php';
                         let comment_avatar = getElement(comment, "div", "comment-avatar");
                         // Создаем аватарку
                         let avatar = document.createElement("img");
-                        avatar.src = "/images/avatar.jpeg";
-                        avatar.alt = "avatar";
+
+                        avatar.src = getAvatar(username);
+                        avatar.alt = username;
                         comment_avatar.appendChild(avatar);
 
                         // Создаем внутриности комментария
                         let comment_inside = getElement(comment, "div", "comment-inside");
                         // Создаем заголовок комментария
                         let comment_header = getElement(comment_inside, "div", "comment-header");
-
-                        // Получаем имя пользователя
-                        let username = getCookie("username");
 
                         // Создаем заголовок
                         let header = getElement(comment_header, "span", null);
@@ -369,6 +376,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
                 $user = $databaseManager->getUserByUserId($comments[$i]->getUserId());
                 $username = $user->getUsername();
                 $password = $user->getPassword();
+                $avatar = $user->getAvatar();
 
                 $time = $comments[$i]->getTime();
                 $timestamp = $comments[$i]->getTimestamp();
@@ -377,7 +385,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
 
                 <div class='comment' <? echo "id='comment_$i'" ?>>
                     <div class='comment-avatar'>
-                        <img src='/images/avatar.jpeg' alt='avatar'/>
+                        <? echo "<img src='$avatar' alt='$username'/>" ?>
                     </div>
                     <div class='comment-inside'>
                         <div class='comment-header'>
