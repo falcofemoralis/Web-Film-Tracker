@@ -5,35 +5,49 @@ require_once 'api/Api.php';
 
 class AuthApi extends Api
 {
+    private function saveUser($isSave, $page, $username, $password, $error)
+    {
+        //если была ошибка, то показываем регистрацию и ошибку
+        if (!empty($error)) {
+            include("include/" . $page . ".php");
+        } else { //иначе сохранаяем пользователя в куки и показываем стартовую страницу
+            if ($isSave) $time = time() + 3600 * 24 * 365;
+            else $time = 0;
+
+            setcookie("username", $username, $time);
+            setcookie("password", $password, $time);
+            header('location: /');
+        }
+    }
+
+    private function checkUser($username, $password, $email, $save, $type)
+    {
+        if (!empty($username) && !empty($password) && !empty($email)) {
+            $databaseManager = new DatabaseManager();
+
+            $email = htmlspecialchars($email);
+            $username = htmlspecialchars($username);
+            $password = md5(htmlspecialchars($password) . "asdfhgewq123"); //шифрование пароля с солью
+
+            //запоминать ли юзера
+            $isSave = false;
+            if (!empty($save)) $isSave = true;
+
+            if ($type == "registration") $error = $databaseManager->registerUser($username, $password, $email);
+            else $error = $databaseManager->loginUser($username, $password);
+
+            $this->saveUser($isSave, $type, $username, $password, $error);
+        }
+    }
+
     // POST - Добавление в базу новых данных
     protected function createAction()
     {
         //если все поля пустые, то просто показываем регистрацию
         if (empty($_POST['username']) && empty($_POST['password']) && empty($_POST['email'])) {
             include('include/registration.php');
-        }
-
-        if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
-            $email = htmlspecialchars($_POST['email']);
-            $username = htmlspecialchars($_POST['username']);
-            $password = htmlspecialchars($_POST['password']);
-            $password = md5(htmlspecialchars($password) . "asdfhgewq123"); //шифрование пароля с солью
-
-            //запоминать ли юзера
-            $isSave = false;
-            if (!empty($_POST['isSave'])) $isSave = true;
-
-            $databaseManager = new DatabaseManager();
-            $error = $databaseManager->registerUser($username, $password, $email);
-
-            //если была ошибка, то показываем регистрацию и ошибку
-            if (!empty($error)) {
-                include('include/registration.php');
-            } else { //иначе сохранаяем пользователя в куки и показываем стартовую страницу
-                if ($isSave) setcookie("username", $username, time() + 3600 * 24 * 365);
-                else  setcookie("username", $username);
-                header('location: /');
-            }
+        } else {
+            $this->checkUser($_POST['username'], $_POST['password'], $_POST['email'], $_POST['isSave'], "registration");
         }
     }
 
@@ -49,28 +63,8 @@ class AuthApi extends Api
         //если все поля пустые, то просто показываем форму логина
         if (empty($_GET['username']) && empty($_GET['password'])) {
             include('include/login.php');
-        }
-
-        //если какое-то из полей пустое, сообщаем, что нужно ввести все поля
-        if (!empty($_GET['username']) && !empty($_GET['password'])) {
-            $username = htmlspecialchars($_GET['username']);
-            $password = htmlspecialchars($_GET['password']);
-            $password = md5(htmlspecialchars($password) . "asdfhgewq123");
-
-            //запоминать ли юзера
-            $isSave = false;
-            if (!empty($_GET['isSave'])) $isSave = true;
-
-            $databaseManager = new DatabaseManager();
-            $error = $databaseManager->loginUser($username, $password);
-
-            if (!empty($error)) {
-                include('include/login.php');
-            } else {
-                if ($isSave) setcookie("username", $username, time() + time() + 3600 * 24 * 365);
-                else  setcookie("username", $username);
-                header('location: /');
-            }
+        } else {
+            $this->checkUser($_GET['username'], $_GET['password'], "email", $_GET['isSave'], "login");
         }
     }
 

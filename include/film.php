@@ -22,6 +22,29 @@ require_once 'scripts/php/Objects/User.php';
     <link rel='stylesheet' href="/CSS/elements.css">
     <link rel='stylesheet' href="/CSS/slider.css">
     <script>
+        function getElement(parent, type, clazz) {
+            let child = document.createElement(type);
+            if (clazz != null) child.classList.add(clazz);
+            parent.appendChild(child);
+            return child;
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
         function deleteComment(filmId, time, parentId) {
             let parent = document.getElementById(parentId);
 
@@ -64,10 +87,16 @@ require_once 'scripts/php/Objects/User.php';
                         let comment = document.createElement("div");
                         comment.classList.add("comment");
                         comment.id = "comment_" + id;
+                        comment.style.opacity = "0"
                         parent.insertBefore(comment, parent.firstChild);
+                        requestAnimationFrame(() =>
+                            setTimeout(() => {
+                                comment.style.opacity = "1";
+                            })
+                        );
 
                         // Создаем место под аватарку
-                        let comment_avatar = getElement(comment, "div", "comment-avatar", null);
+                        let comment_avatar = getElement(comment, "div", "comment-avatar");
                         // Создаем аватарку
                         let avatar = document.createElement("img");
                         avatar.src = "/images/avatar.jpeg";
@@ -75,29 +104,29 @@ require_once 'scripts/php/Objects/User.php';
                         comment_avatar.appendChild(avatar);
 
                         // Создаем внутриности комментария
-                        let comment_inside = getElement(comment, "div", "comment-inside", null);
+                        let comment_inside = getElement(comment, "div", "comment-inside");
                         // Создаем заголовок комментария
-                        let comment_header = getElement(comment_inside, "div", "comment-header", null);
+                        let comment_header = getElement(comment_inside, "div", "comment-header");
 
                         // Получаем имя пользователя
                         let username = getCookie("username");
-                        if (username != "") {
-                            // Создаем заголовок
-                            let header = getElement(comment_header, "span", null, null);
 
-                            // Создаем имя юзера
-                            let name = getElement(header, "b", null, null);
-                            name.innerText = username + ", ";
+                        // Создаем заголовок
+                        let header = getElement(comment_header, "span", null);
 
-                            // Создаем время юзера
-                            let time = getElement(header, "span", null);
-                            time.innerText = "оставлен " + timestamp;
+                        // Создаем имя юзера
+                        let name = getElement(header, "b", null);
+                        name.innerText = username + ", ";
 
-                            // Создаем кнопку удаления
-                            let button = getElement(comment_header, "button", null);
-                            button.onclick = () => deleteComment(filmId, Math.floor(date.getTime() / 1000), "comment_" + id);
-                            button.innerText = "×";
-                        }
+                        // Создаем время юзера
+                        let time = getElement(header, "span", null);
+                        time.innerText = "оставлен " + timestamp;
+
+                        // Создаем кнопку удаления
+                        let deleteButton = getElement(comment_header, "button", "comment-button");
+                        deleteButton.classList.add("delete");
+                        deleteButton.onclick = () => deleteComment(filmId, Math.floor(date.getTime() / 1000), "comment_" + id);
+                        deleteButton.innerText = "×";
 
                         let text = getElement(comment_inside, "span", null);
                         text.innerText = document.getElementById("comment").value;
@@ -109,29 +138,6 @@ require_once 'scripts/php/Objects/User.php';
             request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
             let data = 'filmId=' + window.encodeURIComponent(filmId) + '&comment=' + window.encodeURIComponent(comment);
             request.send(data);
-        }
-
-        function getElement(parent, type, clazz) {
-            let child = document.createElement(type);
-            if (clazz != null) child.classList.add(clazz);
-            parent.appendChild(child);
-            return child;
-        }
-
-        function getCookie(cname) {
-            let name = cname + "=";
-            let decodedCookie = decodeURIComponent(document.cookie);
-            let ca = decodedCookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return "";
         }
     </script>
 </head>
@@ -185,9 +191,6 @@ for ($i = 0; $i < count($allActors); ++$i) {
         <div class="film-container">
             <div class="film__title-row">
                 <h1 class='film__title'><? echo "$title" ?></h1>
-                <?
-
-                ?>
             </div>
             <div id="<? echo $filmId ?>" class='film-main'>
                 <div class="film-main__poster-cont">
@@ -365,6 +368,8 @@ for ($i = 0; $i < count($allActors); ++$i) {
             for ($i = 0; $i < count($comments); ++$i) {
                 $user = $databaseManager->getUserByUserId($comments[$i]->getUserId());
                 $username = $user->getUsername();
+                $password = $user->getPassword();
+
                 $time = $comments[$i]->getTime();
                 $timestamp = $comments[$i]->getTimestamp();
                 $text = $comments[$i]->getComment();
@@ -376,15 +381,14 @@ for ($i = 0; $i < count($allActors); ++$i) {
                     </div>
                     <div class='comment-inside'>
                         <div class='comment-header'>
-                            <? echo "<b>$username</b>, оставлен $timestamp";
-                            if (isset($_COOKIE['username']) && $_COOKIE['username'] == $username) {
-                                echo "<button onclick='deleteComment(\"$filmId\", \"$time\" ,\"comment_$i\")'>×</button>";
-                            }
+                            <? echo "<span><b>$username</b>, оставлен $timestamp</span>";
+                            if ($_COOKIE['username'] == $username && $_COOKIE['password'] == $password)
+                                echo "<button class='comment-button delete' onclick='deleteComment(\"$filmId\", \"$time\" ,\"comment_$i\")'>×</button>";
                             ?>
                         </div>
                         <span>
                            <? echo $text ?>
-                       </span>
+                        </span>
                     </div>
                 </div>
             <? } ?>

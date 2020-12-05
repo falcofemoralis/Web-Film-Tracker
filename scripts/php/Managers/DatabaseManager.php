@@ -302,14 +302,14 @@ class DatabaseManager
 
     public function getUserByUserId($userId)
     {
-        $getQuery = "SELECT users.username, users.email
+        $getQuery = "SELECT users.username, users.email, users.password
                 FROM users
                 WHERE users.userId='$userId'";
 
         $result = mysqli_query($this->connection, $getQuery) or die("Ошибка " . mysqli_error($this->connection));
 
         $row = mysqli_fetch_row($result);
-        return new User($userId, $row[0], $row[1]);
+        return new User($userId, $row[0], $row[1], $row[2]);
     }
 
     public function getIsBookmarked($filmId)

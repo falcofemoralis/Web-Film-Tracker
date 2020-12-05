@@ -209,7 +209,8 @@ function setYears(DatabaseManager $db)
                                         <img src='/images/avatar.jpeg' alt='avatar'/>
                                     </div>
                                     <div class='comment-inside'>
-                                       <div class='comment-header'> <b>$username</b>, оставлен $timestamp на <a href='/film?id=$filmId'>$filmName</a></div>
+                                       <div class='comment-header'> 
+                                       <span> <b>$username</b>, оставлен $timestamp на <a href='/film?id=$filmId'>$filmName</a></span></div>
                                        <span>
                                          $text
                                        </span>
