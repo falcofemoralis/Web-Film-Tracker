@@ -258,6 +258,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
         </div>
     </div>
 </article>
+<script src="/scripts/js/comment.js"></script>
 <script>initHoverImg()</script>
 <?php
 include('include/footer.php');

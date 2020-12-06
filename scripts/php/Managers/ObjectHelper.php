@@ -79,13 +79,16 @@ class ObjectHelper
                <div class='comment-avatar'>
                     <img src='$avatar' alt='$username'/>
                </div>
-               <div class='comment-inside'>
+               <div> 
+               <div class='comment-inside' id='commentInside_$i'>
                     <div class='comment-header'>
                         <span><b>$username</b>, оставлен $timestamp $additional</span>" . $btn . "
                     </div>
-                    <span>
+                    <span id='commentText_$i'>
                         $text
-                    </span>
+                    </span>              
+               </div>
+                    <button class='comment-more' id='commentReveal_$i' onclick='revealComment(\"commentInside_$i\",\"commentText_$i\")'>Читать полностью</button>
                </div>
            </div>";
     }

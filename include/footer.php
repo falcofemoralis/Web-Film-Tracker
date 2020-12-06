@@ -1,4 +1,5 @@
 <link rel='stylesheet' href="/CSS/footer.css">
+<script src="/scripts/js/footer.js"></script>
 
 <footer id="footer">
     <div class="container">
@@ -7,15 +8,3 @@
         </div>
     </div>
 </footer>
-
-<script>
-    document.body.onload = () => {
-        let screenHeight = window.screen.height;
-        let docHeight = document.body.offsetHeight;
-
-        if (docHeight > screenHeight) {
-            let footer = document.getElementById("footer");
-            footer.style.position = "relative";
-        }
-    }
-</script>

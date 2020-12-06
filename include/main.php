@@ -181,7 +181,7 @@ function setYears(DatabaseManager $db)
                     </div>
                     <div class="films-comments">
                         <h2>Последние комментарии</h2>
-                        <div>
+                        <div id="comments-block">
                             <?
                             $comments = $databaseManager->getLastComments();
                             for ($i = 0; $i < count($comments); ++$i)
@@ -194,6 +194,7 @@ function setYears(DatabaseManager $db)
         </div>
     </div>
 </article>
+<script src="/scripts/js/comment.js"></script>
 <script>
     sliderInit(true)
     initFiltersResize();

@@ -129,6 +129,9 @@ body {
     margin-left: 10px;
     align-self: start;
     flex-direction: column;
+    height: 107px;
+    overflow: hidden;
+    transition: height .5s;
 }
 
 .comment-inside span {
@@ -138,10 +141,10 @@ body {
 
 .comment-header {
     display: flex;
-    padding-bottom: 10px;
     overflow-wrap: break-word;
     width: 100%;
     justify-content: space-between;
+    margin-bottom: 5px;
 }
 
 .comment-header a {
@@ -155,8 +158,8 @@ body {
 }
 
 .comment-button {
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     float: right;
     outline: none;
     border: none;
@@ -166,11 +169,24 @@ body {
     cursor: pointer;
 }
 
+.comment-more {
+    font-weight: bold;
+    outline: none;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color .3s;
+}
+
+.comment-more:hover {
+    color: dodgerblue;
+}
+
 .delete {
     transition: background-color .3s;
 }
 
-.delete:hover{
+.delete:hover {
     background-color: orangered;
     color: white;
 }
@@ -179,12 +195,12 @@ body {
     transition: background-color .3s;
 }
 
-.edit:hover{
+.edit:hover {
     background-color: dodgerblue;
     color: white;
 }
 
-.center{
+.center {
     display: flex;
     justify-content: center;
 }

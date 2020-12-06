@@ -4,9 +4,6 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
 
 <link rel='stylesheet' href="/CSS/header.css">
 <script src="/scripts/js/header.js"></script>
-<script>
-
-</script>
 
 <?php
 global $isAuthed;

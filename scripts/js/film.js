@@ -43,6 +43,8 @@ function addComment(filmId) {
                             let div = document.createElement("div");
                             div.innerHTML = requestComment.responseText;
                             parent.insertBefore(div, parent.firstChild);
+
+                            textarea.value = "";
                         }
                     });
                     requestComment.send();

@@ -35,7 +35,7 @@ class AuthApi extends Api
             if ($type == "registration") {
                 $error = $databaseManager->registerUser($username, $password, $email);
                 if (empty($error)) {
-                    $pathToSave = $_SERVER['DOCUMENT_ROOT'] . "\\images\\avatars\\" . $username . ".png";
+                    $pathToSave = $_SERVER['DOCUMENT_ROOT'] . "/images/avatars/" . $username . ".png";
 
                     if ($_FILES['avatar']['size'] < 1 * 1024 * 1024) {
                         move_uploaded_file($_FILES['avatar']['tmp_name'], $pathToSave);
