@@ -15,10 +15,9 @@ class BookmarksApi extends Api
     protected function updateAction()
     {
         $filmId = array_shift($this->requestUri);
-        $userId = array_shift($this->requestUri);
 
         $databaseManager = new DatabaseManager();
-        $databaseManager->addToBookmarks($filmId, $userId);
+        $databaseManager->addToBookmarks($filmId, $databaseManager->getUserId($_COOKIE['username']));
     }
 
     // GET - Просмотр данных
@@ -31,10 +30,9 @@ class BookmarksApi extends Api
     protected function deleteAction()
     {
         $filmId = array_shift($this->requestUri);
-        $userId = array_shift($this->requestUri);
 
         $databaseManager = new DatabaseManager();
-        $databaseManager->removeFromBookmarks($filmId, $userId);
+        $databaseManager->removeFromBookmarks($filmId, $databaseManager->getUserId($_COOKIE['username']));
     }
 }
 

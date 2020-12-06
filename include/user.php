@@ -35,7 +35,7 @@ $avatar = $user->getAvatar();
         <div class="main">
             <h2 class="main-header center">Настройки профиля</h2>
             <div class="center">
-                <? echo "<img style='width: 50%' src='$avatar' alt='$username'>" ?>
+                <? echo "<img style='width: 30%' src='$avatar' alt='$username'>" ?>
             </div>
             <label><b>Никнейм</b></label>
             <div class="row"><? echo "$username"; ?> <br></div>

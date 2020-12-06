@@ -38,7 +38,7 @@ $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
                 <div class="films-container">
                     <?php
                     for ($i = $filmsPerPage * ($cur_page - 1); $i < $filmsPerPage * $cur_page; $i++) {
-                        if($i == $filmsAmount) break;
+                        if ($i == $filmsAmount) break;
 
                         $film = $databaseManager->getFilmByFilmId($filmsIDs[$i], true);
 

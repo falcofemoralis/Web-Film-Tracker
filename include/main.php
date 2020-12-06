@@ -19,24 +19,14 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" href="/images/favicon.ico">
     <script src="/scripts/js/slider.js"></script>
-    <script>
-        function restrictYears(selectedYear, restrictedYears, direction) {
-            let year = document.getElementById(selectedYear).value;
-            let years = document.getElementById(restrictedYears);
-            let children = years.children;
-
-            for (let i = 0; i < children.length; i++) {
-                if (children[i].textContent * direction > year * direction) children[i].classList.add("hide");
-                else children[i].classList.remove("hide");
-            }
-        }
-    </script>
+    <script src="/scripts/js/main.js"></script>
 </head>
 
 <body>
 <?php
 include('include/header.php');
 
+global $isAuthed;
 $databaseManager = new DatabaseManager();
 $objectHelper = new ObjectHelper();
 
@@ -106,9 +96,9 @@ function setYears(DatabaseManager $db)
                 </div>
                 <div class="right-block">
                     <div class="films-filters">
-                        <form action="list/filter" method="GET">
+                        <form action="/list/filter" method="GET" id="form-filters">
                             <div class="filter center">
-                                <select size="1" name="genre">
+                                <select size="1" name="genre" onchange="findFilmsByFilters()">
                                     <option disabled selected>Жанр</option>
                                     <?
                                     $genres = $databaseManager->getGenres();
@@ -120,7 +110,7 @@ function setYears(DatabaseManager $db)
                                     }
                                     ?>
                                 </select>
-                                <select size="1" name="country">
+                                <select size="1" name="country" onchange="findFilmsByFilters()">
                                     <option disabled selected>Страна</option>
                                     <?
                                     $countries = $databaseManager->getCountries();
@@ -134,11 +124,13 @@ function setYears(DatabaseManager $db)
                                 </select>
                             </div>
                             <div class="filter center">
-                                <select id="from" size="1" name="from" onchange="restrictYears('from', 'to', -1)">
+                                <select id="from" size="1" name="from"
+                                        onchange="restrictYears('from', 'to', -1); findFilmsByFilters()">
                                     <option disabled selected>Год от</option>
                                     <? setYears($databaseManager); ?>
                                 </select>
-                                <select id="to" size="1" name="to" onchange="restrictYears('to', 'from', 1)">
+                                <select id="to" size="1" name="to"
+                                        onchange="restrictYears('to', 'from', 1); findFilmsByFilters()">
                                     <option disabled selected>до</option>
                                     <? setYears($databaseManager); ?>
                                 </select>
@@ -173,7 +165,7 @@ function setYears(DatabaseManager $db)
                                 <label> Минимальный рейтинг <b id="minRating"><? echo $min ?></b></label>
                                 <input name="min" id="rangeSlider" type="range" min="<? echo $min ?>" max="10"
                                        value="<? echo $min ?>" step="0.1"
-                                       oninput="document.getElementById('minRating').textContent = document.getElementById('rangeSlider').value;">
+                                       oninput="document.getElementById('minRating').textContent = document.getElementById('rangeSlider').value; findFilmsByFilters()">
                                 <div style="display: flex; justify-content: space-between; padding: 5px 4px 5px 4px">
                                     <span><? echo $min ?></span>
                                     <span>
@@ -204,27 +196,7 @@ function setYears(DatabaseManager $db)
 </article>
 <script>
     sliderInit(true)
-    let isMoved = false;
-
-    function onResize() {
-        reportWindowSize();
-
-        let filters = document.querySelectorAll(".films-filters");
-        let widthOfScreen = document.body.offsetWidth;
-
-        if (widthOfScreen < 720) {
-            let filtersContainer = document.getElementsByClassName("mobile-filters")[0];
-            filtersContainer.appendChild(filters[0]);
-            isMoved = true;
-        } else if (isMoved) {
-            let filtersContainer = document.getElementsByClassName("films-comments")[0];
-            filtersContainer.before(filters[0]);
-            isMoved = false;
-        }
-    }
-
-    onResize();
-    window.onresize = onResize;
+    initFiltersResize();
 </script>
 <?php
 include('include/footer.php');

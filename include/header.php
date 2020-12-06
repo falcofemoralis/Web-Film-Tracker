@@ -3,57 +3,13 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
 ?>
 
 <link rel='stylesheet' href="/CSS/header.css">
-
+<script src="/scripts/js/header.js"></script>
 <script>
-    let isOpened = 0;
-    let last = "";
 
-    function close(event) {
-        let isClickInside = false;
-        let controls = document.getElementsByClassName("mobile-controls");
-
-        for (let i = 0; i < controls.length; ++i) {
-            isClickInside = controls[i].contains(event.target);
-            if (isClickInside) break;
-        }
-
-        if (!isClickInside) {
-            console.log("clicked outside");
-            toggle(last);
-        }
-    }
-
-    function toggle(id) {
-        if (last !== id) {
-            let lastMenu = document.getElementsByClassName(last)[0];
-            if (lastMenu != null) {
-                lastMenu.style.visibility = "hidden";
-                lastMenu.style.opacity = "0";
-                isOpened = 0;
-            }
-        }
-
-        let menu = document.getElementsByClassName(id)[0];
-
-        if (isOpened) {
-            menu.style.visibility = "hidden";
-            menu.style.opacity = "0";
-            isOpened = 0;
-            document.removeEventListener('click', close, false);
-        } else {
-            menu.style.visibility = "visible";
-            menu.style.opacity = "1";
-            isOpened = 1;
-            last = id;
-            document.addEventListener('click', close, false);
-        }
-    }
 </script>
 
 <?php
-
-$isAuthed = true;
-
+global $isAuthed;
 
 function setGenres()
 {
@@ -77,8 +33,8 @@ function setGenres()
             <!-- Desktop user navigations -->
             <nav class="header-top__right">
                 <ul class="menu__list">
-                    <?php
-                    if (isset($_COOKIE['username'])): ?>
+                    <?
+                    if ($isAuthed): ?>
                         <li class='menu__item'>
                             <a href='/userBookmarks' class='menu__link'>Закладки</a>
                         </li>
@@ -106,10 +62,10 @@ function setGenres()
                     </button>
                     <div class="mobile-dropdown__menu genres">
                         <ul>
-                            <li style="width: 100%; display: flex; justify-content: center"><a href='/random'
-                                                                                               class="random"
-                                                                                               style="color: dodgerblue; font-size: 20px">Мне
-                                    повезет!</a></li>
+                            <li style="width: 100%; display: flex; justify-content: center">
+                                <a href='/random' class="random" style="color: dodgerblue; font-size: 20px">Мне
+                                    повезет!</a>
+                            </li>
                             <?php setGenres(); ?>
                         </ul>
                     </div>
@@ -155,7 +111,7 @@ function setGenres()
                 <!-- Mobile user navigations -->
                 <div class="mobile-controls">
                     <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle('login')">
-                        <?php if (isset($_COOKIE['username'])) : ?>
+                        <?php if ($isAuthed) : ?>
                             <img class='button-image' src='/images/ic_userPanel.svg' alt='site_logo'>
                         <? else: ?>
                             <img class='button-image' src='/images/ic_authPanel.svg' alt='site_logo'>
@@ -164,7 +120,7 @@ function setGenres()
                     <div>
                         <ul class="mobile-dropdown__menu login">
                             <?php
-                            if (isset($_COOKIE['username'])): ?>
+                            if ($isAuthed): ?>
                                 <li class='menu__item'>
                                     <a href='/userBookmarks' class='menu__link'>Закладки</a>
                                 </li>

@@ -11,26 +11,7 @@
     <link rel='stylesheet' href="/CSS/elements.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" href="/images/favicon.ico">
-    <script>
-        function register() {
-            let formData = new FormData(document.getElementById("register"));
-
-            let request = new XMLHttpRequest();
-            request.open('POST', '/auth', true);
-            request.addEventListener('readystatechange', function () {
-                if ((request.readyState === 4) && (request.status === 200)) {
-                    if (request.responseText === "") {
-                        window.location = "/";
-                    } else {
-                        document.getElementById("error-text").innerText = "Ошибка: " + request.responseText;
-                    }
-                }
-            });
-            request.send(formData);
-
-            return false;
-        }
-    </script>
+    <script src="/scripts/js/registration.js"></script>
 </head>
 
 <body>

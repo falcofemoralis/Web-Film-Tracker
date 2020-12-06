@@ -22,8 +22,8 @@ class ListApi extends Api
     {
         $databaseManager = new DatabaseManager();
         $filers = array("genre", "country", "director", "from", "to", "min", "sort");
-        // Получаем данные из гет запроса
 
+        // Получаем данные из гет запроса
         $cur_page = $_GET["page"]; //текущая страницы
 
         // необходимые переменные для списка
@@ -41,7 +41,7 @@ class ListApi extends Api
                 for ($i = 0; $i < count($filers); ++$i) {
                     $data = $_GET[$filers[$i]];
 
-                    if ($data != null) {
+                    if ($data != null && $data != "null") {
                         switch ($filers[$i]) {
                             case $filers[0]:
                                 $genreObj = $databaseManager->getGenreByName($data);
@@ -91,6 +91,14 @@ class ListApi extends Api
                 }
 
                 $filmsIDs = $databaseManager->getFilmsByFilters($where, $order);
+                if (array_shift($this->requestUri) == "find") {
+                    if ($filmsIDs != null)
+                        echo count($filmsIDs);
+                    else
+                        echo 0;
+                    return;
+                }
+
                 break;
             case "search":
                 $searchParam = $_GET["search"]; //аргумент поиска
