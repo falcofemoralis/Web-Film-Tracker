@@ -11,6 +11,30 @@
     <link rel='stylesheet' href="/CSS/elements.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" href="/images/favicon.ico">
+    <script>
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const isSave = document.getElementById("isSave").value;
+
+            if (username !== "" && password !== "") {
+                let request = new XMLHttpRequest();
+                request.open('GET', '/auth?username=' + username + "&password=" + password + "&isSave=" + isSave, true);
+                request.addEventListener('readystatechange', function () {
+                    if ((request.readyState === 4) && (request.status === 200)) {
+                        if (request.responseText === "") {
+                            window.location = "/";
+                        } else {
+                            document.getElementById("error-text").innerText = "Ошибка: " + request.responseText;
+                        }
+                    }
+                });
+                request.send();
+
+                return false;
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -20,26 +44,23 @@ include('include/header.php');
 
 <article>
     <div class="container">
-        <form class="validation-content" action="auth" method="GET">
+        <form class="validation-content" onsubmit="return login()">
             <div class="validation-input">
                 <h2 class="validation-title">Авторизация</h2>
                 <label>Имя пользователя<br>
-                    <input name="username" type="text" required>
+                    <input id="username" type="text" required>
                 </label>
 
                 <label>Пароль<br>
-                    <input name="password" type="password" required>
+                    <input id="password" type="password" required>
                 </label>
 
                 <label>Запомнить меня?
-                    <input name="isSave" type="checkbox" style="width: 5%">
+                    <input id="isSave" type="checkbox" style="width: 5%">
                 </label>
                 <br>
-                <?
-                if (!empty($error)) echo "<label style='color: orangered; font-weight: bold'>Ошибка: $error<br></label>";
-                ?>
-
-                <button class="validation-btn" type="submit">Войти</button>
+                <span id="error-text" style='color: orangered; font-weight: bold'></span><br>
+                <button class="validation-btn">Войти</button>
             </div>
         </form>
     </div>

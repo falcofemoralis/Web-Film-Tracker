@@ -11,6 +11,26 @@
     <link rel='stylesheet' href="/CSS/elements.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" href="/images/favicon.ico">
+    <script>
+        function register() {
+            let formData = new FormData(document.getElementById("register"));
+
+            let request = new XMLHttpRequest();
+            request.open('POST', '/auth', true);
+            request.addEventListener('readystatechange', function () {
+                if ((request.readyState === 4) && (request.status === 200)) {
+                    if (request.responseText === "") {
+                        window.location = "/";
+                    } else {
+                        document.getElementById("error-text").innerText = "Ошибка: " + request.responseText;
+                    }
+                }
+            });
+            request.send(formData);
+
+            return false;
+        }
+    </script>
 </head>
 
 <body>
@@ -20,7 +40,7 @@ include('include/header.php');
 
 <article>
     <div class="container">
-        <form enctype="multipart/form-data" class="validation-content" action="auth" method="POST">
+        <form enctype="multipart/form-data" id="register" class="validation-content" onsubmit="return register()">
             <div class="validation-input">
                 <h2 class="validation-title">Регистрация</h2>
                 <label>E-mail<br>
@@ -44,10 +64,7 @@ include('include/header.php');
                 </label>
                 <br>
 
-                <?
-                if (!empty($error)) echo "<label style='color: orangered; font-weight: bold'>Ошибка: $error<br></label>";
-                ?>
-
+                <label id="error-text" style='color: orangered; font-weight: bold'></label><br>
                 <button class="validation-btn" type="submit">Зарегистрироваться</button>
             </div>
         </form>

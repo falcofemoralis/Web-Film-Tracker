@@ -5,18 +5,17 @@ require_once 'api/Api.php';
 
 class AuthApi extends Api
 {
-    private function saveUser($isSave, $page, $username, $password, $error)
+    private function saveUser($isSave, $username, $password, $error)
     {
-        //если была ошибка, то показываем регистрацию и ошибку
-        if (!empty($error)) {
-            include("include/" . $page . ".php");
-        } else { //иначе сохранаяем пользователя в куки и показываем стартовую страницу
+        // сохранаяем пользователя в куки и показываем стартовую страницу
+        if (empty($error)) {
             if ($isSave) $time = time() + 3600 * 24 * 365;
             else $time = 0;
 
             setcookie("username", $username, $time);
             setcookie("password", $password, $time);
-            header('location: /');
+        } else { //если была ошибка, то показываем регистрацию и ошибку
+            echo $error;
         }
     }
 
@@ -48,19 +47,14 @@ class AuthApi extends Api
                 $error = $databaseManager->loginUser($username, $password);
             }
 
-            $this->saveUser($isSave, $type, $username, $password, $error);
+            $this->saveUser($isSave, $username, $password, $error);
         }
     }
 
     // POST - Добавление в базу новых данных
     protected function createAction()
     {
-        //если все поля пустые, то просто показываем регистрацию
-        if (empty($_POST['username']) && empty($_POST['password']) && empty($_POST['email'])) {
-            include('include/registration.php');
-        } else {
-            $this->checkUser($_POST['username'], $_POST['password'], $_POST['email'], $_POST['isSave'], "registration");
-        }
+        $this->checkUser($_POST['username'], $_POST['password'], $_POST['email'], $_POST['isSave'], "registration");
     }
 
     // PUT - Обновление данных
@@ -72,12 +66,7 @@ class AuthApi extends Api
     // GET - Просмотр данных
     protected function viewAction()
     {
-        //если все поля пустые, то просто показываем форму логина
-        if (empty($_GET['username']) && empty($_GET['password'])) {
-            include('include/login.php');
-        } else {
-            $this->checkUser($_GET['username'], $_GET['password'], "null", $_GET['isSave'], "login");
-        }
+        $this->checkUser($_GET['username'], $_GET['password'], "null", $_GET['isSave'], "login");
     }
 
     // DELETE - Удаление данных
