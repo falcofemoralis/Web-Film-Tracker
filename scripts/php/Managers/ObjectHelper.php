@@ -55,4 +55,38 @@ class ObjectHelper
 
         echo "</div></a>";
     }
+
+    function createComment(User $user, Comment $comment, $i, $isDeletable, $isShowFilm)
+    {
+        $username = $user->getUsername();
+        $avatar = $user->getAvatar();
+        $timestamp = $comment->getTimestamp();
+        $filmId = $comment->getFilmId();
+        $text = $comment->getComment();
+        $time = $comment->getTime();
+
+        if ($isShowFilm) {
+            $databaseManager = new DatabaseManager();
+            $filmName = $databaseManager->getFilmByFilmId($filmId, true)->getTitle();
+            $additional = "на <a href='/film?id=$filmId'>$filmName</a>";
+        }
+
+        if ($isDeletable)
+            $btn = "<button class='comment-button delete' onclick='deleteComment(\"$filmId\", \"$time\" ,\"comment_$i\")'>×</button>";
+
+        echo "
+           <div class='comment' id='comment_$i'>
+               <div class='comment-avatar'>
+                    <img src='$avatar' alt='$username'/>
+               </div>
+               <div class='comment-inside'>
+                    <div class='comment-header'>
+                        <span><b>$username</b>, оставлен $timestamp $additional</span>" . $btn . "
+                    </div>
+                    <span>
+                        $text
+                    </span>
+               </div>
+           </div>";
+    }
 }

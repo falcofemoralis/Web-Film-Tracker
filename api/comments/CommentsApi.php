@@ -1,6 +1,7 @@
 <?php
 
 require_once 'scripts/php/Managers/DatabaseManager.php';
+require_once 'scripts/php/Managers/ObjectHelper.php';
 require_once 'api/Api.php';
 
 class CommentsApi extends Api
@@ -25,7 +26,12 @@ class CommentsApi extends Api
     // GET - Просмотр данных
     protected function viewAction()
     {
-        echo "invalid method";
+        $objectHelper = new ObjectHelper();
+        $databaseManager = new DatabaseManager();
+        $user = $databaseManager->getUserByUserId($databaseManager->getUserId($_COOKIE['username']));
+        $comment = new Comment($_GET['filmId'], time(), $_GET['comment'], $user->getUserId());
+
+        $objectHelper->createComment($user, $comment, $_GET['id'], true, false);
     }
 
     // DELETE - Удаление данных

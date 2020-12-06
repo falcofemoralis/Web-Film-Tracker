@@ -321,8 +321,8 @@ class DatabaseManager
         $result = mysqli_query($this->connection, $getQuery) or die("Ошибка " . mysqli_error($this->connection));
         $row = mysqli_fetch_row($result);
 
-        if ($row != null) return true;
-        else return false;
+        if ($row != null) return "true";
+        else return "false";
     }
 
     public function addToBookmarks($filmId, $userId)

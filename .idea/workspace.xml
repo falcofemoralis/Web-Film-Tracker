@@ -24,16 +24,14 @@
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/auth/AuthApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth/AuthApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/bookmarks.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/bookmarks.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/elements.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/elements.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/bookmarks/BookmarksApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/bookmarks/BookmarksApi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/comments/CommentsApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/comments/CommentsApi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/registration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Objects/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Objects/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,6 +230,10 @@
       <workItem from="1607175465823" duration="1226000" />
       <workItem from="1607176890829" duration="7175000" />
       <workItem from="1607188836877" duration="3329000" />
+      <workItem from="1607194017736" duration="2471000" />
+      <workItem from="1607199842076" duration="8545000" />
+      <workItem from="1607208923769" duration="30000" />
+      <workItem from="1607210296901" duration="2971000" />
     </task>
     <servers />
   </component>
@@ -363,22 +365,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606215401105" />
-    <state x="687" y="89" width="1091" height="779" key="find.popup" timestamp="1607191919195">
+    <state x="687" y="89" width="1091" height="779" key="find.popup" timestamp="1607208931627">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="687" y="89" width="1091" height="779" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607191919195" />
+    <state x="687" y="89" width="1091" height="779" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607208931627" />
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog" timestamp="1604757553781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604757553781" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1607117546932">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1607207454560">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607117546932" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606062799229">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607207454560" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607202449100">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606062799229" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607202449100" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

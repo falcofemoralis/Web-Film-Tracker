@@ -141,7 +141,7 @@ input {
     position: absolute;
     padding: 25px;
     margin-top: 20px;
-    background: rgba(255, 255, 255, 0.90);
+    background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 100;
     opacity: 0;
@@ -182,7 +182,7 @@ input {
     flex-direction: column;
     position: absolute;
     padding: 15px;
-    background: rgba(255, 255, 255, 0.90);
+    background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 100;
     width: 100%;

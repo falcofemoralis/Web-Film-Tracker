@@ -8,31 +8,52 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
     let isOpened = 0;
     let last = "";
 
+    function close(event) {
+        let isClickInside = false;
+        let controls = document.getElementsByClassName("mobile-controls");
+
+        for (let i = 0; i < controls.length; ++i) {
+            isClickInside = controls[i].contains(event.target);
+            if (isClickInside) break;
+        }
+
+        if (!isClickInside) {
+            console.log("clicked outside");
+            toggle(last);
+        }
+    }
+
     function toggle(id) {
-        if (last != id) {
-            let lastMenu = document.getElementsByClassName(last);
-            if (lastMenu.length > 0) {
-                lastMenu[0].style.visibility = "hidden";
-                lastMenu[0].style.opacity = "0";
+        if (last !== id) {
+            let lastMenu = document.getElementsByClassName(last)[0];
+            if (lastMenu != null) {
+                lastMenu.style.visibility = "hidden";
+                lastMenu.style.opacity = "0";
                 isOpened = 0;
             }
         }
 
-        let menu = document.getElementsByClassName(id);
+        let menu = document.getElementsByClassName(id)[0];
+
         if (isOpened) {
-            menu[0].style.visibility = "hidden";
-            menu[0].style.opacity = "0";
+            menu.style.visibility = "hidden";
+            menu.style.opacity = "0";
             isOpened = 0;
+            document.removeEventListener('click', close, false);
         } else {
-            menu[0].style.visibility = "visible";
-            menu[0].style.opacity = "1";
+            menu.style.visibility = "visible";
+            menu.style.opacity = "1";
             isOpened = 1;
             last = id;
+            document.addEventListener('click', close, false);
         }
     }
 </script>
 
 <?php
+
+$isAuthed = true;
+
 
 function setGenres()
 {
@@ -78,20 +99,23 @@ function setGenres()
 
         <div class='header-bot'>
             <nav class="header-bot__left">
-                <!-- Mobile button -->
+                <!-- Mobile genres-->
                 <div class="mobile-controls">
                     <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle('genres')">
                         <img class="button-image" src="/images/ic_menu.svg" alt="site_logo">
                     </button>
-                    <div>
-                        <ul class="mobile-dropdown__menu genres">
-                            <li style="width: 100%; display: flex; justify-content: center"><a href='/random' class="random" style="color: dodgerblue; font-size: 20px">Мне повезет!</a></li>
+                    <div class="mobile-dropdown__menu genres">
+                        <ul>
+                            <li style="width: 100%; display: flex; justify-content: center"><a href='/random'
+                                                                                               class="random"
+                                                                                               style="color: dodgerblue; font-size: 20px">Мне
+                                    повезет!</a></li>
                             <?php setGenres(); ?>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Desktop button -->
+                <!-- Desktop genres-->
                 <ul class="menu__list">
                     <li class="dropdown-menu">
                         <button class="dropdown-menu__btn menu__link">Все жанры</button>
