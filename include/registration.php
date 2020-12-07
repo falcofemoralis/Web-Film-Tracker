@@ -20,7 +20,7 @@
 <?
 include('include/header.php');
 ?>
-<article>
+<article style=" margin-bottom: 5%; margin-top: 3%;">
     <div class="container">
         <form enctype="multipart/form-data" id="register" class="validation-content" onsubmit="return register()">
             <div class="validation-input">

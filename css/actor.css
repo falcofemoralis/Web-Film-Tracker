@@ -80,3 +80,35 @@
         max-height: 200px;
     }
 }
+
+.films-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: calc(((156px * 4) + (6px * 4 * 2)));
+}
+
+/* Mobile version */
+
+@media (max-width: 925px) {
+    .films-container {
+        width: calc(((100px * 4) + (6px * 4 * 2)));
+    }
+}
+
+@media (max-width: 458px) {
+    .films-container {
+        width: calc(((100px * 4) + (6px * 4 * 2)));
+    }
+}
+
+@media (max-width: 342px) {
+    .films-container {
+        width: calc(((100px * 3) + (6px * 3 * 2)));
+    }
+}
+
+@media (max-width: 234px) {
+    .films-container {
+        width: calc(((100px * 2) + (6px * 2 * 2)));
+    }
+}

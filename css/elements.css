@@ -22,11 +22,9 @@ body {
 }
 
 .text__header {
+    text-align: center;
     font-size: 25px;
     font-weight: bold;
-    margin-left: 150px;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 /*Content of films*/

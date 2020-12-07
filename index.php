@@ -1,5 +1,6 @@
 <?
 require_once 'scripts/php/Helpers/ObjectHelper.php';
+require_once 'scripts/php/Helpers/PagesHelper.php';
 require_once 'scripts/php/Objects/Film.php';
 
 require_once 'api/Database.php';

@@ -20,7 +20,7 @@
 <?
 include('include/header.php');
 ?>
-<article>
+<article style=" margin-bottom: 5%; margin-top: 3%;">
     <div class="container">
         <form class="validation-content" onsubmit="return login()">
             <div class="validation-input">

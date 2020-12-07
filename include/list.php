@@ -26,7 +26,7 @@ $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
 <?
 include('include/header.php');
 ?>
-<article>
+<article style=" margin-bottom: 3%; margin-top: 1%;">
     <div class="container">
         <div>
             <? echo "<h2 class='text__header'>$filmsHeader</h2>"; ?>

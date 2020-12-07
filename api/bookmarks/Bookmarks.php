@@ -7,11 +7,11 @@ class Bookmarks extends Database
         parent::__construct();
     }
 
-    public function getIsBookmarked($filmId)
+    public function getIsBookmarked($filmId, $userId)
     {
         $getQuery = "SELECT * 
                 FROM bookmarks 
-                WHERE bookmarks.title_id = '$filmId'";
+                WHERE bookmarks.title_id = '$filmId' and bookmarks.user_id = '$userId'" ;
 
         $result = mysqli_query($this->connection, $getQuery) or die("Ошибка " . mysqli_error($this->connection));
         $row = mysqli_fetch_row($result);

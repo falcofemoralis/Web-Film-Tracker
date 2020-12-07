@@ -51,6 +51,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
      кинопоиск ютуб, кинопоиск топ, гидонлайн кинопоиск, рейтинг imdb, рейтинг фильмов imdb, топ фильмов imdb, в ролях актеры,
      дата выхода, рейтинги imdb, смотреть трейлер, <? echo $title ?>">
     <meta name="language" content="ru">
+    <meta property="og:image" content="http://a0488451.xsph.ru/images/posters/<? echo $filmId ?>.jpeg">
 
     <link rel="icon" href="/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -82,7 +83,8 @@ include('include/header.php');
                     <?
 
                     if ($isAuthed):
-                        $isBookmarked = $bookmarks->getIsBookmarked($filmId);
+                        $userId = $database->getUserId($_COOKIE['username']);
+                        $isBookmarked = $bookmarks->getIsBookmarked($filmId, $userId);
                         if ($isBookmarked == "true")
                             $img = "unbookmark.svg";
                         else

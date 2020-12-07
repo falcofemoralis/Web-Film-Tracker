@@ -27,10 +27,10 @@ $avatar = $user->getAvatar();
 <?
 include('include/header.php');
 ?>
-<article>
+<article style=" margin-bottom: 5%; margin-top: 3%;">
     <div class="container">
         <div class="main">
-            <h2 class="main-header center">Настройки профиля</h2>
+            <h2 class="text__header center" style="margin-bottom: 15px">Настройки профиля</h2>
             <div class="center">
                 <? echo "<img style='width: 30%' src='$avatar' alt='$username'>" ?>
             </div>

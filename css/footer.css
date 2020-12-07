@@ -1,3 +1,7 @@
+article {
+    min-height: calc(100vh - 50px - 100px);
+}
+
 /*footer*/
 footer {
     height: 50px;
@@ -5,12 +9,9 @@ footer {
     background-color: black;
     display: flex;
     align-items: center;
-    position: fixed;
-    bottom: 0;
 }
 
-.b-footer h3 {
-    float: left;
+.b-footer {
     color: white;
     font-size: 12px;
 }
@@ -18,7 +19,7 @@ footer {
 /* Mobile version */
 
 @media (max-width: 925px) {
-    .b-footer h3{
+    .b-footer {
         padding-left: 20px;
     }
 }

@@ -38,18 +38,19 @@ for ($i = 0; $i < count($films); $i++) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><? echo $name?> - искать  информацию про фильмы</title>
+    <title><? echo $name?> - фильмы актера</title>
     <meta name="author" content="FilmsTracker">
     <meta name="description" content="<? echo $name?> - смотреть и читать информацию про актера в фильмах">
     <meta name="keywords" content="трекер фильмов, лучший трекер фильмов, бесплатный трекер фильмов, кинопоиск, imdb, кинопоиск hd,
      кинопоиск ютуб, кинопоиск топ, гидонлайн кинопоиск, рейтинг imdb, рейтинг фильмов imdb, топ фильмов imdb, в ролях актеры,
      дата выхода, рейтинги imdb, смотреть трейлер">
     <meta name="language" content="ru">
+    <meta property="og:image" content="http://a0488451.xsph.ru/images/photos/<? echo $personId ?>.jpeg">
 
     <link rel="icon" href="/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel='stylesheet' href="/CSS/actor.css">
     <link rel='stylesheet' href="/CSS/elements.css">
+    <link rel='stylesheet' href="/CSS/actor.css">
 </head>
 <body>
 <?
