@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Сайт поиска информации про фильмы">
-    <meta name="author" content="Иващенко Владислав Романович">
-    <title>Трекер фильмов</title>
-    <link rel='stylesheet' href="/CSS/elements.css">
-    <link rel='stylesheet' href="/CSS/bookmarks.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" href="/images/favicon.ico">
-</head>
-
-<body>
 <?
-include('include/header.php');
-
 $database = new Database();
 $bookmarks = new Bookmarks();
 $objectHelper = new ObjectHelper();
 
 $userId = $database->getUserId($_COOKIE['username']);
 $films = $bookmarks->getUserBookmarks($userId);
+?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои закладки</title>
+    <meta name="author" content="FilmsTracker">
+    <meta name="description" content="Закладки фильмов пользователя <? echo $_COOKIE['username'] ?>">
+    <meta name="keywords" content="трекер фильмов, лучший трекер фильмов, бесплатный трекер фильмов, кинопоиск, imdb, кинопоиск hd,
+     кинопоиск ютуб, кинопоиск топ, гидонлайн кинопоиск, рейтинг imdb, рейтинг фильмов imdb, топ фильмов imdb, в ролях актеры, дата выхода, рейтинги imdb">
+    <meta name="language" content="ru">
+
+    <link rel='stylesheet' href="/CSS/elements.css">
+    <link rel='stylesheet' href="/CSS/bookmarks.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/favicon.ico">
+</head>
+<body>
+<?
+include('include/header.php');
 ?>
 <article>
     <div class="container">

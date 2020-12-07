@@ -1,26 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Сайт поиска информации про фильмы">
-    <meta name="author" content="Иващенко Владислав Романович">
-    <title>Трекер фильмов</title>
-    <link rel='stylesheet' href="/CSS/elements.css">
-    <link rel='stylesheet' href="/CSS/main.css">
-    <link rel='stylesheet' href="/CSS/slider.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" href="/images/favicon.ico">
-    <script src="/scripts/js/slider.js"></script>
-    <script src="/scripts/js/main.js"></script>
-    <script src="/scripts/js/comment.js"></script>
-</head>
-
-<body>
 <?
-include('include/header.php');
-
 global $isAuthed;
 $database = new Database();
 $objectHelper = new ObjectHelper();
@@ -37,6 +17,29 @@ function setYears($filmList)
         echo "<option value='$year'>$year</option>";
     }
 }
+?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FilmsTracker - Трекер информации про фильмы</title>
+    <meta name="author" content="FilmsTracker">
+    <meta name="description" content="Сайт поиска информации про фильмы">
+    <meta name="keywords" content="трекер фильмов, лучший трекер фильмов, бесплатный трекер фильмов, кинопоиск, imdb, кинопоиск hd,
+     кинопоиск ютуб, кинопоиск топ, гидонлайн кинопоиск, рейтинг imdb, рейтинг фильмов imdb, топ фильмов imdb, в ролях актеры, дата выхода, рейтинги imdb">
+    <meta name="language" content="ru">
+
+    <link rel='stylesheet' href="/CSS/elements.css">
+    <link rel='stylesheet' href="/CSS/main.css">
+    <link rel='stylesheet' href="/CSS/slider.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/favicon.ico">
+    <script src="/scripts/js/slider.js"></script>
+    <script src="/scripts/js/main.js"></script>
+    <script src="/scripts/js/comment.js"></script>
+</head>
+<body>
+<?
+include('include/header.php');
 ?>
 <article class="page">
     <div class="container">

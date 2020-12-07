@@ -1,5 +1,4 @@
-<?php
-
+<?
 require_once 'scripts/php/Helpers/ObjectHelper.php';
 require_once 'scripts/php/Objects/Film.php';
 

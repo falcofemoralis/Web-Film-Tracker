@@ -23,18 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/list/FilmsList.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/auth/Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth/Auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/auth/AuthApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth/AuthApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/bookmarks/Bookmarks.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/bookmarks/Bookmarks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/bookmarks/BookmarksApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/bookmarks/BookmarksApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/comments/Comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/comments/Comments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/comments/CommentsApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/comments/CommentsApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/list/ListApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/list/FilmsListApi.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/actor.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/actor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/main.php" afterDir="false" />
@@ -42,13 +33,7 @@
       <change beforePath="$PROJECT_DIR$/include/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/user.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/userBookmarks.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/userBookmarks.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/js/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/comment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/js/film.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/film.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/DatabaseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/ObjectHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Helpers/ObjectHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Managers/PagesHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Helpers/PagesHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Objects/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Objects/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trailers.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/php/Helpers/ObjectHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Helpers/ObjectHelper.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +243,7 @@
       <workItem from="1607284859447" duration="34000" />
       <workItem from="1607285293409" duration="268000" />
       <workItem from="1607285767175" duration="82000" />
-      <workItem from="1607327628074" duration="8403000" />
+      <workItem from="1607327628074" duration="11019000" />
     </task>
     <servers />
   </component>

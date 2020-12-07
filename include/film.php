@@ -1,26 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Сайт поиска информации про фильмы">
-    <meta name="author" content="Иващенко Владислав Романович">
-    <title>Трекер фильмов</title>
-    <link rel="icon" href="/images/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel='stylesheet' href="/CSS/film.css">
-    <link rel='stylesheet' href="/CSS/elements.css">
-    <link rel='stylesheet' href="/CSS/slider.css">
-    <script src="/scripts/js/film.js"></script>
-    <script src="/scripts/js/hoverImage.js"></script>
-    <script src="/scripts/js/comment.js"></script>
-</head>
-
-<body>
 <?
-include('include/header.php');
-
 global $isAuthed;
 
 $database = new Database();
@@ -60,9 +40,31 @@ for ($i = 0; $i < count($allActors); ++$i) {
             $sortedActors[0][] = $actor;
     }
 }
-
 ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информация про фильм <? echo $title ?></title>
+    <meta name="author" content="FilmsTracker">
+    <meta name="description" content="Смотреть трейлер и читать информацию про фильм <? echo $title ?>">
+    <meta name="keywords" content="трекер фильмов, лучший трекер фильмов, бесплатный трекер фильмов, кинопоиск, imdb, кинопоиск hd,
+     кинопоиск ютуб, кинопоиск топ, гидонлайн кинопоиск, рейтинг imdb, рейтинг фильмов imdb, топ фильмов imdb, в ролях актеры,
+     дата выхода, рейтинги imdb, смотреть трейлер, <? echo $title ?>">
+    <meta name="language" content="ru">
 
+    <link rel="icon" href="/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href="/CSS/film.css">
+    <link rel='stylesheet' href="/CSS/elements.css">
+    <link rel='stylesheet' href="/CSS/slider.css">
+    <script src="/scripts/js/film.js"></script>
+    <script src="/scripts/js/hoverImage.js"></script>
+    <script src="/scripts/js/comment.js"></script>
+</head>
+<body>
+<?
+include('include/header.php');
+?>
 <article class="page">
     <div class="container">
         <div class="film-container">

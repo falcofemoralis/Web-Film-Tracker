@@ -9,6 +9,19 @@ class ObjectHelper
         $this->databaseManager = new Database();
     }
 
+    function createMeta($filmId, $isMain)
+    {
+        echo " 
+        <meta charset='UTF-8'>
+        <meta name='robots' content='noindex,nofollow'>
+        <meta name='author' content='FilmsTracker'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <meta name='description' content='Сайт поиска информации про фильмы'>
+        <meta name='keywords' content='в ролях актеры, русская озвучка, дата выхода, рейтинги кинопоиска и imdb'>
+        <meta name='language' content='ru''>
+        <title>Трекер фильмов</title>";
+    }
+
     function createFilm($filmId, $title, $year, $genres)
     {
         $poster = "./images/posters/$filmId.jpeg";
