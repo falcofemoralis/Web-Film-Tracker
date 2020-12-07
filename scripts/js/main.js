@@ -46,11 +46,16 @@ function findFilmsByFilters() {
     request.addEventListener('readystatechange', function () {
         if ((request.readyState === 4) && (request.status === 200)) {
             if (request.responseText !== "") {
-                document.getElementsByClassName("filer-button")[0].innerText = "Найденно (" + request.responseText + ")";
+                document.getElementById("filter-films").value = "Найдено (" + request.responseText + ")";
             } else {
                 alert("Ошибка");
             }
         }
     });
     request.send();
+}
+
+function clearFilters() {
+    document.getElementById("form-filters").reset();
+    document.getElementById("filter-films").value = "Найти";
 }

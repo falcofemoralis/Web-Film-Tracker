@@ -29,11 +29,11 @@ include('include/header.php');
 ?>
 <article style=" margin-bottom: 5%; margin-top: 3%;">
     <div class="container">
-        <div style="margin: 0 50px 50px 50px;">
+        <div class="films-bookmarks">
             <h2 class='text__header'>Закладки</h2>
             <div class="films-table">
                 <? if (count($films) > 0): ?>
-                    <div class="films-container" style="width: calc(((156px * 4) + (6px * 4 * 2)));">
+                    <div class="films-container">
                         <?
                         for ($i = 0; $i < count($films); ++$i) {
                             $film = $database->getFilmByFilmId($films[$i], true);

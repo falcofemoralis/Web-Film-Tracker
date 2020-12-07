@@ -163,7 +163,7 @@ include('include/header.php');
                                 <label> Минимальный рейтинг <b id="minRating"><? echo $min ?></b></label>
                                 <input name="min" id="rangeSlider" type="range" min="<? echo $min ?>" max="10"
                                        value="<? echo $min ?>" step="0.1"
-                                       oninput="document.getElementById('minRating').textContent = document.getElementById('rangeSlider').value; findFilmsByFilters()">
+                                       onchange="document.getElementById('minRating').textContent = document.getElementById('rangeSlider').value; findFilmsByFilters()">
                                 <div style="display: flex; justify-content: space-between; padding: 5px 4px 5px 4px">
                                     <span><? echo $min ?></span>
                                     <span>
@@ -174,7 +174,10 @@ include('include/header.php');
                                     <span>10</span>
                                 </div>
                             </div>
-                            <button class="filer-button">Найти</button>
+                            <div class="center">
+                                <input type="submit" id="filter-films" class="filter-button" style="margin-right: 5%" value="Найти">
+                                <button id="clear-filters" class="filter-button" style="margin-left: 5%" type="button" onclick="clearFilters()">Очистить</button>
+                            </div>
                         </form>
                     </div>
                     <div class="films-comments">

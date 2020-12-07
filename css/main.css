@@ -50,7 +50,7 @@
     justify-content: space-between;
 }
 
-.filer-button {
+.filter-button {
     width: 160px;
     height: 30px;
     outline: none;
@@ -62,7 +62,7 @@
     border-radius: 6px;
 }
 
-.filer-button:hover {
+.filter-button:hover {
     background-color: dodgerblue;
     filter: drop-shadow(0 0 4px #00acff);
 }
