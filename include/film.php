@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-require_once 'scripts/php/Objects/Actor.php';
-require_once 'scripts/php/Objects/Film.php';
-require_once 'scripts/php/Managers/DatabaseManager.php';
-require_once 'scripts/php/Managers/ObjectHelper.php';
-require_once 'scripts/php/Objects/Comment.php';
-require_once 'scripts/php/Objects/User.php';
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,21 +13,22 @@ require_once 'scripts/php/Objects/User.php';
     <link rel='stylesheet' href="/CSS/elements.css">
     <link rel='stylesheet' href="/CSS/slider.css">
     <script src="/scripts/js/film.js"></script>
-    <script src="/scripts/js/hoverImage.js">initHoverImg()</script>
+    <script src="/scripts/js/hoverImage.js"></script>
+    <script src="/scripts/js/comment.js"></script>
 </head>
 
 <body>
-
-<?php
+<?
 include('include/header.php');
 
 global $isAuthed;
 
-$databaseManager = new DatabaseManager();
+$database = new Database();
 $objectHelper = new ObjectHelper();
+$bookmarks = new Bookmarks();
 
 $filmId = $_GET["id"];
-$film = $databaseManager->getFilmByFilmId($filmId, false);
+$film = $database->getFilmByFilmId($filmId, false);
 $title = $film->getTitle();
 $rating = $film->getRating();
 $votes = $film->getVotes();
@@ -46,7 +38,7 @@ $runtime_minutes = $film->getRuntimeMinutes();
 $isAdult = $film->getIsAdult();
 $trailerId = $film->getTrailerId();
 
-$allActors = $databaseManager->getActorsByFilmId($filmId);
+$allActors = $database->getActorsByFilmId($filmId);
 $sortedActors = array(array());
 $sortedActorsHeaders = array("Актер", " Режиссер", "Продюсер", "Сценарист");
 
@@ -88,7 +80,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
                     <?
 
                     if ($isAuthed):
-                        $isBookmarked = $databaseManager->getIsBookmarked($filmId);
+                        $isBookmarked = $bookmarks->getIsBookmarked($filmId);
                         if ($isBookmarked == "true")
                             $img = "unbookmark.svg";
                         else
@@ -131,7 +123,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
                         <tr>
                             <td><b>Страна:</b></td>
                             <td><?
-                                $countryObj = $databaseManager->getCountryById($film->getCountryId());
+                                $countryObj = $database->getCountryById($film->getCountryId());
                                 $country = $countryObj->getCountry();
                                 $countryId = $countryObj->getCountryId();
                                 echo "<a class='link' href='/list/filter?country=$countryId'>$country</a>"
@@ -157,7 +149,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
                             <td>
                                 <? $genres = $film->getGenres();
                                 for ($i = 0; $i < count($genres) - 1; $i++) {
-                                    $genreObj = $databaseManager->getGenreById($genres[$i]);
+                                    $genreObj = $database->getGenreById($genres[$i]);
                                     $genre = $genreObj->getGenre();
                                     $genre_name = $genreObj->getGenreName();
 
@@ -197,9 +189,8 @@ for ($i = 0; $i < count($allActors); ++$i) {
 
             <div class="film__section">
                 <h2 class='section__title'>Трейлер фильма</h2>
-                <iframe width="100%" height="315"
+                <iframe width="100%" height="315" style="border: none"
                     <? echo "src='https://www.youtube.com/embed/$trailerId'" ?>
-                        frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
             </div>
@@ -209,7 +200,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
             <h2 class="section__title">Актеры в фильме</h2>
             <div class='slider' style="justify-content:  flex-start;">
                 <div class="slider__container" style="overflow: scroll; overflow-y: hidden;">
-                    <?php
+                    <?
                     $size = 5;
                     $pages = 1;
 
@@ -227,7 +218,7 @@ for ($i = 0; $i < count($allActors); ++$i) {
                 </div>
             </div>
         </div>
-        <?php if ($isAuthed) : ?>
+        <? if ($isAuthed) : ?>
             <div>
                 <textarea id='comment' class='comment-input' name='comment'
                           placeholder='Написать комментарий'></textarea>
@@ -243,24 +234,28 @@ for ($i = 0; $i < count($allActors); ++$i) {
         <? endif; ?>
         <div id="comments-block">
             <?
-            $comments = $databaseManager->getComments($filmId);
+            $commentsObj = new Comments();
+            $comments = $commentsObj->getComments($filmId);
 
             for ($i = 0; $i < count($comments); ++$i) {
-                $user = $databaseManager->getUserByUserId($comments[$i]->getUserId());
+                $user = $commentsObj->getUserByUserId($comments[$i]->getUserId());
                 $username = $user->getUsername();
                 $password = $user->getPassword();
 
                 if ($_COOKIE['username'] == $username && $_COOKIE['password'] == $password && $isAuthed) $isDeletable = true;
                 else $isDeletable = false;
+
                 $objectHelper->createComment($user, $comments[$i], $i, $isDeletable, false);
             }
             ?>
         </div>
     </div>
 </article>
-<script src="/scripts/js/comment.js"></script>
-<script>initHoverImg()</script>
-<?php
+<script>
+    initHoverImg()
+    initComments();
+</script>
+<?
 include('include/footer.php');
 ?>
 </body>

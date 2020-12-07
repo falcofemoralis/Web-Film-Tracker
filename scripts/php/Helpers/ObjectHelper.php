@@ -1,13 +1,12 @@
 <?php
-require_once 'scripts/php/Managers/DatabaseManager.php';
 
 class ObjectHelper
 {
-    public DatabaseManager $databaseManager;
+    public Database $databaseManager;
 
     function __construct()
     {
-        $this->databaseManager = new DatabaseManager();
+        $this->databaseManager = new Database();
     }
 
     function createFilm($filmId, $title, $year, $genres)
@@ -66,7 +65,7 @@ class ObjectHelper
         $time = $comment->getTime();
 
         if ($isShowFilm) {
-            $databaseManager = new DatabaseManager();
+            $databaseManager = new Database();
             $filmName = $databaseManager->getFilmByFilmId($filmId, true)->getTitle();
             $additional = "на <a href='/film?id=$filmId'>$filmName</a>";
         }
@@ -79,15 +78,15 @@ class ObjectHelper
                <div class='comment-avatar'>
                     <img src='$avatar' alt='$username'/>
                </div>
-               <div> 
-               <div class='comment-inside' id='commentInside_$i'>
-                    <div class='comment-header'>
-                        <span><b>$username</b>, оставлен $timestamp $additional</span>" . $btn . "
-                    </div>
-                    <span id='commentText_$i'>
-                        $text
-                    </span>              
-               </div>
+               <div style='width: 100%'> 
+                   <div class='comment-inside' id='commentInside_$i'>
+                        <div class='comment-header'>
+                            <span><b>$username</b>, оставлен $timestamp $additional</span>" . $btn . "
+                        </div>
+                        <span id='commentText_$i'>
+                            $text
+                        </span>              
+                   </div>
                     <button class='comment-more' id='commentReveal_$i' onclick='revealComment(\"commentInside_$i\",\"commentText_$i\")'>Читать полностью</button>
                </div>
            </div>";

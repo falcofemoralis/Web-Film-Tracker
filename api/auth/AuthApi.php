@@ -1,7 +1,8 @@
 <?php
 
-require_once 'scripts/php/Managers/DatabaseManager.php';
 require_once 'api/Api.php';
+require_once 'api/Database.php';
+require_once 'api/auth/Auth.php';
 
 class AuthApi extends Api
 {
@@ -22,8 +23,6 @@ class AuthApi extends Api
     private function checkUser($username, $password, $email, $save, $type)
     {
         if (!empty($username) && !empty($password) && !empty($email)) {
-            $databaseManager = new DatabaseManager();
-
             $email = htmlspecialchars($email);
             $username = htmlspecialchars($username);
             $password = md5(htmlspecialchars($password) . "asdfhgewq123"); //шифрование пароля с солью
@@ -33,9 +32,10 @@ class AuthApi extends Api
             if (!empty($save)) $isSave = true;
 
             if ($type == "registration") {
-                $error = $databaseManager->registerUser($username, $password, $email);
+
+                $error = (new Auth)->registerUser($username, $password, $email);
                 if (empty($error)) {
-                    $pathToSave = $_SERVER['DOCUMENT_ROOT'] . "/images/avatars/" . $username . ".png";
+                    $pathToSave = $_SERVER['DOCUMENT_ROOT'] . "/images/avatars/" . str_replace(" ", "_", $username) . ".png";
 
                     if ($_FILES['avatar']['size'] < 1 * 1024 * 1024) {
                         move_uploaded_file($_FILES['avatar']['tmp_name'], $pathToSave);
@@ -44,7 +44,7 @@ class AuthApi extends Api
                     }
                 }
             } else {
-                $error = $databaseManager->loginUser($username, $password);
+                $error = (new Auth)->loginUser($username, $password);
             }
 
             $this->saveUser($isSave, $username, $password, $error);

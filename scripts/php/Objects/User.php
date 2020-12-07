@@ -24,6 +24,7 @@ class User
 
     public static function checkAvatar($username)
     {
+        $username = str_replace(" ", "_", $username);
         $avatar = "images/avatars/" . $username . ".png";
         if (!file_exists($avatar)) $avatar = "/images/avatar.jpeg";
         return $avatar;

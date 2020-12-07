@@ -1,8 +1,9 @@
 <?php
 
-require_once 'scripts/php/Managers/DatabaseManager.php';
-require_once 'scripts/php/Managers/ObjectHelper.php';
+require_once 'scripts/php/Helpers/ObjectHelper.php';
 require_once 'api/Api.php';
+require_once 'api/Database.php';
+require_once 'api/comments/Comments.php';
 
 class CommentsApi extends Api
 {
@@ -11,10 +12,7 @@ class CommentsApi extends Api
     {
         $comment = htmlspecialchars($_POST['comment']);
         $filmId = $_POST['filmId'];
-
-        $databaseManager = new DatabaseManager();
-        $error = $databaseManager->addComment($comment, $filmId, $_COOKIE['username'], time());
-        echo $error;
+        echo (new Comments())->addComment($comment, $filmId, $_COOKIE['username'], time());;
     }
 
     // PUT - Обновление данных
@@ -27,10 +25,9 @@ class CommentsApi extends Api
     protected function viewAction()
     {
         $objectHelper = new ObjectHelper();
-        $databaseManager = new DatabaseManager();
-        $user = $databaseManager->getUserByUserId($databaseManager->getUserId($_COOKIE['username']));
+        $comments = new Comments();
+        $user = $comments->getUserByUserId($comments->getUserId($_COOKIE['username']));
         $comment = new Comment($_GET['filmId'], time(), $_GET['comment'], $user->getUserId());
-
         $objectHelper->createComment($user, $comment, $_GET['id'], true, false);
     }
 
@@ -39,10 +36,7 @@ class CommentsApi extends Api
     {
         $filmId = array_shift($this->requestUri);
         $time = array_shift($this->requestUri);
-
-        $databaseManager = new DatabaseManager();
-        $error = $databaseManager->deleteComment($filmId, $_COOKIE['username'], $time);
-        echo $error;
+        echo (new Comments())->deleteComment($filmId, $_COOKIE['username'], $time);;
     }
 }
 

@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-require_once 'scripts/php/Objects/Film.php';
-require_once 'scripts/php/Managers/ObjectHelper.php';
-require_once 'scripts/php/Managers/DatabaseManager.php';
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,28 +14,29 @@ require_once 'scripts/php/Managers/DatabaseManager.php';
     <link rel="icon" href="/images/favicon.ico">
     <script src="/scripts/js/slider.js"></script>
     <script src="/scripts/js/main.js"></script>
+    <script src="/scripts/js/comment.js"></script>
 </head>
 
 <body>
-<?php
+<?
 include('include/header.php');
 
 global $isAuthed;
-$databaseManager = new DatabaseManager();
+$database = new Database();
 $objectHelper = new ObjectHelper();
+$filmList = new FilmsList();
 
-$min = $databaseManager->getRating("min");
+$min = $database->getRating("min");
 
-function setYears(DatabaseManager $db)
+function setYears($filmList)
 {
-    $years = $db->getYearsRange();
+    $years = $filmList->getYearsRange();
 
     for ($i = 0; $i < count($years); ++$i) {
         $year = $years[$i];
         echo "<option value='$year'>$year</option>";
     }
 }
-
 ?>
 <article class="page">
     <div class="container">
@@ -56,9 +51,9 @@ function setYears(DatabaseManager $db)
                 </button>
 
                 <div class="slider__container">
-                    <?php
+                    <?
                     //Блок популярных фильмов
-                    $popularFilms = $databaseManager->getPopularFilms(12);
+                    $popularFilms = $database->getPopularFilms(12);
                     for ($i = 1; $i <= count($popularFilms); ++$i) {
                         $film = $popularFilms[$i - 1];
                         $objectHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
@@ -84,9 +79,9 @@ function setYears(DatabaseManager $db)
             <div class="films-content">
                 <div class="films-table">
                     <div class="films-container">
-                        <?php
+                        <?
                         //Список 2020 года
-                        $films2020 = $databaseManager->getFilmsByYear(2020, 24);
+                        $films2020 = $database->getFilmsByYear(2020, 24);
                         for ($i = 0; $i < count($films2020); ++$i) {
                             $film = $films2020[$i];
                             $objectHelper->createFilm($film->getFilmId(), $film->getTitle(), $film->getPremiered(), $film->getGenres());
@@ -101,7 +96,7 @@ function setYears(DatabaseManager $db)
                                 <select size="1" name="genre" onchange="findFilmsByFilters()">
                                     <option disabled selected>Жанр</option>
                                     <?
-                                    $genres = $databaseManager->getGenres();
+                                    $genres = $database->getGenres();
 
                                     for ($i = 0; $i < count($genres); ++$i) {
                                         $genre_name = $genres[$i]->getGenreName();
@@ -113,7 +108,7 @@ function setYears(DatabaseManager $db)
                                 <select size="1" name="country" onchange="findFilmsByFilters()">
                                     <option disabled selected>Страна</option>
                                     <?
-                                    $countries = $databaseManager->getCountries();
+                                    $countries = $filmList->getCountries();
 
                                     for ($i = 0; $i < count($countries); ++$i) {
                                         $countryId = $countries[$i]->getCountryId();
@@ -127,12 +122,12 @@ function setYears(DatabaseManager $db)
                                 <select id="from" size="1" name="from"
                                         onchange="restrictYears('from', 'to', -1); findFilmsByFilters()">
                                     <option disabled selected>Год от</option>
-                                    <? setYears($databaseManager); ?>
+                                    <? setYears($filmList); ?>
                                 </select>
                                 <select id="to" size="1" name="to"
                                         onchange="restrictYears('to', 'from', 1); findFilmsByFilters()">
                                     <option disabled selected>до</option>
-                                    <? setYears($databaseManager); ?>
+                                    <? setYears($filmList); ?>
                                 </select>
                             </div>
                             <ul class="filter">
@@ -183,9 +178,10 @@ function setYears(DatabaseManager $db)
                         <h2>Последние комментарии</h2>
                         <div id="comments-block">
                             <?
-                            $comments = $databaseManager->getLastComments();
+                            $commentsObj = new Comments();
+                            $comments = $commentsObj->getLastComments();
                             for ($i = 0; $i < count($comments); ++$i)
-                                $objectHelper->createComment($databaseManager->getUserByUserId($comments[$i]->getUserId()), $comments[$i], $i, false, true);
+                                $objectHelper->createComment($commentsObj->getUserByUserId($comments[$i]->getUserId()), $comments[$i], $i, false, true);
                             ?>
                         </div>
                     </div>
@@ -194,14 +190,13 @@ function setYears(DatabaseManager $db)
         </div>
     </div>
 </article>
-<script src="/scripts/js/comment.js"></script>
 <script>
-    sliderInit(true)
+    sliderInit(true);
     initFiltersResize();
+    initComments();
 </script>
-<?php
+<?
 include('include/footer.php');
 ?>
 </body>
-
 </html>

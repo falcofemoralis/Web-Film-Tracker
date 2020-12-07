@@ -15,10 +15,9 @@
 </head>
 
 <body>
-<?php
+<?
 include('include/header.php');
 ?>
-
 <article>
     <div class="container">
         <form class="validation-content" onsubmit="return login()">

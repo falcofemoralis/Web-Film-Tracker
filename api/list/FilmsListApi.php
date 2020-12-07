@@ -1,9 +1,10 @@
 <?php
 
-require_once 'scripts/php/Managers/DatabaseManager.php';
 require_once 'api/Api.php';
+require_once 'api/Database.php';
+require_once 'api/list/FilmsList.php';
 
-class ListApi extends Api
+class FilmsListApi extends Api
 {
     // POST - Добавление в базу новых данных
     protected function createAction()
@@ -20,7 +21,7 @@ class ListApi extends Api
     // GET - Просмотр данных
     protected function viewAction()
     {
-        $databaseManager = new DatabaseManager();
+        $filmsList = new FilmsList();
         $filers = array("genre", "country", "director", "from", "to", "min", "sort");
 
         // Получаем данные из гет запроса
@@ -44,14 +45,14 @@ class ListApi extends Api
                     if ($data != null && $data != "null") {
                         switch ($filers[$i]) {
                             case $filers[0]:
-                                $genreObj = $databaseManager->getGenreByName($data);
+                                $genreObj = $filmsList->getGenreByName($data);
                                 $genreId = $genreObj->getGenreId();
                                 $where[] = " (films.genres like '%,$genreId,%' OR films.genres like '$genreId,%') ";
                                 $filmsHeader = "Фильмы жанра " . $genreObj->getGenre();
                                 break;
                             case $filers[1]:
                                 $where[] = " films.country_id = '$data' ";
-                                $country = $databaseManager->getCountryById($data);
+                                $country = $filmsList->getCountryById($data);
                                 $filmsHeader = "Фильмы из страны " . $country->getCountry();
                                 break;
                             case $filers[3]:
@@ -90,7 +91,7 @@ class ListApi extends Api
                     if ($i != count($linkAttributes) - 1) $link .= "&";
                 }
 
-                $filmsIDs = $databaseManager->getFilmsByFilters($where, $order);
+                $filmsIDs = $filmsList->getFilmsByFilters($where, $order);
                 if (array_shift($this->requestUri) == "find") {
                     if ($filmsIDs != null)
                         echo count($filmsIDs);
@@ -102,7 +103,7 @@ class ListApi extends Api
                 break;
             case "search":
                 $searchParam = $_GET["search"]; //аргумент поиска
-                $filmsIDs = $databaseManager->getFilmsIdsBySearch($searchParam);
+                $filmsIDs = $filmsList->getFilmsIdsBySearch($searchParam);
                 $filmsHeader = "Результаты поиска «" . $searchParam . "»";
                 $link = "search?search=" . $searchParam;
                 break;

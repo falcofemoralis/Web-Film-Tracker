@@ -16,16 +16,20 @@ function revealComment(commentId, commentText) {
     }
 }
 
-let parent = document.getElementById("comments-block");
-let childrenArray = parent.children;
-
-for (let i = 0; i < childrenArray.length; ++i) {
-    let text = document.getElementById("commentText_" + i);
+function checkComment(id) {
+    let text = document.getElementById("commentText_" + id);
 
     // выключаем кнопку
     if (text.offsetHeight < 69) {
-        let commentReveal = document.getElementById("commentReveal_" + i);
+        let commentReveal = document.getElementById("commentReveal_" + id);
         commentReveal.style.display = "none";
     }
 }
 
+function initComments(){
+    let parent = document.getElementById("comments-block");
+    let childrenArray = parent.children;
+
+    for (let i = 0; i < childrenArray.length; ++i)
+        checkComment(i);
+}

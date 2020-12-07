@@ -1,7 +1,8 @@
 <?php
 
-require_once 'scripts/php/Managers/DatabaseManager.php';
 require_once 'api/Api.php';
+require_once 'api/Database.php';
+require_once 'api/bookmarks/Bookmarks.php';
 
 class BookmarksApi extends Api
 {
@@ -15,9 +16,8 @@ class BookmarksApi extends Api
     protected function updateAction()
     {
         $filmId = array_shift($this->requestUri);
-
-        $databaseManager = new DatabaseManager();
-        $databaseManager->addToBookmarks($filmId, $databaseManager->getUserId($_COOKIE['username']));
+        $bookmarks = new Bookmarks();
+        $bookmarks->addToBookmarks($filmId, $bookmarks->getUserId($_COOKIE['username']));
     }
 
     // GET - Просмотр данных
@@ -30,9 +30,8 @@ class BookmarksApi extends Api
     protected function deleteAction()
     {
         $filmId = array_shift($this->requestUri);
-
-        $databaseManager = new DatabaseManager();
-        $databaseManager->removeFromBookmarks($filmId, $databaseManager->getUserId($_COOKIE['username']));
+        $bookmarks = new Bookmarks();
+        $bookmarks->removeFromBookmarks($filmId, $bookmarks->getUserId($_COOKIE['username']));
     }
 }
 

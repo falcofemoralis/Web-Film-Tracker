@@ -1,16 +1,12 @@
-<?php
-require_once 'scripts/php/Managers/DatabaseManager.php';
-?>
-
 <link rel='stylesheet' href="/CSS/header.css">
 <script src="/scripts/js/header.js"></script>
 
-<?php
+<?
 global $isAuthed;
 
 function setGenres()
 {
-    $databaseManager = new DatabaseManager();
+    $databaseManager = new Database();
     $genres = $databaseManager->getGenres();
 
     for ($i = 0; $i < count($genres); ++$i) {
@@ -63,7 +59,7 @@ function setGenres()
                                 <a href='/random' class="random" style="color: dodgerblue; font-size: 20px">Мне
                                     повезет!</a>
                             </li>
-                            <?php setGenres(); ?>
+                            <? setGenres(); ?>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +70,7 @@ function setGenres()
                         <button class="dropdown-menu__btn menu__link">Все жанры</button>
                         <div class="dropdown-content container">
                             <ul>
-                                <?php setGenres(); ?>
+                                <? setGenres(); ?>
                             </ul>
                         </div>
                     </li>
@@ -108,7 +104,7 @@ function setGenres()
                 <!-- Mobile user navigations -->
                 <div class="mobile-controls">
                     <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle('login')">
-                        <?php if ($isAuthed) : ?>
+                        <? if ($isAuthed) : ?>
                             <img class='button-image' src='/images/ic_userPanel.svg' alt='site_logo'>
                         <? else: ?>
                             <img class='button-image' src='/images/ic_authPanel.svg' alt='site_logo'>
@@ -116,7 +112,7 @@ function setGenres()
                     </button>
                     <div>
                         <ul class="mobile-dropdown__menu login">
-                            <?php
+                            <?
                             if ($isAuthed): ?>
                                 <li class='menu__item'>
                                     <a href='/userBookmarks' class='menu__link'>Закладки</a>

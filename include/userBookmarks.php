@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-require_once 'scripts/php/Objects/Film.php';
-require_once 'scripts/php/Managers/DatabaseManager.php';
-require_once 'scripts/php/Managers/ObjectHelper.php';
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,27 +14,25 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
 </head>
 
 <body>
-<?php
-
+<?
 include('include/header.php');
 
-$databaseManager = new DatabaseManager();
+$database = new Database();
+$bookmarks = new Bookmarks();
 $objectHelper = new ObjectHelper();
 
-$userId = $databaseManager->getUserId($_COOKIE['username']);
-$films = $databaseManager->getUserBookmarks($userId);
-
+$userId = $database->getUserId($_COOKIE['username']);
+$films = $bookmarks->getUserBookmarks($userId);
 ?>
-
 <article>
     <div class="container">
         <div>
             <h2 class='text__header'>Закладки</h2>
             <div class="films-table">
                 <div class="films-container" style="width: calc(((156px * 4) + (6px * 4 * 2)));">
-                    <?php
+                    <?
                     for ($i = 0; $i < count($films); ++$i) {
-                        $film = $databaseManager->getFilmByFilmId($films[$i], true);
+                        $film = $database->getFilmByFilmId($films[$i], true);
 
                         if ($film != null) {
                             $name = $film->getTitle();
@@ -53,7 +45,7 @@ $films = $databaseManager->getUserBookmarks($userId);
         </div>
     </div>
 </article>
-<?php
+<?
 include('include/footer.php');
 ?>
 </body>

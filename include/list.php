@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-require_once 'scripts/php/Objects/Film.php';
-require_once 'scripts/php/Managers/DatabaseManager.php';
-require_once 'scripts/php/Managers/ObjectHelper.php';
-require_once 'scripts/php/Managers/PagesHelper.php';
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,13 +14,13 @@ require_once 'scripts/php/Managers/PagesHelper.php';
 </head>
 
 <body>
-<?php
+<?
 include('include/header.php');
 
+$database = new Database();
 $objectHelper = new ObjectHelper();
 $filmsPerPage = 24; //кол-во отображаемых фильмов на странице
 $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
-
 ?>
 
 <article>
@@ -40,7 +33,7 @@ $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
                     for ($i = $filmsPerPage * ($cur_page - 1); $i < $filmsPerPage * $cur_page; $i++) {
                         if ($i == $filmsAmount) break;
 
-                        $film = $databaseManager->getFilmByFilmId($filmsIDs[$i], true);
+                        $film = $database->getFilmByFilmId($filmsIDs[$i], true);
 
                         if ($film != null) {
                             $name = $film->getTitle();
@@ -57,10 +50,8 @@ $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
         ?>
     </div>
 </article>
-
-<?php
+<?
 include('include/footer.php');
 ?>
-
 </body>
 </html>

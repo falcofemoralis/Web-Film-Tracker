@@ -44,6 +44,7 @@ function addComment(filmId) {
                             div.innerHTML = requestComment.responseText;
                             parent.insertBefore(div, parent.firstChild);
 
+                            checkComment(id);
                             textarea.value = "";
                         }
                     });

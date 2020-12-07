@@ -15,10 +15,9 @@
 </head>
 
 <body>
-<?php
+<?
 include('include/header.php');
 ?>
-
 <article>
     <div class="container">
         <form enctype="multipart/form-data" id="register" class="validation-content" onsubmit="return register()">
@@ -51,7 +50,7 @@ include('include/header.php');
         </form>
     </div>
 </article>
-<?php
+<?
 include('include/footer.php');
 ?>
 </body>

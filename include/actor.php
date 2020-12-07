@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-require_once 'scripts/php/Objects/Actor.php';
-require_once 'scripts/php/Objects/Film.php';
-require_once 'scripts/php/Managers/DatabaseManager.php';
-require_once 'scripts/php/Managers/ObjectHelper.php';
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,26 +14,25 @@ require_once 'scripts/php/Managers/ObjectHelper.php';
 </head>
 
 <body>
-
-<?php
+<?
 include('include/header.php');
 
-$databaseManager = new DatabaseManager();
+$database = new Database();
 $objectHelper = new ObjectHelper();
 
 $personId = $_GET["id"];
-$actor = $databaseManager->getActorById($personId);
+$actor = $database->getActorById($personId);
 
 $name = $actor->getName();
 $born = $actor->getBorn();
 $died = $actor->getDied();
 
-$films = $databaseManager->getFilmsByPersonId($personId);
+$films = $database->getFilmsByPersonId($personId);
 $sortedFilms = array(array());
 $sortedFilmsHeaders = array("Актер", " Режиссер", "Продюсер", "Сценарист");
 
 for ($i = 0; $i < count($films); $i++) {
-    $roles = $databaseManager->getRoleByPersonAndTitleId($personId, $films[$i]->getFilmId());
+    $roles = $database->getRoleByPersonAndTitleId($personId, $films[$i]->getFilmId());
 
     for ($j = 0; $j < count($roles); $j++) {
         switch ($roles[$j]) {
@@ -82,7 +74,7 @@ for ($i = 0; $i < count($films); $i++) {
                                     echo "$born г.";
                                     if ($died == 0) {
                                         $age = date('Y') - $born;
-                                        echo "($age лет)";
+                                        echo " ($age лет)";
                                     }
                                 } else {
                                     echo "Неизвестно";
@@ -126,7 +118,7 @@ for ($i = 0; $i < count($films); $i++) {
         </div>
     </div>
 </article>
-<?php
+<?
 include('include/footer.php');
 ?>
 </body>

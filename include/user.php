@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-require_once 'scripts/php/Managers/DatabaseManager.php';
-require_once 'scripts/php/Objects/User.php';
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,17 +14,16 @@ require_once 'scripts/php/Objects/User.php';
 </head>
 
 <body>
-<?php
+<?
 include('include/header.php');
 
-$databaseManager = new DatabaseManager();
+$databaseManager = new Database();
 
 $username = $_COOKIE['username'];
 $user = $databaseManager->getUserByUserId($databaseManager->getUserId($username));
 $email = $user->getEmail();
 $avatar = $user->getAvatar();
 ?>
-
 <article>
     <div class="container">
         <div class="main">
@@ -47,7 +41,7 @@ $avatar = $user->getAvatar();
         </div>
     </div>
 </article>
-<?php
+<?
 include('include/footer.php');
 ?>
 </body>
