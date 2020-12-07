@@ -191,7 +191,7 @@ include('include/header.php');
 
             <div class="film__section">
                 <h2 class='section__title'>Трейлер фильма</h2>
-                <iframe width="100%" height="315" style="border: none"
+                <iframe style="border: none; width: 100%; height: 315px"
                     <? echo "src='https://www.youtube.com/embed/$trailerId'" ?>
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
