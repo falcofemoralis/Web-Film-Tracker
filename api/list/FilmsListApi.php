@@ -56,6 +56,7 @@ class FilmsListApi extends Api
                                 break;
                             case $filers[4]:
                                 $where[] = "  films.premiered <= $data ";
+                                $filmsHeader = "Поиск фильмов за " . $data . " год";
                                 break;
                             case $filers[5]:
                                 $where[] = "  ratings.rating >= $data ";

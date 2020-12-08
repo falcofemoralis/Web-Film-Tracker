@@ -128,7 +128,7 @@ include('include/header.php');
 
                         <tr>
                             <td><b>Дата&nbsp;выхода:</b></td>
-                            <td><? echo "$year год" ?></td>
+                            <td><? echo "<a class='link' href='/list/filter?from=$year&to=$year'>$year год</a>" ?></td>
                         </tr>
                         <tr>
                             <td><b>Страна:</b></td>
