@@ -30,6 +30,11 @@
 }
 
 /* Mobile version */
+@media (max-width: 925px) {
+    .pagination a {
+        padding: 8px 4px;
+    }
+}
 
 @media (max-width: 458px) {
     .films-container {
@@ -46,12 +51,6 @@
 @media (max-width: 234px) {
     .films-container {
         width: calc(((100px * 1) + (6px * 1 * 2)));
-    }
-}
-
-@media (max-width: 925px) {
-    .pagination a {
-        padding: 8px 4px;
     }
 }
 

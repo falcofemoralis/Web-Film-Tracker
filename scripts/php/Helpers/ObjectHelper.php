@@ -41,7 +41,7 @@ class ObjectHelper
         <a class='actor' href='actor?id=$actorId'>
             <img src='$photo' alt='photo'>
             <div class='actor__info'>
-                <h1>$name</h1>";
+                <h2>$name</h2>";
 
         if ($characters[0] === "") {
             echo "$category";

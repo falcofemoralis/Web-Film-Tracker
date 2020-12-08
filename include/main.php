@@ -44,7 +44,7 @@ include('include/header.php');
 <article class="page">
     <div class="container">
         <div>
-            <h2 class='text__header' style="margin-left: 13%;">Популярные фильмы</h2>
+            <h1 class='text__header left-shift13'>Популярные фильмы</h1>
             <div class='slider'>
 
                 <button class='slider__button' onclick="plusSlides(-1)" style="margin-right: 5px">
@@ -78,7 +78,7 @@ include('include/header.php');
         </div>
 
         <div style="display: flex; flex-direction: column; justify-content: center">
-            <h2 class='text__header'>Фильмы 2020 года</h2>
+            <h2 class='text__header left-shift2'>Фильмы 2020 года</h2>
             <div class="films-content">
                 <div class="films-table">
                     <div class="films-container">

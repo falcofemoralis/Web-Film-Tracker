@@ -100,7 +100,6 @@ function setGenres()
                         <button type="submit" style="display: none"></button>
                     </form>
                 </div>
-
                 <!-- Mobile user navigations -->
                 <div class="mobile-controls">
                     <button class="mobile-menu__button-genres mobile-menu__btn" onclick="toggle('login')">

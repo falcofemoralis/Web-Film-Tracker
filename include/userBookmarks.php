@@ -30,7 +30,7 @@ include('include/header.php');
 <article style=" margin-bottom: 5%; margin-top: 3%;">
     <div class="container">
         <div class="films-bookmarks">
-            <h2 class='text__header'>Закладки</h2>
+            <h1 class='text-header__centered'>Закладки</h1>
             <div class="films-table">
                 <? if (count($films) > 0): ?>
                     <div class="films-container">

@@ -24,7 +24,7 @@ include('include/header.php');
     <div class="container">
         <form class="validation-content" onsubmit="return login()">
             <div class="validation-input">
-                <h2 class="validation-title">Авторизация</h2>
+                <h1 class="text-header__centered validation-title">Авторизация</h1>
                 <label>Имя пользователя<br>
                     <input id="username" type="text" required>
                 </label>

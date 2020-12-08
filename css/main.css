@@ -68,7 +68,7 @@
 }
 
 .text__header {
-    margin-left: 20px;
+    left: 0;
 }
 
 .hide {
@@ -93,6 +93,19 @@
     margin-top: 5px;
 }
 
+.text__header {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.left-shift13 {
+    margin-left: 13%;
+}
+
+.left-shift2 {
+    margin-left: 2%;
+}
+
 /* Mobile version */
 
 .mobile-filters {
@@ -100,6 +113,19 @@
 }
 
 @media (max-width: 925px) {
+    .text__header {
+        display: flex;
+        justify-content: center;
+    }
+
+    .left-shift {
+        margin-left: 0;
+    }
+
+    .left-shift2{
+        margin-left: 0;
+    }
+
     .page {
         padding: 5px;
     }

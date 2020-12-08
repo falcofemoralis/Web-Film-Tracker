@@ -37,11 +37,12 @@ class FilmsList extends Database
 
     public function getFilmsIdsBySearch($param)
     {
-        $query = "SELECT films.title_id
+        $query = "SELECT DISTINCT films.title_id
             FROM films
             INNER JOIN ratings ON films.title_id=ratings.title_id
             INNER JOIN films_translated on films_translated.title_id=films.title_id
-            WHERE films_translated.lang_id=3 AND films_translated.title like '%$param%'
+            WHERE (films_translated.lang_id=3 AND (films_translated.title like '%$param%' OR films_translated.plot like '%$param%'))
+            OR (films_translated.lang_id=1 AND (films_translated.title like '%$param%' OR films_translated.plot like '%$param%'))
             ORDER BY ratings.votes DESC, ratings.rating DESC";
 
         return $this->getFilmsFromQuery($query);

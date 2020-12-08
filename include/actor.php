@@ -59,7 +59,7 @@ include('include/header.php');
 <article class="page">
     <div class="container">
         <div class="actor-container">
-            <h2 class='actor_name'><? echo "$name" ?></h2>
+            <h1 class='actor_name'><? echo "$name" ?></h1>
             <div class='actor-main'>
                 <?
                 $photo = "images/photos/$personId.jpeg";

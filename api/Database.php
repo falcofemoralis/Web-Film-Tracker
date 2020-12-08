@@ -218,8 +218,17 @@ class Database
         $query = "SELECT " . $type . "(ratings.rating) FROM ratings";
 
         $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
-        $row = mysqli_fetch_row($result);
-        return $row[0];
+        return mysqli_fetch_row($result)[0];
+    }
+
+    public function getOriginalFilmTitle($id)
+    {
+        $query = "SELECT films_translated.title
+            FROM films INNER JOIN films_translated ON films.title_id=films_translated.title_id 
+            WHERE films_translated.lang_id = 1 and films.title_id = '$id'";
+
+        $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
+        return mysqli_fetch_row($result)[0];
     }
 }
 

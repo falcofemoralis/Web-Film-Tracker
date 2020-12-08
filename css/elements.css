@@ -21,12 +21,6 @@ body {
     background-color: white;
 }
 
-.text__header {
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-}
-
 /*Content of films*/
 .films-table {
     display: flex;
@@ -203,15 +197,16 @@ body {
     justify-content: center;
 }
 
+.text-header__centered {
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
 /* Mobile version */
 
 @media (max-width: 925px) {
-    .text__header {
-        margin-left: 0;
-        display: flex;
-        justify-content: center;
-    }
-
     .film a {
         width: 100px;
     }

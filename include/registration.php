@@ -24,7 +24,7 @@ include('include/header.php');
     <div class="container">
         <form enctype="multipart/form-data" id="register" class="validation-content" onsubmit="return register()">
             <div class="validation-input">
-                <h2 class="validation-title">Регистрация</h2>
+                <h1 class="text-header__centered validation-title">Регистрация</h1>
                 <label>E-mail<br>
                     <input name="email" type="email" required>
                 </label>

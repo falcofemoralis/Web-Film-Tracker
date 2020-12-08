@@ -61,7 +61,7 @@
 }
 
 .header__logo img:hover {
-   opacity: 0.86;
+    opacity: 0.86;
 }
 
 /*Header bottom*/
@@ -112,6 +112,15 @@
 input {
     outline: none;
     border: 0 solid transparent;
+}
+
+.header-bot__search-result {
+    position: absolute;
+    background-color: white;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    z-index: 100;
 }
 
 .random {

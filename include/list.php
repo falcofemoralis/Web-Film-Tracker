@@ -29,7 +29,7 @@ include('include/header.php');
 <article style=" margin-bottom: 3%; margin-top: 1%;">
     <div class="container">
         <div>
-            <? echo "<h2 class='text__header'>$filmsHeader</h2>"; ?>
+            <? echo "<h1 class='text-header__centered'>$filmsHeader</h1>"; ?>
             <div class="films-table">
                 <div class="films-container">
                     <?php
@@ -48,7 +48,7 @@ include('include/header.php');
             </div>
         </div>
         <?
-        if ($filmsAmount == 0) echo "По вашему запросу ничего не найдено.";
+        if ($filmsAmount == 0) echo "<span class='center'> По вашему запросу ничего не найдено. </span>";
         else createPagesControls($pages, $cur_page, $link);
         ?>
     </div>

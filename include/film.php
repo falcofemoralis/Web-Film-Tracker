@@ -10,6 +10,7 @@ $bookmarks = new Bookmarks();
 $filmId = $_GET["id"];
 $film = $database->getFilmByFilmId($filmId, false);
 $title = $film->getTitle();
+$originalTitle = $database->getOriginalFilmTitle($filmId);
 $rating = $film->getRating();
 $votes = $film->getVotes();
 $plot = $film->getPlot();
@@ -70,7 +71,10 @@ include('include/header.php');
     <div class="container">
         <div class="film-container">
             <div class="film__title-row">
-                <h1 class='film__title'><? echo "$title" ?></h1>
+                <div style="margin-left: 10px">
+                    <h1 class='film__title'><? echo "$title" ?></h1>
+                    <h2 class="film__title sub-fim__title "><? echo $originalTitle?></h2>
+                </div>
             </div>
             <div id="<? echo $filmId ?>" class='film-main'>
                 <div class="film-main__poster-cont">

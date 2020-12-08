@@ -24,9 +24,23 @@
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/list/FilmsList.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/list/FilmsList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/elements.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/elements.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/list.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/actor.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/actor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/registration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/user.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/userBookmarks.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/userBookmarks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/php/Helpers/ObjectHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Helpers/ObjectHelper.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,6 +259,7 @@
       <workItem from="1607362150646" duration="808000" />
       <workItem from="1607366256969" duration="492000" />
       <workItem from="1607367525439" duration="6109000" />
+      <workItem from="1607418294614" duration="5038000" />
     </task>
     <servers />
   </component>
@@ -364,10 +379,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605298568196" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1607421553694">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1607421553694" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1604751952795">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604751952795" />
+    <state x="565" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1607421557795">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="565" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1607421557795" />
     <state x="512" y="249" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1604675415713">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -376,10 +399,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606215401105" />
-    <state x="687" y="89" width="1091" height="779" key="find.popup" timestamp="1607372328154">
+    <state x="687" y="89" width="1091" height="779" key="find.popup" timestamp="1607420443249">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="687" y="89" width="1091" height="779" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607372328154" />
+    <state x="687" y="89" width="1091" height="779" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607420443249" />
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog" timestamp="1604757553781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

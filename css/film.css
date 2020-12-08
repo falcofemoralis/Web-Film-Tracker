@@ -7,6 +7,13 @@
     margin-bottom: 15px;
 }
 
+.sub-fim__title {
+    color: #777;
+    font-size: 18px;
+    line-height: 18px;
+    margin-top: 10px;
+}
+
 .film__title-row {
     display: flex;
     justify-content: space-between;
@@ -114,7 +121,7 @@
     transition: color .3s;
 }
 
-.link:hover{
+.link:hover {
     color: dodgerblue;
 }
 
@@ -173,8 +180,8 @@
 .bookmark__btn {
     font-size: 30px;
     color: darkblue;
-    background:none;
-    border:none;
+    background: none;
+    border: none;
     outline: none;
     cursor: pointer;
 }
@@ -191,14 +198,15 @@
     max-width: 45%;
 }
 
-.bookmark__btn-link{
+.bookmark__btn-link {
     height: 48px;
     transition: opacity .3s;
 }
 
-.bookmark__btn-link:hover{
+.bookmark__btn-link:hover {
     opacity: 0.77;
 }
+
 @keyframes zoom {
     from {
         opacity: 0;

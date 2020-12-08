@@ -30,7 +30,7 @@ include('include/header.php');
 <article style=" margin-bottom: 5%; margin-top: 3%;">
     <div class="container">
         <div class="main">
-            <h2 class="text__header center" style="margin-bottom: 15px">Настройки профиля</h2>
+            <h1 class="text-header__centered" style="margin-bottom: 15px">Настройки профиля</h1>
             <div class="center">
                 <? echo "<img style='width: 30%' src='$avatar' alt='$username'>" ?>
             </div>
