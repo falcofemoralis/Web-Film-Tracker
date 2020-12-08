@@ -22,22 +22,18 @@ class FilmsListApi extends Api
     protected function viewAction()
     {
         $filmsList = new FilmsList();
-        $filers = array("genre", "country", "director", "from", "to", "min", "sort");
 
         // Получаем данные из гет запроса
+        global $cur_page, $filmsIDs, $filmsHeader, $link;
         $cur_page = $_GET["page"]; //текущая страницы
-
-        // необходимые переменные для списка
-        $filmsIDs = null; // Фильмы которые будут отображаться
-        $filmsHeader = null; // Заголовок списка
-        $link = null; // Ссылка на след страницу
 
         switch (array_shift($this->requestUri)) {
             case "filter":
+                $filers = array("genre", "country", "director", "from", "to", "min", "sort");
                 $where = array();
                 $order = " ratings.votes DESC, ratings.rating DESC ";
                 $link = "filter?";
-                $linkAttributes = array();
+                global $linkAttributes;
 
                 for ($i = 0; $i < count($filers); ++$i) {
                     $data = $_GET[$filers[$i]];
@@ -48,12 +44,12 @@ class FilmsListApi extends Api
                                 $genreObj = $filmsList->getGenreByName($data);
                                 $genreId = $genreObj->getGenreId();
                                 $where[] = " (films.genres like '%,$genreId,%' OR films.genres like '$genreId,%') ";
-                                $filmsHeader = "Фильмы жанра " . $genreObj->getGenre();
+                                $filmsHeader = "Поиск фильмов жанра " . $genreObj->getGenre();
                                 break;
                             case $filers[1]:
                                 $where[] = " films.country_id = '$data' ";
                                 $country = $filmsList->getCountryById($data);
-                                $filmsHeader = "Фильмы из страны " . $country->getCountry();
+                                $filmsHeader = "Поиск фильмов из страны " . $country->getCountry();
                                 break;
                             case $filers[3]:
                                 $where[] = "  films.premiered >= $data ";
@@ -102,6 +98,7 @@ class FilmsListApi extends Api
 
                 break;
             case "search":
+                global $searchParam;
                 $searchParam = $_GET["search"]; //аргумент поиска
                 $filmsIDs = $filmsList->getFilmsIdsBySearch($searchParam);
                 $filmsHeader = "Результаты поиска «" . $searchParam . "»";
@@ -109,6 +106,7 @@ class FilmsListApi extends Api
                 break;
         }
 
+        global $filmsAmount;
         if ($cur_page == null) $cur_page = 1; // Если страница не пришла, то это 1 страница
         if ($filmsIDs != null) $filmsAmount = count($filmsIDs); // Кол-во фильмов, для установки страниц в списке
 

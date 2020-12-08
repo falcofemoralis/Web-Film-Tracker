@@ -11,11 +11,11 @@ $avatar = $user->getAvatar();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Пользователь <? echo $username ?></title>
+    <title>Страница пользователя <? echo $username ?></title>
     <meta name="author" content="FilmsTracker">
     <meta name="description" content="Настройка профиля пользователя <? echo $username ?>">
     <meta name="keywords" content="трекер фильмов, лучший трекер фильмов, бесплатный трекер фильмов, кинопоиск, imdb, кинопоиск hd,
-     кинопоиск ютуб, кинопоиск топ, гидонлайн кинопоиск, рейтинг imdb, рейтинг фильмов imdb, топ фильмов imdb, в ролях актеры, дата выхода, рейтинги imdb">
+     кинопоиск ютуб, кинопоиск топ, гидонлайн кинопоиск, рейтинг imdb, рейтинг фильмов imdb, топ фильмов imdb, в ролях актеры, дата выхода, рейтинги imdb, страница, настройка, аккаунт">
     <meta name="language" content="ru">
 
     <link rel='stylesheet' href="/CSS/elements.css">
@@ -28,9 +28,10 @@ $avatar = $user->getAvatar();
 include('include/header.php');
 ?>
 <article style=" margin-bottom: 5%; margin-top: 3%;">
+    <h1 style="display: none">Страница пользователя <? echo $username ?></h1>
     <div class="container">
         <div class="main">
-            <h1 class="text-header__centered" style="margin-bottom: 15px">Настройки профиля</h1>
+            <h2 class="text-header__centered" style="margin-bottom: 15px">Настройки профиля</h2>
             <div class="center">
                 <? echo "<img style='width: 30%' src='$avatar' alt='$username'>" ?>
             </div>

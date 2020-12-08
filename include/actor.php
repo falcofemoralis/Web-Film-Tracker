@@ -4,6 +4,7 @@
 $database = new Database();
 $objectHelper = new ObjectHelper();
 
+
 $personId = $_GET["id"];
 $actor = $database->getActorById($personId);
 
@@ -34,16 +35,18 @@ for ($i = 0; $i < count($films); $i++) {
         }
     }
 }
+
+$pageTitle = $name . " - фильмы актера";
 ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><? echo $name?> - фильмы актера</title>
+    <title><? echo $pageTitle ?></title>
     <meta name="author" content="FilmsTracker">
-    <meta name="description" content="<? echo $name?> - смотреть и читать информацию про актера в фильмах">
+    <meta name="description" content="<? echo $name ?> - смотреть и читать информацию про актера в фильмах">
     <meta name="keywords" content="трекер фильмов, лучший трекер фильмов, бесплатный трекер фильмов, кинопоиск, imdb, кинопоиск hd,
      кинопоиск ютуб, кинопоиск топ, гидонлайн кинопоиск, рейтинг imdb, рейтинг фильмов imdb, топ фильмов imdb, в ролях актеры,
-     дата выхода, рейтинги imdb, смотреть трейлер">
+     дата выхода, рейтинги imdb, смотреть трейлер, актер, <? echo $name ?>">
     <meta name="language" content="ru">
     <meta property="og:image" content="http://a0488451.xsph.ru/images/photos/<? echo $personId ?>.jpeg">
 
@@ -57,9 +60,10 @@ for ($i = 0; $i < count($films); $i++) {
 include('include/header.php');
 ?>
 <article class="page">
+    <h1 style="display: none"><? echo $pageTitle ?> - фильмы актера</h1>
     <div class="container">
         <div class="actor-container">
-            <h1 class='actor_name'><? echo "$name" ?></h1>
+            <h2 class='actor_name'><? echo "$name" ?></h2>
             <div class='actor-main'>
                 <?
                 $photo = "images/photos/$personId.jpeg";

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FilmsTracker - Регистрация</title>
+    <title>FilmsTracker - Регистрация пользователя</title>
     <meta name="author" content="FilmsTracker">
-    <meta name="description" content="Регистрация на сайте FilmsTracker">
+    <meta name="description" content="Регистрация пользователя на сайте FilmsTracker">
     <meta name="keywords" content="трекер фильмов, лучший трекер фильмов, бесплатный трекер фильмов, кинопоиск, imdb, кинопоиск hd,
-     кинопоиск ютуб, кинопоиск топ, гидонлайн кинопоиск, рейтинг imdb, рейтинг фильмов imdb, топ фильмов imdb, в ролях актеры, дата выхода, рейтинги imdb">
+     кинопоиск ютуб, кинопоиск топ, гидонлайн кинопоиск, рейтинг imdb, рейтинг фильмов imdb, топ фильмов imdb, в ролях актеры, дата выхода, рейтинги imdb, регистрация">
     <meta name="language" content="ru">
 
     <link rel='stylesheet' href="/CSS/validation.css">
@@ -21,10 +21,11 @@
 include('include/header.php');
 ?>
 <article style=" margin-bottom: 5%; margin-top: 3%;">
+    <h1 style="display: none">FilmsTracker - Регистрация пользователя</h1>
     <div class="container">
         <form enctype="multipart/form-data" id="register" class="validation-content" onsubmit="return register()">
             <div class="validation-input">
-                <h1 class="text-header__centered validation-title">Регистрация</h1>
+                <h2 class="text-header__centered validation-title">Регистрация</h2>
                 <label>E-mail<br>
                     <input name="email" type="email" required>
                 </label>

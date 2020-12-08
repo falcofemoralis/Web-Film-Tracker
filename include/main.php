@@ -42,9 +42,10 @@ function setYears($filmList)
 include('include/header.php');
 ?>
 <article class="page">
+    <h1 style="display: none">FilmsTracker - Трекер информации про фильмы</h1>
     <div class="container">
         <div>
-            <h1 class='text__header left-shift13'>Популярные фильмы</h1>
+            <h2 class='text__header left-shift13'>Популярные фильмы</h2>
             <div class='slider'>
 
                 <button class='slider__button' onclick="plusSlides(-1)" style="margin-right: 5px">

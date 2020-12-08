@@ -41,11 +41,12 @@ for ($i = 0; $i < count($allActors); ++$i) {
             $sortedActors[0][] = $actor;
     }
 }
+$pageTitle = "Информация про фильм " . $title;
 ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Информация про фильм <? echo $title ?></title>
+    <title> <? echo $pageTitle ?></title>
     <meta name="author" content="FilmsTracker">
     <meta name="description" content="Смотреть трейлер и читать информацию про фильм <? echo $title ?>">
     <meta name="keywords" content="трекер фильмов, лучший трекер фильмов, бесплатный трекер фильмов, кинопоиск, imdb, кинопоиск hd,
@@ -68,12 +69,13 @@ for ($i = 0; $i < count($allActors); ++$i) {
 include('include/header.php');
 ?>
 <article class="page">
+    <h1 style="display: none"><? echo $pageTitle ?></h1>
     <div class="container">
         <div class="film-container">
             <div class="film__title-row">
                 <div style="margin-left: 10px">
                     <h1 class='film__title'><? echo "$title" ?></h1>
-                    <h2 class="film__title sub-fim__title "><? echo $originalTitle?></h2>
+                    <h2 class="film__title sub-fim__title "><? echo $originalTitle ?></h2>
                 </div>
             </div>
             <div id="<? echo $filmId ?>" class='film-main'>

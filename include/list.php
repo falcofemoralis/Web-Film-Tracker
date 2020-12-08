@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?
+global $cur_page, $filmsIDs, $filmsHeader, $link, $filmsAmount;
+
 $database = new Database();
 $objectHelper = new ObjectHelper();
 $filmsPerPage = 24; //кол-во отображаемых фильмов на странице
@@ -11,10 +13,10 @@ $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><? echo $filmsHeader ?></title>
     <meta name="author" content="FilmsTracker">
-    <meta name="description" content="Смотреть трейлер и читать информацию про фильмы">
+    <meta name="description" content="<? echo $filmsHeader; ?> ">
     <meta name="keywords" content="трекер фильмов, лучший трекер фильмов, бесплатный трекер фильмов, кинопоиск, imdb, кинопоиск hd,
      кинопоиск ютуб, кинопоиск топ, гидонлайн кинопоиск, рейтинг imdb, рейтинг фильмов imdb, топ фильмов imdb, в ролях актеры,
-     дата выхода, рейтинги imdb, смотреть трейлер">
+     дата выхода, рейтинги imdb, смотреть трейлер, <? echo $filmsHeader; ?>">
     <meta name="language" content="ru">
 
     <link rel='stylesheet' href="/CSS/elements.css">
@@ -27,9 +29,10 @@ $pages = intval($filmsAmount / $filmsPerPage) + 1; // кол-во страниц
 include('include/header.php');
 ?>
 <article style=" margin-bottom: 3%; margin-top: 1%;">
+    <h1 style="display: none"><? echo $filmsHeader ?></h1>
     <div class="container">
         <div>
-            <? echo "<h1 class='text-header__centered'>$filmsHeader</h1>"; ?>
+            <? echo "<h2 class='text-header__centered'>$filmsHeader</h2>"; ?>
             <div class="films-table">
                 <div class="films-container">
                     <?php
