@@ -109,7 +109,7 @@ class Database
         $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
         $row = mysqli_fetch_row($result);
 
-        if ($isShort) return new Film($row[0], $row[1], "", $row[2], "", $this->getFilmsGenres($row[0]), "", "", "", "", "");
+        if ($isShort) return new Film($row[0], $row[1], "", $row[2], "", $this->getFilmsGenres($row[0]), "", 0, 0, "", "");
         else return new Film($row[0], $row[1], $row[2], $row[3], $row[4], $this->getFilmsGenres($row[0]), $row[5], $row[6], $row[7], $row[8], $row[9]);
     }
 
@@ -121,7 +121,7 @@ class Database
         $films = null;
         for ($i = 0; $i < mysqli_num_rows($result); ++$i) {
             $row = mysqli_fetch_row($result);
-            $films[$i] = new Film($row[0], $row[1], "", $row[2], "", $this->getFilmsGenres($row[0]), "", "", "", "", "");
+            $films[$i] = new Film($row[0], $row[1], "", $row[2], "", $this->getFilmsGenres($row[0]), "", 0, 0, "", "");
         }
 
         return $films;
@@ -244,7 +244,8 @@ class Database
         return mysqli_fetch_row($result)[0];
     }
 
-    public function getCategory($id){
+    public function getCategory($id)
+    {
         $query = "SELECT categories.category FROM categories WHERE categories.category_id = $id";
 
         $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));

@@ -72,12 +72,43 @@ class FilmsList extends Database
         if ($where != null) $whereQuery .= " AND ";
         $whereQuery .= " films_translated.lang_id = 3";
 
-        $query = "SELECT films.title_id
+        $query = "SELECT DISTINCT films.title_id
             FROM films
             INNER JOIN ratings ON films.title_id=ratings.title_id
             INNER JOIN films_genres ON films_genres.title_id=films.title_id 
             INNER JOIN films_translated on films_translated.title_id=films.title_id " . $whereQuery . " ORDER BY " . $order;
 
         return $this->getFilmsFromQuery($query);
+    }
+
+    public function getRelevantFilms($genres, $params)
+    {
+        $genreClause = "";
+        for ($i = 0; $i < count($genres); ++$i) {
+            $genreClause .= "films_genres.genre_id=" . $genres[$i];
+            if ($i != count($genres) - 1) $genreClause .= " OR ";
+        }
+
+        $filmsIDs = array();
+        for ($i = 0; $i < count($params); ++$i) {
+            $param = $params[$i];
+
+            $query = "SELECT DISTINCT films.title_id
+            FROM films
+            INNER JOIN films_genres ON films_genres.title_id=films.title_id 
+            INNER JOIN films_translated on films_translated.title_id=films.title_id 
+            WHERE films_translated.lang_id=3 AND (films_translated.title like '%$param%' OR films_translated.plot like '%$param%')
+             AND ($genreClause) LIMIT 5";
+
+            $newFilmIds = $this->getFilmsFromQuery($query);
+
+            $size = count($newFilmIds);
+            for ($j = 0; $j < $size; ++$j)
+                if (in_array($newFilmIds[$j], $filmsIDs))
+                    unset($newFilmIds[$j]);
+
+            $filmsIDs = array_merge($filmsIDs, $newFilmIds);
+        }
+        return $filmsIDs;
     }
 }

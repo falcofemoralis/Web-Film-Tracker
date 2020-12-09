@@ -27,12 +27,10 @@
       <change beforePath="$PROJECT_DIR$/api/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/Database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/comments/Comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/comments/Comments.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/list/FilmsList.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/list/FilmsList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/list/FilmsListApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/list/FilmsListApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/footer.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Helpers/ObjectHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Helpers/ObjectHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/js/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/slider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/php/Objects/Film.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Objects/Film.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sitemap.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +254,15 @@
       <workItem from="1607437726158" duration="1138000" />
       <workItem from="1607439030946" duration="105000" />
       <workItem from="1607452152956" duration="331000" />
-      <workItem from="1607511382157" duration="7183000" />
+      <workItem from="1607511382157" duration="7697000" />
+      <workItem from="1607520084219" duration="82000" />
+      <workItem from="1607521173382" duration="20000" />
+      <workItem from="1607523258972" duration="482000" />
+      <workItem from="1607523798333" duration="61000" />
+      <workItem from="1607527159308" duration="297000" />
+      <workItem from="1607538489696" duration="126000" />
+      <workItem from="1607538636180" duration="92000" />
+      <workItem from="1607545317197" duration="8822000" />
     </task>
     <servers />
   </component>
@@ -396,22 +402,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606215401105" />
-    <state x="687" y="89" width="1091" height="779" key="find.popup" timestamp="1607518307418">
+    <state x="687" y="89" width="1091" height="779" key="find.popup" timestamp="1607550902676">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="687" y="89" width="1091" height="779" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607518307418" />
+    <state x="687" y="89" width="1091" height="779" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607550902676" />
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog" timestamp="1604757553781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604757553781" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1607515159207">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1607550222650">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607515159207" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607202449100">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607550222650" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607550119705">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607202449100" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607550119705" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -2,8 +2,9 @@
 
 class Film
 {
-    private string $film_id, $title, $rating, $votes, $runtime_minutes, $premiered, $plot, $isAdult, $trailerId, $country_id;
+    private string $film_id, $title, $runtime_minutes, $premiered, $plot, $isAdult, $trailerId, $country_id;
     private array $genres;
+    private int $rating, $votes;
 
     function __construct($film_id, $title, $isAdult, $premiered, $runtime_minutes, $genres, $plot, $rating, $votes, $trailerId, $country_id)
     {
@@ -14,7 +15,7 @@ class Film
         $this->runtime_minutes = $runtime_minutes;
         $this->premiered = $premiered;
 
-        if ($isAdult == 1)  $this->isAdult = "18+";
+        if ($isAdult == 1) $this->isAdult = "18+";
         else  $this->isAdult = "";
 
         $this->genres = $genres;
@@ -40,17 +41,17 @@ class Film
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getRating(): string
+    public function getRating(): int
     {
         return $this->rating;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getVotes(): string
+    public function getVotes(): int
     {
         return $this->votes;
     }

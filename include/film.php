@@ -74,8 +74,8 @@ include('include/header.php');
         <div class="film-container">
             <div class="film__title-row">
                 <div style="margin-left: 10px">
-                    <h1 class='film__title'><? echo "$title" ?></h1>
-                    <h2 class="film__title sub-fim__title "><? echo $originalTitle ?></h2>
+                    <h2 class='film__title'><? echo "$title" ?></h2>
+                    <h3 class="film__title sub-fim__title "><? echo $originalTitle ?></h3>
                 </div>
             </div>
             <div id="<? echo $filmId ?>" class='film-main'>
@@ -157,29 +157,29 @@ include('include/header.php');
                         $genres = $film->getGenres();
                         $size = count($genres);
                         if ($size > 0):
-                        ?>
-                        <tr>
-                            <td><b>Жанр:</b></td>
-                            <td>
-                                <?
-                                for ($i = 0; $i < count($genres); $i++) {
-                                    $genreObj = $database->getGenreById($genres[$i]);
-                                    $genre = $genreObj->getGenre();
-                                    $genre_name = $genreObj->getGenreName();
+                            ?>
+                            <tr>
+                                <td><b>Жанр:</b></td>
+                                <td>
+                                    <?
+                                    for ($i = 0; $i < count($genres); $i++) {
+                                        $genreObj = $database->getGenreById($genres[$i]);
+                                        $genre = $genreObj->getGenre();
+                                        $genre_name = $genreObj->getGenreName();
 
-                                    echo "<a class='link' href='/list/filter?genre=$genre_name&page=1'>$genre</a>";
+                                        echo "<a class='link' href='/list/filter?genre=$genre_name&page=1'>$genre</a>";
 
-                                    if ($i != count($genres) - 1) echo ", ";
-                                } ?>
-                            </td>
-                        </tr>
+                                        if ($i != count($genres) - 1) echo ", ";
+                                    } ?>
+                                </td>
+                            </tr>
                         <?
                         endif;
 
                         for ($i = 1; $i < 4; $i++) {
                             if ($sortedActors[$i] != null) {
-                                $title = $sortedActorsHeaders[$i];
-                                echo "<tr><td><b>$title</b></td><td>";
+                                $headerTitle = $sortedActorsHeaders[$i];
+                                echo "<tr><td><b>$headerTitle</b></td><td>";
 
                                 $size = count($sortedActors[$i]);
                                 for ($j = 0; $j < $size; $j++) {
@@ -216,14 +216,7 @@ include('include/header.php');
             <div class='slider' style="justify-content:  flex-start;">
                 <div class="slider__container" style="overflow: scroll; overflow-y: hidden;">
                     <?
-                    $size = 5;
-                    $pages = 1;
-
                     if ($sortedActors[0] != null) {
-                        $all = count($sortedActors[0]);
-                        if ($all < $size) $size = $all;
-                        else $pages = $all / $size;
-
                         for ($i = 1; $i <= count($sortedActors[0]); ++$i) {
                             $actor = $sortedActors[0][$i - 1];
                             $objectHelper->createActor($actor->getPersonId(), $actor->getName(), $actor->getCharacters(), $actor->getCategory());
@@ -233,7 +226,31 @@ include('include/header.php');
                 </div>
             </div>
         </div>
-        <? if ($isAuthed) : ?>
+        <?
+        $filmsList = new FilmsList();
+        $keywords = explode(" ", $title);
+        $filmsIds = $filmsList->getRelevantFilms($genres, $keywords);
+
+        if ($filmsIds != null) :
+            ?>
+            <div class="film__section">
+
+                <h2 class="section__title">Похожие фильмы</h2>
+                <div class='slider' style="justify-content:  flex-start;">
+                    <div class="slider__container" style="overflow: scroll; overflow-y: hidden;">
+                        <?
+                        for ($i = 0; $i < count($filmsIds); ++$i) {
+                            if ($filmsIds[$i] == $filmId) continue;
+                            $film = $database->getFilmByFilmId($filmsIds[$i], true);
+                            $objectHelper->createFilm($filmsIds[$i], $film->getTitle(), $film->getPremiered(), $film->getGenres());
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        <?
+        endif;
+        if ($isAuthed) : ?>
             <div>
                 <textarea id='comment' class='comment-input' name='comment'
                           placeholder='Написать комментарий'></textarea>

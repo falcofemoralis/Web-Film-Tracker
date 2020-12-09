@@ -10,7 +10,7 @@ class Comments extends Database
     public function addComment($comment, $filmId, $user, $time)
     {
         $userId = $this->getUserId($user);
-        $insertQuery = "INSERT INTO films_comments(titleId, userId, time, comment)
+        $insertQuery = "INSERT INTO films_comments(title_id, user_id, time, comment)
                 VALUES('$filmId', '$userId', '$time', '$comment')";
 
         $result = mysqli_query($this->connection, $insertQuery) or die("Ошибка " . mysqli_error($this->connection));
