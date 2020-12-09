@@ -22,7 +22,7 @@ class Comments extends Database
     {
         $userId = $this->getUserId($user);
         $deleteQuery = "DELETE FROM films_comments
-            WHERE films_comments.titleId = '$filmId' AND films_comments.userId = " . $userId . " AND films_comments.time = '$time'";
+            WHERE films_comments.title_id = '$filmId' AND films_comments.user_id = " . $userId . " AND films_comments.time = '$time'";
 
         $result = mysqli_query($this->connection, $deleteQuery) or die("Ошибка " . mysqli_error($this->connection));
         if (!$result) $error = "Ошибка удаления";
@@ -31,9 +31,9 @@ class Comments extends Database
 
     public function getComments($filmId)
     {
-        $query = "SELECT films_comments.titleId, films_comments.userId, films_comments.time, films_comments.comment 
+        $query = "SELECT films_comments.title_id, films_comments.user_id, films_comments.time, films_comments.comment 
             FROM films_comments 
-            WHERE films_comments.titleId='$filmId'
+            WHERE films_comments.title_id='$filmId'
             ORDER BY films_comments.time DESC";
 
         $result = mysqli_query($this->connection, $query) or die("Ошибка " . mysqli_error($this->connection));
@@ -49,7 +49,7 @@ class Comments extends Database
 
     public function getLastComments()
     {
-        $query = "SELECT films_comments.titleId, films_comments.userId, films_comments.time, films_comments.comment 
+        $query = "SELECT films_comments.title_id, films_comments.user_id, films_comments.time, films_comments.comment 
             FROM films_comments 
             ORDER BY films_comments.time DESC
             LIMIT 10";

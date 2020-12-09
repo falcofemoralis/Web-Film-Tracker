@@ -22,12 +22,12 @@ class ObjectHelper
             <p><b class='film-title'>$title</b></p>
             <div>$year, ";
 
-        for ($i = 0; $i < count($genres) - 1; $i++) {
+        for ($i = 0; $i < count($genres); $i++) {
             $genreObj = $this->databaseManager->getGenreById($genres[$i]);
             $genre = $genreObj->getGenre();
             echo "$genre";
 
-            if ($i != count($genres) - 2) echo ", ";
+            if ($i != count($genres) - 1) echo ", ";
         }
         echo "</div></a></div>";
     }

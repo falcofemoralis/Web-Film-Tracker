@@ -43,7 +43,7 @@ class FilmsListApi extends Api
                             case $filers[0]:
                                 $genreObj = $filmsList->getGenreByName($data);
                                 $genreId = $genreObj->getGenreId();
-                                $where[] = " (films.genres like '%,$genreId,%' OR films.genres like '$genreId,%') ";
+                                $where[] = " films_genres.genre_id = $genreId ";
                                 $filmsHeader = "Поиск фильмов жанра " . $genreObj->getGenre();
                                 break;
                             case $filers[1]:

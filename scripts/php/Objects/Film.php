@@ -17,7 +17,7 @@ class Film
         if ($isAdult == 1)  $this->isAdult = "18+";
         else  $this->isAdult = "";
 
-        $this->genres = preg_split('/,/', $genres, -1);;
+        $this->genres = $genres;
         $this->plot = $plot;
         $this->trailerId = $trailerId;
         $this->country_id = $country_id;

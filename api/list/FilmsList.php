@@ -75,6 +75,7 @@ class FilmsList extends Database
         $query = "SELECT films.title_id
             FROM films
             INNER JOIN ratings ON films.title_id=ratings.title_id
+            INNER JOIN films_genres ON films_genres.title_id=films.title_id 
             INNER JOIN films_translated on films_translated.title_id=films.title_id " . $whereQuery . " ORDER BY " . $order;
 
         return $this->getFilmsFromQuery($query);

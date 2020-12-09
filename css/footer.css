@@ -1,10 +1,10 @@
 article {
-    min-height: calc(100vh - 50px - 100px);
+    min-height: calc(100vh - 80px - 100px);
 }
 
 /*footer*/
 footer {
-    height: 50px;
+    height: 80px;
     width: 100%;
     background-color: black;
     display: flex;
@@ -13,7 +13,19 @@ footer {
 
 .b-footer {
     color: white;
+    font-size: 11px;
+}
+
+.b-footer a{
+    text-decoration: underline;
+    color: white;
     font-size: 12px;
+}
+
+.b-footer__center {
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
 
 /* Mobile version */

@@ -153,24 +153,29 @@ include('include/header.php');
                                  <td>$isAdult</td> 
                               </tr>";
                         }
+
+                        $genres = $film->getGenres();
+                        $size = count($genres);
+                        if ($size > 0):
                         ?>
                         <tr>
                             <td><b>Жанр:</b></td>
                             <td>
-                                <? $genres = $film->getGenres();
-                                for ($i = 0; $i < count($genres) - 1; $i++) {
+                                <?
+                                for ($i = 0; $i < count($genres); $i++) {
                                     $genreObj = $database->getGenreById($genres[$i]);
                                     $genre = $genreObj->getGenre();
                                     $genre_name = $genreObj->getGenreName();
 
                                     echo "<a class='link' href='/list/filter?genre=$genre_name&page=1'>$genre</a>";
 
-                                    if ($i != count($genres) - 2) echo ", ";
+                                    if ($i != count($genres) - 1) echo ", ";
                                 } ?>
                             </td>
                         </tr>
-
                         <?
+                        endif;
+
                         for ($i = 1; $i < 4; $i++) {
                             if ($sortedActors[$i] != null) {
                                 $title = $sortedActorsHeaders[$i];
