@@ -88,3 +88,48 @@ function changeBookmark(filmId) {
     });
     request.send();
 }
+
+function putRating(stars, filmId) {
+    let request = new XMLHttpRequest();
+
+    request.open('POST', '/ratings', true);
+    request.addEventListener('readystatechange', function () {
+        if ((request.readyState === 4) && (request.status === 200)) {
+            if (request.responseText !== "")
+                alert("Ошибка добавления: " + request.responseText);
+            else
+                updateRatings(filmId);
+        }
+    });
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+    request.send('filmId=' + window.encodeURIComponent(filmId) + '&rating=' + window.encodeURIComponent(stars));
+}
+
+function updateRatings(filmId) {
+    for (let i = 0; i < 10; ++i) {
+        let star = document.getElementsByClassName("r" + (i + 1));
+        star[0].style.display = "none";
+    }
+
+    let request = new XMLHttpRequest();
+    request.open('GET', '/ratings?filmId=' + filmId, true);
+    request.addEventListener('readystatechange', function () {
+        if ((request.readyState === 4) && (request.status === 200)) {
+            if (request.responseText !== "") {
+                let ratingEl = document.getElementById("tracker-rating");
+                let votesEl = document.getElementById("tracker-votes");
+
+                let rating = request.responseText.split(" ")[0];
+                let votes = request.responseText.split(" ")[1];
+                ratingEl.innerText = rating;
+                votesEl.innerText = votes;
+
+                let currentRating = document.getElementsByClassName("current-rating")[0];
+                currentRating.style.width = ((parseFloat(rating) * 100) / 10) + "%";
+            } else {
+                alert("Ошибка получения: " + request.responseText);
+            }
+        }
+    });
+    request.send();
+}

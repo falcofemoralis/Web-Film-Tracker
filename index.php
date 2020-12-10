@@ -8,6 +8,7 @@ require_once 'api/auth/Auth.php';
 require_once 'api/bookmarks/Bookmarks.php';
 require_once 'api/comments/Comments.php';
 require_once 'api/list/FilmsList.php';
+require_once 'api/ratings/Ratings.php';
 
 require_once 'scripts/php/Objects/Actor.php';
 require_once 'scripts/php/Objects/Comment.php';
@@ -45,6 +46,11 @@ switch ($arg) {
 
         $listApi = new FilmsListApi($requestUri);
         $listApi->run();
+        break;
+    case "ratings":
+        include 'api/ratings/RatingsApi.php';
+        $ratingApi = new RatingsApi($requestUri);
+        $ratingApi->run();
         break;
     case "random":
         $databaseManager = new Database();

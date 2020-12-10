@@ -26,7 +26,7 @@ function checkComment(id) {
     }
 }
 
-function initComments(){
+function initComments() {
     let parent = document.getElementById("comments-block");
     let childrenArray = parent.children;
 

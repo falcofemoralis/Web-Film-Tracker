@@ -26,7 +26,7 @@ function sliderInit(isBefore) {
 
     if (sizeOfPage !== 0) {
         //обновление фильмов в слайдере
-        let filmsChildren
+        let filmsChildren;
         if (isBefore) {
             filmsChildren = container[0].children; //объекты фильмов в слайдере
 
@@ -38,9 +38,7 @@ function sliderInit(isBefore) {
         //получение фильмов как non-Live лист
         let films = document.querySelectorAll(".slider__item");
 
-        if (!isBefore) {
-            container[0].innerHTML = "";
-        }
+        if (!isBefore) container[0].innerHTML = "";
 
         //разбиение фильмов на страницы
         let div;

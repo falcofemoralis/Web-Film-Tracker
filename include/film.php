@@ -6,12 +6,14 @@ global $isAuthed;
 $database = new Database();
 $objectHelper = new ObjectHelper();
 $bookmarks = new Bookmarks();
+$ratings = new Ratings();
 
 $filmId = $_GET["id"];
 $film = $database->getFilmByFilmId($filmId, false);
 $title = $film->getTitle();
 $originalTitle = $database->getOriginalFilmTitle($filmId);
 $rating = $film->getRating();
+$trackerRating = $ratings->getTrackerRating($filmId);
 $votes = $film->getVotes();
 $plot = $film->getPlot();
 $year = $film->getPremiered();
@@ -63,6 +65,34 @@ $pageTitle = "Информация про фильм " . $title;
     <script src="/scripts/js/film.js"></script>
     <script src="/scripts/js/hoverImage.js"></script>
     <script src="/scripts/js/comment.js"></script>
+    <style>
+        <?
+        if($isAuthed){
+            $isAdded = $ratings->isRatingAdded($filmId);
+
+            $initWidth = 30;
+            if($isAdded){
+                  echo ".rating-stars li a {
+                    display: none;
+                }";
+            }else{
+                for ($i=1;$i<=10;++$i){
+                    $left = $initWidth - 30;
+                    echo "
+                    .rating-stars li a.r$i{
+                        left:".$left."px;
+                    }
+                    
+                    .rating-stars li a.r$i:hover {
+                            width:".$initWidth."px;
+                            left: 0;
+                        }";
+                    $initWidth+=30;
+                }
+            }
+        }
+        ?>
+    </style>
 </head>
 <body>
 <?
@@ -113,7 +143,7 @@ include('include/header.php');
                     <div class="caption"><? echo "$title" ?> </div>
                 </div>
 
-                <div class=' film-main__info'>
+                <div class='film-main__info'>
                     <table>
                         <tr>
                             <td><b>Рейтинг:</b></td>
@@ -123,6 +153,13 @@ include('include/header.php');
                                 </a>
                                 :&nbsp;
                                  <b>$rating</b> ($votes)" ?>
+                                <? echo "
+                                <br>
+                                <a class='film-main__info-rating' href='/'>
+                                   FilmsTracker
+                                </a>
+                                :&nbsp;
+                                 <b><span id='tracker-rating'>$trackerRating[0]</span></b> (<span id='tracker-votes'>$trackerRating[1]</span>)" ?>
                             </td>
                         </tr>
 
@@ -195,6 +232,24 @@ include('include/header.php');
                         }
                         ?>
                     </table>
+                    <div class="rating-stars">
+                        <ul>
+                            <li style="width: <?
+                            if ($trackerRating[0] != "n/a") {
+                                $w = ($trackerRating[0] * 100) / 10;
+                                echo "$w%";
+                            } else {
+                                echo "0%";
+                            }
+                            ?> " class="current-rating"></li>
+                            <? for ($i = 1; $i <= 10; ++$i) { ?>
+                                <li>
+                                    <a class="<? echo "r$i" ?>"
+                                       onclick="putRating(<? echo "$i, '$filmId'" ?>)"></a>
+                                </li>
+                            <? } ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class='film__section'>
@@ -217,7 +272,9 @@ include('include/header.php');
                 <div class="slider__container" style="overflow: scroll; overflow-y: hidden;">
                     <?
                     if ($sortedActors[0] != null) {
-                        for ($i = 1; $i <= count($sortedActors[0]); ++$i) {
+                        for ($i = 1;
+                             $i <= count($sortedActors[0]);
+                             ++$i) {
                             $actor = $sortedActors[0][$i - 1];
                             $objectHelper->createActor($actor->getPersonId(), $actor->getName(), $actor->getCharacters(), $actor->getCategory());
                         }
@@ -231,7 +288,7 @@ include('include/header.php');
         $keywords = explode(" ", $title);
         $filmsIds = $filmsList->getRelevantFilms($genres, $keywords);
 
-        if ($filmsIds != null) :
+        if ($filmsIds != null && count($filmsIds) > 1) :
             ?>
             <div class="film__section">
 
@@ -239,7 +296,9 @@ include('include/header.php');
                 <div class='slider' style="justify-content:  flex-start;">
                     <div class="slider__container" style="overflow: scroll; overflow-y: hidden;">
                         <?
-                        for ($i = 0; $i < count($filmsIds); ++$i) {
+                        for ($i = 0;
+                             $i < count($filmsIds);
+                             ++$i) {
                             if ($filmsIds[$i] == $filmId) continue;
                             $film = $database->getFilmByFilmId($filmsIds[$i], true);
                             $objectHelper->createFilm($filmsIds[$i], $film->getTitle(), $film->getPremiered(), $film->getGenres());
@@ -269,7 +328,9 @@ include('include/header.php');
             $commentsObj = new Comments();
             $comments = $commentsObj->getComments($filmId);
 
-            for ($i = 0; $i < count($comments); ++$i) {
+            for ($i = 0;
+                 $i < count($comments);
+                 ++$i) {
                 $user = $commentsObj->getUserByUserId($comments[$i]->getUserId());
                 $username = $user->getUsername();
                 $password = $user->getPassword();
@@ -284,8 +345,9 @@ include('include/header.php');
     </div>
 </article>
 <script>
-    initHoverImg()
+    initHoverImg();
     initComments();
+    ratingsResize();
 </script>
 <?
 include('include/footer.php');

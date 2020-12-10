@@ -23,14 +23,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api/ratings/Ratings.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/ratings/RatingsApi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/comments/Comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/comments/Comments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/list/FilmsList.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/list/FilmsList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/film.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/film.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/js/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/js/film.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/film.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/js/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/slider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/php/Objects/Film.php" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/php/Objects/Film.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sitemap.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,6 +265,12 @@
       <workItem from="1607538489696" duration="126000" />
       <workItem from="1607538636180" duration="92000" />
       <workItem from="1607545317197" duration="8822000" />
+      <workItem from="1607604966937" duration="540000" />
+      <workItem from="1607608496702" duration="2000" />
+      <workItem from="1607608505822" duration="356000" />
+      <workItem from="1607610028236" duration="48000" />
+      <workItem from="1607614685529" duration="784000" />
+      <workItem from="1607622390275" duration="15044000" />
     </task>
     <servers />
   </component>
@@ -302,10 +310,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="712" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1607017936181" />
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1607512883879">
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1607631657989">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1607512883879" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1607631657989" />
     <state x="637" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607337008538">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -370,10 +378,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="619" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607336217177" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1607514087890">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1607631545956">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607514087890" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607631545956" />
     <state x="689" y="222" key="RollbackChangesDialog" timestamp="1606942756857">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -402,22 +410,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606215401105" />
-    <state x="687" y="89" width="1091" height="779" key="find.popup" timestamp="1607550902676">
+    <state x="687" y="89" width="1091" height="779" key="find.popup" timestamp="1607637348039">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="687" y="89" width="1091" height="779" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607550902676" />
+    <state x="687" y="89" width="1091" height="779" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607637348039" />
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog" timestamp="1604757553781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604757553781" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1607550222650">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1607622999043">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607550222650" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607550119705">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607622999043" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607635579488">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607550119705" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607635579488" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
