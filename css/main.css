@@ -79,7 +79,7 @@
 
 .films-comments {
     width: 340px;
-    height: 700px;
+    height: auto;
 }
 
 .films-comments h2 {
@@ -108,7 +108,7 @@
 
 /* Mobile version */
 
-.mobile-filters {
+.mobile-block {
     display: none;
 }
 
@@ -136,7 +136,7 @@
         display: none;
     }
 
-    .mobile-filters {
+    .mobile-block {
         display: flex;
         flex-direction: column;
         justify-content: center;

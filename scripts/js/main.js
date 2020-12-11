@@ -15,16 +15,21 @@ function initFiltersResize() {
     function onResize() {
         reportWindowSize();
 
-        let filters = document.querySelectorAll(".films-filters");
         let widthOfScreen = document.body.offsetWidth;
+        let rightBlock = document.getElementsByClassName("right-block")[0];
+        let filters = document.querySelectorAll(".films-filters");
+        let comments = document.querySelectorAll(".films-comments");
+
 
         if (widthOfScreen < 720) {
-            let filtersContainer = document.getElementsByClassName("mobile-filters")[0];
+            let filtersContainer = document.getElementsByClassName("filters")[0];
+            let commentsContainer = document.getElementsByClassName("comments")[0];
             filtersContainer.appendChild(filters[0]);
+            commentsContainer.appendChild(comments[0]);
             isMoved = true;
         } else if (isMoved) {
-            let filtersContainer = document.getElementsByClassName("films-comments")[0];
-            filtersContainer.before(filters[0]);
+            rightBlock.appendChild(filters[0]);
+            rightBlock.appendChild(comments[0]);
             isMoved = false;
         }
     }

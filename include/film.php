@@ -69,7 +69,6 @@ $pageTitle = "Информация про фильм " . $title;
         <?
         if($isAuthed){
             $isAdded = $ratings->isRatingAdded($filmId);
-
             $initWidth = 30;
             if($isAdded){
                   echo ".rating-stars li a {
@@ -90,6 +89,10 @@ $pageTitle = "Информация про фильм " . $title;
                     $initWidth+=30;
                 }
             }
+        }else{
+             echo ".rating-stars li a {
+                    display: none;
+                }";
         }
         ?>
     </style>
@@ -115,7 +118,6 @@ include('include/header.php');
                     if (!file_exists($poster)) $poster = "images/posters/noimage_poster.jpeg";
                     ?>
                     <img class='film-main__poster' src='<? echo "$poster" ?>' alt='poster'>
-
                     <?
 
                     if ($isAuthed):
@@ -322,7 +324,6 @@ include('include/header.php');
 <script>
     initHoverImg();
     initComments();
-    ratingsResize();
 </script>
 <?
 include('include/footer.php');

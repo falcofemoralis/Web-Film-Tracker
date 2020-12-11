@@ -24,9 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="95091aca-28d6-498a-b017-94c7bbf8fc13" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/list/FilmsList.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/list/FilmsList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/film.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/film.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/film.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/film.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/js/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +268,16 @@
       <workItem from="1607622390275" duration="15136000" />
       <workItem from="1607681228275" duration="4243000" />
       <workItem from="1607685620964" duration="238000" />
-      <workItem from="1607686727336" duration="375000" />
+      <workItem from="1607686727336" duration="804000" />
+      <workItem from="1607690476598" duration="350000" />
+      <workItem from="1607692328144" duration="51000" />
+      <workItem from="1607697378999" duration="27000" />
+      <workItem from="1607697549219" duration="192000" />
+      <workItem from="1607697850207" duration="3000" />
+      <workItem from="1607701052470" duration="3417000" />
+      <workItem from="1607705383271" duration="1314000" />
+      <workItem from="1607712160091" duration="44000" />
+      <workItem from="1607712282577" duration="5102000" />
     </task>
     <servers />
   </component>
@@ -407,10 +417,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606215401105" />
-    <state x="687" y="89" width="1091" height="779" key="find.popup" timestamp="1607684682640">
+    <state x="687" y="89" width="1091" height="779" key="find.popup" timestamp="1607712872090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="687" y="89" width="1091" height="779" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607684682640" />
+    <state x="687" y="89" width="1091" height="779" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607712872090" />
     <state x="736" y="292" key="refactoring.ChangeSignatureDialog" timestamp="1604757553781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

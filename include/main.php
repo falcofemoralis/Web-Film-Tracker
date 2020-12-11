@@ -74,7 +74,7 @@ include('include/header.php');
             </div>
         </div>
 
-        <div class="mobile-filters">
+        <div class="mobile-block filters">
             <h2 class="text__header">Фильтр фильмов</h2>
         </div>
 
@@ -194,6 +194,8 @@ include('include/header.php');
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="mobile-block comments">
         </div>
     </div>
 </article>
