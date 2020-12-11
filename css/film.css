@@ -30,7 +30,7 @@
     z-index: 1;
     cursor: pointer;
     border: 4px solid white;
-    border-radius: 7px;
+    border-radius: 14px;
 }
 
 .film-main__poster:hover {

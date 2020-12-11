@@ -284,31 +284,6 @@ include('include/header.php');
             </div>
         </div>
         <?
-        $filmsList = new FilmsList();
-        $keywords = explode(" ", $title);
-        $filmsIds = $filmsList->getRelevantFilms($genres, $keywords);
-
-        if ($filmsIds != null && count($filmsIds) > 1) :
-            ?>
-            <div class="film__section">
-
-                <h2 class="section__title">Похожие фильмы</h2>
-                <div class='slider' style="justify-content:  flex-start;">
-                    <div class="slider__container" style="overflow: scroll; overflow-y: hidden;">
-                        <?
-                        for ($i = 0;
-                             $i < count($filmsIds);
-                             ++$i) {
-                            if ($filmsIds[$i] == $filmId) continue;
-                            $film = $database->getFilmByFilmId($filmsIds[$i], true);
-                            $objectHelper->createFilm($filmsIds[$i], $film->getTitle(), $film->getPremiered(), $film->getGenres());
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
-        <?
-        endif;
         if ($isAuthed) : ?>
             <div>
                 <textarea id='comment' class='comment-input' name='comment'
