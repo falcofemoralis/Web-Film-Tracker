@@ -85,17 +85,17 @@
 }
 
 .add-btn {
-    width: 200px;
     height: 40px;
+    width: 200px;
     outline: none;
-    background-color: cornflowerblue;
-    border: none;
     text-decoration: none;
+    border: none;
     cursor: pointer;
+    background-color: cornflowerblue;
     color: white;
     font-weight: bold;
-    transition: background-color .3s, filter .3s;
     margin-bottom: 15px;
+    transition: background-color .3s, filter .3s;
 }
 
 .add-btn:hover {

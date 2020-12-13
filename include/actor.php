@@ -4,7 +4,6 @@
 $database = new Database();
 $objectHelper = new ObjectHelper();
 
-
 $personId = $_GET["id"];
 $actor = $database->getActorById($personId);
 

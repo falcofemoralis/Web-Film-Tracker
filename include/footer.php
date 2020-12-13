@@ -6,6 +6,7 @@
             <h3 class="b-footer">
                 FilmsTracker — трекер информации про фильмы!
             </h3>
+            <!-- Счетчик посещений hotlog -->
             <div>
                 <span id="hotlog_counter" style="margin-left: 25px"></span>
                 <span id="hotlog_dyn"></span>
@@ -21,7 +22,6 @@
                         <img src="http://hit5.hotlog.ru/cgi-bin/hotlog/count?s=2592668&im=560" style="border: 0"
                              title="HotLog" alt="HotLog"></a>
                 </noscript>
-                <!-- /HotLog -->
             </div>
         </div>
         <div class="b-footer__center">

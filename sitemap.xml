@@ -4,22 +4,73 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-
-  <url>
-    <loc>http://a0488451.xsph.ru/</loc>
-    <lastmod>2020-12-09T14:21:53+00:00</lastmod>
-    <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>http://a0488451.xsph.ru/login</loc>
-    <lastmod>2020-12-09T14:21:53+00:00</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>http://a0488451.xsph.ru/registration</loc>
-    <lastmod>2020-12-09T14:21:53+00:00</lastmod>
-    <priority>0.90</priority>
-  </url>
+    <url>
+        <loc>http://a0488451.xsph.ru/</loc>
+        <lastmod>2020-12-09T14:21:53+00:00</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>http://a0488451.xsph.ru/login</loc>
+        <lastmod>2020-12-09T14:21:53+00:00</lastmod>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>http://a0488451.xsph.ru/registration</loc>
+        <lastmod>2020-12-09T14:21:53+00:00</lastmod>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>http://a0488451.xsph.ru/film?id=tt0071230</loc>
+        <lastmod>2020-12-09T14:21:53+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://a0488451.xsph.ru/film?id=tt1222817</loc>
+        <lastmod>2020-12-09T14:21:53+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://a0488451.xsph.ru/film?id=tt1086772</loc>
+        <lastmod>2020-12-09T14:21:53+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://a0488451.xsph.ru/film?id=tt0120484</loc>
+        <lastmod>2020-12-09T14:21:53+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://a0488451.xsph.ru/film?id=tt0457430</loc>
+        <lastmod>2020-12-09T14:21:53+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://a0488451.xsph.ru/film?id=tt0102070</loc>
+        <lastmod>2020-12-09T14:21:53+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://a0488451.xsph.ru/actor?id=nm0880078</loc>
+        <lastmod>2020-12-09T14:21:53+00:00</lastmod>
+        <priority>0.70</priority>
+    </url>
+    <url>
+        <loc>http://a0488451.xsph.ru/actor?id=nm0065608</loc>
+        <lastmod>2020-12-09T14:21:53+00:00</lastmod>
+        <priority>0.70</priority>
+    </url>
+    <url>
+        <loc>http://a0488451.xsph.ru/actor?id=nm0178997</loc>
+        <lastmod>2020-12-09T14:21:53+00:00</lastmod>
+        <priority>0.70</priority>
+    </url>
 </urlset>
+
+
+
+
+
+
+
+
